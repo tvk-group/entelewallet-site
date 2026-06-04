@@ -4,13 +4,813 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>EnteleWALLET | Secure Multi-Chain Wallet by TVK Labs</title>
-  <meta name="description" content="EnteleWALLET is the secure multi-chain wallet layer of the Entelekron ecosystem, designed for digital assets, identity, compliance, recovery, payments, staking, and intelligent Web3 access." />
-  <meta name="theme-color" content="#f8fbff" />
+  <meta name="description" content="EnteleWALLET is the secure multi-chain wallet layer of the Entelekron ecosystem." />
+  <meta name="theme-color" content="#061426" />
   <style>
-    :root{
-      --bg:#f8fbff;--panel:#ffffff;--ink:#0d1b2a;--muted:#5e6b7a;--line:#dfe9f5;--blue:#0b6fff;--cyan:#12c8ff;--navy:#07152d;--soft:#eef6ff;--gold:#c79b39;--green:#12b886;--shadow:0 24px 70px rgba(13,27,42,.10);--radius:28px;
+    :root {
+      --bg: #061426;
+      --bg-soft: #0b1d36;
+      --panel: rgba(255, 255, 255, .92);
+      --panel-dark: rgba(255, 255, 255, .08);
+      --ink: #0d1b2a;
+      --muted: #627083;
+      --white: #ffffff;
+      --line: rgba(255, 255, 255, .16);
+      --line-dark: #dfe9f5;
+      --blue: #0b6fff;
+      --cyan: #12c8ff;
+      --violet: #7c3cff;
+      --green: #18d89b;
+      --gold: #ffc857;
+      --shadow: 0 30px 90px rgba(0, 0, 0, .24);
+      --radius: 30px;
     }
-    *{box-sizing:border-box;margin:0;padding:0} html{scroll-behavior:smooth} body{font-family:Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;background:radial-gradient(circle at top left,#eaf6ff,transparent 34%),radial-gradient(circle at top right,#eff5ff,transparent 32%),var(--bg);color:var(--ink);line-height:1.6} a{text-decoration:none;color:inherit} .container{width:min(1180px,92%);margin:auto}.topbar{position:sticky;top:0;z-index:50;background:rgba(248,251,255,.86);backdrop-filter:blur(18px);border-bottom:1px solid rgba(223,233,245,.8)}.nav{height:82px;display:flex;align-items:center;justify-content:space-between;gap:24px}.brand{display:flex;align-items:center;gap:14px;font-weight:900;letter-spacing:.4px}.mark{width:46px;height:46px;border-radius:15px;background:linear-gradient(135deg,var(--blue),var(--cyan));display:grid;place-items:center;color:white;box-shadow:0 16px 35px rgba(11,111,255,.25);font-weight:900}.brand small{display:block;color:var(--muted);font-weight:700;font-size:11px;letter-spacing:1.8px;text-transform:uppercase}.links{display:flex;align-items:center;gap:22px;color:#243247;font-weight:700;font-size:14px}.links a{opacity:.86}.links a:hover{opacity:1;color:var(--blue)}.lang{position:relative}.lang button{border:1px solid var(--line);background:white;padding:10px 14px;border-radius:999px;font-weight:800;cursor:pointer;color:var(--ink);box-shadow:0 10px 24px rgba(13,27,42,.06)}.lang-menu{position:absolute;right:0;top:48px;width:260px;max-height:410px;overflow:auto;background:white;border:1px solid var(--line);border-radius:20px;box-shadow:var(--shadow);padding:10px;display:none}.lang:hover .lang-menu{display:grid;grid-template-columns:1fr 1fr;gap:4px}.lang-menu a{padding:9px 10px;border-radius:12px;color:#29384d;font-size:13px}.lang-menu a:hover{background:var(--soft);color:var(--blue)}.btn{display:inline-flex;align-items:center;justify-content:center;gap:9px;padding:14px 22px;border-radius:999px;font-weight:900;border:1px solid transparent}.btn.primary{background:linear-gradient(135deg,var(--blue),var(--cyan));color:white;box-shadow:0 18px 38px rgba(11,111,255,.26)}.btn.secondary{background:white;color:var(--navy);border-color:var(--line)}.hero{padding:92px 0 70px}.hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:46px;align-items:center}.eyebrow{display:inline-flex;gap:10px;align-items:center;padding:9px 13px;border:1px solid var(--line);border-radius:999px;background:rgba(255,255,255,.72);font-weight:900;color:var(--blue);font-size:13px;margin-bottom:22px}.hero h1{font-size:clamp(44px,6vw,82px);line-height:.98;letter-spacing:-3px;margin-bottom:24px}.hero h1 span{background:linear-gradient(135deg,var(--blue),var(--cyan));-webkit-background-clip:text;color:transparent}.lead{font-size:20px;color:var(--muted);max-width:720px;margin-bottom:30px}.hero-actions{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:28px}.trust{display:flex;gap:18px;flex-wrap:wrap;color:var(--muted);font-weight:750;font-size:14px}.device{position:relative;border-radius:42px;background:linear-gradient(180deg,#ffffff,#edf7ff);border:1px solid var(--line);box-shadow:var(--shadow);padding:26px}.phone{background:#07152d;border-radius:36px;padding:18px;color:white;min-height:560px;position:relative;overflow:hidden}.phone:before{content:"";position:absolute;inset:-80px -40px auto auto;width:260px;height:260px;background:radial-gradient(circle,var(--cyan),transparent 70%);opacity:.35}.wallet-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:32px;position:relative}.pill{padding:8px 12px;border-radius:999px;background:rgba(255,255,255,.12);font-size:12px;font-weight:900}.balance{position:relative}.balance small{color:#9eb3cc;text-transform:uppercase;letter-spacing:1.5px;font-weight:800}.balance h2{font-size:42px;margin:6px 0}.cards{display:grid;gap:12px;margin-top:22px}.asset{display:flex;justify-content:space-between;align-items:center;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.12);padding:14px;border-radius:18px}.asset b{display:block}.asset span{color:#b6c8da;font-size:13px}.token{width:38px;height:38px;border-radius:13px;background:linear-gradient(135deg,var(--blue),var(--cyan));display:grid;place-items:center;font-weight:900;margin-right:12px}.asset-left{display:flex;align-items:center}.quick{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:26px}.quick div{background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.11);border-radius:16px;padding:12px 6px;text-align:center;font-weight:800;font-size:12px}section{padding:82px 0}.section-head{max-width:790px;margin-bottom:34px}.section-head h2{font-size:clamp(34px,4vw,54px);line-height:1.05;letter-spacing:-1.7px;margin-bottom:14px}.section-head p{font-size:18px;color:var(--muted)}.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}.card{background:rgba(255,255,255,.86);border:1px solid var(--line);border-radius:var(--radius);padding:28px;box-shadow:0 12px 36px rgba(13,27,42,.055)}.icon{width:48px;height:48px;border-radius:16px;background:var(--soft);display:grid;place-items:center;margin-bottom:18px;font-size:22px}.card h3{font-size:21px;margin-bottom:9px}.card p{color:var(--muted)}.split{display:grid;grid-template-columns:.9fr 1.1fr;gap:30px;align-items:center}.panel{background:linear-gradient(135deg,#07152d,#102b59);color:white;border-radius:36px;padding:40px;box-shadow:var(--shadow);overflow:hidden;position:relative}.panel:after{content:"";position:absolute;right:-90px;top:-90px;width:230px;height:230px;background:radial-gradient(circle,var(--cyan),transparent 70%);opacity:.35}.panel h2{font-size:42px;letter-spacing:-1.4px;line-height:1.06;margin-bottom:15px}.panel p{color:#c2d0e2}.list{display:grid;gap:14px}.row{display:flex;gap:14px;background:white;border:1px solid var(--line);border-radius:20px;padding:18px;box-shadow:0 10px 28px rgba(13,27,42,.05)}.check{width:28px;height:28px;flex:0 0 28px;border-radius:50%;background:#e8fff6;color:var(--green);display:grid;place-items:center;font-weight:900}.ecosystem{background:#ffffff;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}.modules{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}.module{border:1px solid var(--line);background:linear-gradient(180deg,#fff,#f7fbff);border-radius:22px;padding:18px;font-weight:900}.module span{display:block;color:var(--muted);font-size:13px;font-weight:700;margin-top:4px}.warning{background:#fff8e8;border:1px solid #f2d9a1;border-radius:24px;padding:24px;color:#5b4211}.cta{padding:86px 0 100px}.cta-box{border-radius:42px;background:linear-gradient(135deg,var(--blue),var(--cyan));color:white;padding:54px;text-align:center;box-shadow:0 30px 80px rgba(11,111,255,.25)}.cta-box h2{font-size:46px;line-height:1.05;margin-bottom:12px}.cta-box p{max-width:760px;margin:0 auto 24px;color:#eaf7ff}.footer{background:#07152d;color:white;padding:46px 0}.footer-grid{display:grid;grid-template-columns:1.2fr repeat(3,1fr);gap:28px}.footer h4{margin-bottom:12px}.footer a,.footer p{display:block;color:#b8c7da;margin:8px 0;font-size:14px}.legal{border-top:1px solid rgba(255,255,255,.12);margin-top:32px;padding-top:20px;color:#90a2b8;font-size:13px}.mobile-menu{display:none}@media(max-width:920px){.links a{display:none}.hero-grid,.split{grid-template-columns:1fr}.grid{grid-template-columns:1fr 1fr}.modules{grid-template-columns:1fr 1fr}.footer-grid{grid-template-columns:1fr 1fr}.hero{padding-top:58px}.phone{min-height:500px}}@media(max-width:620px){.grid,.modules,.footer-grid{grid-template-columns:1fr}.nav{height:auto;padding:16px 0;align-items:flex-start}.brand small{display:none}.hero h1{letter-spacing:-1.7px}.quick{grid-template-columns:1fr 1fr}.cta-box{padding:32px 22px}.cta-box h2{font-size:34px}.lang-menu{right:auto;left:-120px}}
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      min-height: 100vh;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      color: var(--white);
+      background:
+        radial-gradient(circle at 12% 8%, rgba(18, 200, 255, .34), transparent 28%),
+        radial-gradient(circle at 82% 0%, rgba(124, 60, 255, .32), transparent 32%),
+        linear-gradient(180deg, #061426 0%, #0b1d36 44%, #f7fbff 44%, #f7fbff 100%);
+      line-height: 1.5;
+      overflow-x: hidden;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      background-image:
+        linear-gradient(rgba(255, 255, 255, .035) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, .035) 1px, transparent 1px);
+      background-size: 44px 44px;
+      mask-image: linear-gradient(to bottom, #000 0%, transparent 58%);
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .container {
+      width: min(1180px, 92%);
+      margin: auto;
+    }
+
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      border-bottom: 1px solid var(--line);
+      background: rgba(6, 20, 38, .78);
+      backdrop-filter: blur(22px);
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 22px;
+      min-height: 84px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      font-weight: 950;
+      letter-spacing: .3px;
+      white-space: nowrap;
+    }
+
+    .mark {
+      width: 48px;
+      height: 48px;
+      display: grid;
+      place-items: center;
+      border: 1px solid rgba(255, 255, 255, .32);
+      border-radius: 17px;
+      background: linear-gradient(135deg, var(--blue), var(--cyan));
+      box-shadow: 0 16px 40px rgba(11, 111, 255, .38);
+    }
+
+    .brand small {
+      display: block;
+      color: #9fb6d1;
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 1.8px;
+      text-transform: uppercase;
+    }
+
+    .links {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      color: #dbeaff;
+      font-size: 14px;
+      font-weight: 800;
+    }
+
+    .links > a {
+      opacity: .86;
+      transition: color .18s ease, opacity .18s ease;
+    }
+
+    .links > a:hover,
+    .links > a:focus-visible {
+      color: var(--cyan);
+      opacity: 1;
+    }
+
+    .lang {
+      position: relative;
+    }
+
+    .lang-toggle {
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      min-width: 148px;
+      justify-content: center;
+      border: 1px solid rgba(255, 255, 255, .22);
+      border-radius: 999px;
+      padding: 11px 15px;
+      color: var(--white);
+      background: rgba(255, 255, 255, .1);
+      box-shadow: 0 14px 32px rgba(0, 0, 0, .16);
+      cursor: pointer;
+      font: inherit;
+      font-weight: 900;
+    }
+
+    .lang-toggle:hover,
+    .lang-toggle:focus-visible {
+      border-color: rgba(18, 200, 255, .72);
+      outline: none;
+    }
+
+    .chevron {
+      transition: transform .18s ease;
+    }
+
+    .lang.is-open .chevron {
+      transform: rotate(180deg);
+    }
+
+    .lang-menu {
+      position: absolute;
+      right: 0;
+      top: calc(100% + 12px);
+      width: min(560px, 88vw);
+      max-height: 440px;
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 7px;
+      padding: 14px;
+      overflow: auto;
+      list-style: none;
+      border: 1px solid rgba(255, 255, 255, .16);
+      border-radius: 26px;
+      background: rgba(255, 255, 255, .96);
+      color: var(--ink);
+      box-shadow: var(--shadow);
+      transform: translateY(-6px) scale(.98);
+      transform-origin: top right;
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+      transition: opacity .16s ease, transform .16s ease, visibility .16s ease;
+    }
+
+    .lang.is-open .lang-menu {
+      transform: translateY(0) scale(1);
+      opacity: 1;
+      visibility: visible;
+      pointer-events: auto;
+    }
+
+    .lang-menu a {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      min-height: 42px;
+      border-radius: 15px;
+      padding: 10px 12px;
+      color: #243247;
+      font-size: 13px;
+      font-weight: 850;
+    }
+
+    .lang-menu a:hover,
+    .lang-menu a:focus-visible,
+    .lang-menu a[aria-current="true"] {
+      color: #063d91;
+      background: linear-gradient(135deg, rgba(11, 111, 255, .12), rgba(18, 200, 255, .16));
+      outline: none;
+    }
+
+    .lang-menu a[aria-current="true"]::after {
+      content: "✓";
+      color: var(--blue);
+      font-weight: 950;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 9px;
+      border: 1px solid transparent;
+      border-radius: 999px;
+      padding: 15px 24px;
+      font-weight: 950;
+      transition: transform .18s ease, box-shadow .18s ease, border-color .18s ease;
+    }
+
+    .btn:hover,
+    .btn:focus-visible {
+      transform: translateY(-2px);
+      outline: none;
+    }
+
+    .btn.primary {
+      color: var(--white);
+      background: linear-gradient(135deg, var(--blue), var(--cyan));
+      box-shadow: 0 22px 44px rgba(11, 111, 255, .36);
+    }
+
+    .btn.secondary {
+      color: var(--white);
+      border-color: rgba(255, 255, 255, .22);
+      background: rgba(255, 255, 255, .1);
+    }
+
+    .hero {
+      padding: 98px 0 86px;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.03fr .97fr;
+      gap: 48px;
+      align-items: center;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 22px;
+      border: 1px solid rgba(255, 255, 255, .2);
+      border-radius: 999px;
+      padding: 9px 14px;
+      color: #c7f5ff;
+      background: rgba(255, 255, 255, .09);
+      font-size: 13px;
+      font-weight: 950;
+      letter-spacing: .4px;
+    }
+
+    .hero h1 {
+      max-width: 790px;
+      margin-bottom: 28px;
+      font-size: clamp(48px, 7vw, 92px);
+      line-height: .93;
+      letter-spacing: -4px;
+    }
+
+    .hero h1 span {
+      display: block;
+      background: linear-gradient(135deg, #ffffff 0%, #8eefff 45%, #9f8cff 100%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+      margin-bottom: 28px;
+    }
+
+    .trust {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .trust span,
+    .stat,
+    .module,
+    .phase {
+      border: 1px solid rgba(255, 255, 255, .14);
+      background: rgba(255, 255, 255, .08);
+      backdrop-filter: blur(14px);
+    }
+
+    .trust span {
+      border-radius: 999px;
+      padding: 9px 12px;
+      color: #ddecff;
+      font-size: 13px;
+      font-weight: 900;
+    }
+
+    .device {
+      position: relative;
+      border: 1px solid rgba(255, 255, 255, .18);
+      border-radius: 44px;
+      padding: 18px;
+      background: linear-gradient(145deg, rgba(255, 255, 255, .22), rgba(255, 255, 255, .06));
+      box-shadow: var(--shadow);
+    }
+
+    .device::before,
+    .device::after {
+      content: "";
+      position: absolute;
+      border-radius: 999px;
+      filter: blur(2px);
+    }
+
+    .device::before {
+      inset: -18px auto auto -24px;
+      width: 120px;
+      height: 120px;
+      background: rgba(18, 200, 255, .2);
+    }
+
+    .device::after {
+      right: -18px;
+      bottom: 54px;
+      width: 82px;
+      height: 82px;
+      background: rgba(255, 200, 87, .24);
+    }
+
+    .phone {
+      position: relative;
+      min-height: 570px;
+      overflow: hidden;
+      border: 1px solid rgba(255, 255, 255, .14);
+      border-radius: 34px;
+      padding: 22px;
+      background:
+        radial-gradient(circle at 76% 8%, rgba(18, 200, 255, .44), transparent 30%),
+        radial-gradient(circle at 18% 92%, rgba(124, 60, 255, .28), transparent 34%),
+        #07152d;
+    }
+
+    .wallet-top,
+    .balance,
+    .asset,
+    .quick {
+      position: relative;
+      z-index: 1;
+    }
+
+    .wallet-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 42px;
+    }
+
+    .pill {
+      border: 1px solid rgba(255, 255, 255, .14);
+      border-radius: 999px;
+      padding: 8px 12px;
+      background: rgba(255, 255, 255, .1);
+      font-size: 12px;
+      font-weight: 950;
+    }
+
+    .balance small {
+      display: block;
+      color: #9eb3cc;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      font-weight: 900;
+    }
+
+    .balance h2 {
+      margin: 7px 0 2px;
+      font-size: 44px;
+      letter-spacing: -1.8px;
+    }
+
+    .portfolio-status {
+      color: #8ff0c2;
+      font-weight: 950;
+    }
+
+    .cards {
+      display: grid;
+      gap: 12px;
+      margin-top: 28px;
+    }
+
+    .asset {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border: 1px solid rgba(255, 255, 255, .12);
+      border-radius: 20px;
+      padding: 14px;
+      background: rgba(255, 255, 255, .08);
+    }
+
+    .asset-left {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .token {
+      width: 40px;
+      height: 40px;
+      display: grid;
+      place-items: center;
+      border-radius: 14px;
+      background: linear-gradient(135deg, var(--blue), var(--cyan));
+      font-weight: 950;
+    }
+
+    .quick {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 10px;
+      margin-top: 28px;
+    }
+
+    .quick div {
+      border: 1px solid rgba(255, 255, 255, .12);
+      border-radius: 16px;
+      padding: 13px 7px;
+      background: rgba(255, 255, 255, .1);
+      text-align: center;
+      font-size: 12px;
+      font-weight: 950;
+    }
+
+    .light {
+      color: var(--ink);
+    }
+
+    section.light {
+      padding: 88px 0;
+      background: transparent;
+    }
+
+    .section-head {
+      max-width: 820px;
+      margin-bottom: 34px;
+    }
+
+    .section-head h2 {
+      font-size: clamp(34px, 4.8vw, 58px);
+      line-height: 1;
+      letter-spacing: -2px;
+    }
+
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 14px;
+      margin-top: -34px;
+      margin-bottom: 72px;
+    }
+
+    .stat {
+      min-height: 108px;
+      border-radius: 24px;
+      padding: 22px;
+      box-shadow: 0 20px 45px rgba(0, 0, 0, .13);
+    }
+
+    .stat strong {
+      display: block;
+      color: var(--white);
+      font-size: 30px;
+      line-height: 1;
+    }
+
+    .stat span {
+      display: block;
+      margin-top: 10px;
+      color: #cfe0f3;
+      font-size: 13px;
+      font-weight: 850;
+      text-transform: uppercase;
+      letter-spacing: .9px;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+
+    .card {
+      position: relative;
+      overflow: hidden;
+      min-height: 176px;
+      border: 1px solid var(--line-dark);
+      border-radius: var(--radius);
+      padding: 28px;
+      background: var(--panel);
+      box-shadow: 0 16px 42px rgba(13, 27, 42, .07);
+      transition: transform .18s ease, box-shadow .18s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 24px 58px rgba(13, 27, 42, .11);
+    }
+
+    .card::after {
+      content: "";
+      position: absolute;
+      right: -48px;
+      bottom: -52px;
+      width: 140px;
+      height: 140px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, rgba(11, 111, 255, .16), rgba(18, 200, 255, .1));
+    }
+
+    .icon {
+      width: 52px;
+      height: 52px;
+      display: grid;
+      place-items: center;
+      margin-bottom: 20px;
+      border-radius: 18px;
+      color: var(--blue);
+      background: linear-gradient(135deg, #eef6ff, #e8fbff);
+      font-size: 22px;
+      font-weight: 950;
+    }
+
+    .card h3 {
+      position: relative;
+      z-index: 1;
+      max-width: 260px;
+      font-size: 22px;
+      line-height: 1.16;
+      letter-spacing: -.4px;
+    }
+
+    .split {
+      display: grid;
+      grid-template-columns: .94fr 1.06fr;
+      gap: 28px;
+      align-items: stretch;
+    }
+
+    .panel {
+      position: relative;
+      overflow: hidden;
+      border-radius: 38px;
+      padding: 42px;
+      color: var(--white);
+      background:
+        radial-gradient(circle at 88% 8%, rgba(18, 200, 255, .32), transparent 24%),
+        linear-gradient(135deg, #07152d, #102b59);
+      box-shadow: var(--shadow);
+    }
+
+    .panel h2 {
+      font-size: clamp(38px, 4.5vw, 62px);
+      line-height: .98;
+      letter-spacing: -2px;
+    }
+
+    .list {
+      display: grid;
+      gap: 14px;
+    }
+
+    .row {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      border: 1px solid var(--line-dark);
+      border-radius: 22px;
+      padding: 20px;
+      background: var(--white);
+      box-shadow: 0 12px 30px rgba(13, 27, 42, .055);
+    }
+
+    .check {
+      width: 31px;
+      height: 31px;
+      flex: 0 0 31px;
+      display: grid;
+      place-items: center;
+      border-radius: 50%;
+      color: #065f43;
+      background: #e8fff6;
+      font-weight: 950;
+    }
+
+    .ecosystem-band {
+      border-top: 1px solid #dfe9f5;
+      border-bottom: 1px solid #dfe9f5;
+      background:
+        radial-gradient(circle at 10% 0%, rgba(18, 200, 255, .15), transparent 24%),
+        #ffffff;
+    }
+
+    .modules {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 14px;
+    }
+
+    .module {
+      min-height: 86px;
+      display: flex;
+      align-items: center;
+      border-color: var(--line-dark);
+      border-radius: 22px;
+      padding: 18px;
+      color: var(--ink);
+      background: linear-gradient(180deg, #fff, #f2f8ff);
+      font-weight: 950;
+      box-shadow: 0 10px 26px rgba(13, 27, 42, .045);
+    }
+
+    .phase {
+      display: grid;
+      gap: 10px;
+      border-color: var(--line-dark);
+      border-radius: 26px;
+      padding: 22px;
+      color: var(--ink);
+      background: var(--white);
+      box-shadow: 0 14px 34px rgba(13, 27, 42, .06);
+    }
+
+    .phase b {
+      color: var(--blue);
+      font-size: 14px;
+      letter-spacing: 1.5px;
+    }
+
+    .warning {
+      border: 1px solid #f2d9a1;
+      border-radius: 24px;
+      padding: 24px;
+      color: #5b4211;
+      background: #fff8e8;
+    }
+
+    .cta {
+      padding: 88px 0 100px;
+    }
+
+    .cta-box {
+      overflow: hidden;
+      position: relative;
+      border-radius: 44px;
+      padding: 56px;
+      color: var(--white);
+      text-align: center;
+      background:
+        radial-gradient(circle at 15% 20%, rgba(255, 255, 255, .28), transparent 22%),
+        linear-gradient(135deg, var(--blue), var(--cyan));
+      box-shadow: 0 34px 88px rgba(11, 111, 255, .28);
+    }
+
+    .cta-box h2 {
+      max-width: 820px;
+      margin: 0 auto 26px;
+      font-size: clamp(36px, 5vw, 60px);
+      line-height: 1;
+      letter-spacing: -2px;
+    }
+
+    .cta-box .btn.secondary {
+      color: var(--ink);
+      background: var(--white);
+      border-color: transparent;
+    }
+
+    .footer {
+      padding: 46px 0;
+      color: var(--white);
+      background: #07152d;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1.2fr repeat(3, 1fr);
+      gap: 28px;
+    }
+
+    .footer h4,
+    .footer h3 {
+      margin-bottom: 12px;
+    }
+
+    .footer a {
+      display: block;
+      margin: 8px 0;
+      color: #b8c7da;
+      font-size: 14px;
+      font-weight: 700;
+    }
+
+    .legal {
+      margin-top: 32px;
+      border-top: 1px solid rgba(255, 255, 255, .12);
+      padding-top: 20px;
+      color: #90a2b8;
+      font-size: 13px;
+    }
+
+    @media (max-width: 980px) {
+      .links > a {
+        display: none;
+      }
+
+      .hero-grid,
+      .split {
+        grid-template-columns: 1fr;
+      }
+
+      .stats,
+      .grid,
+      .modules {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .footer-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .hero {
+        padding-top: 64px;
+      }
+    }
+
+    @media (max-width: 680px) {
+      .nav {
+        align-items: flex-start;
+        padding: 16px 0;
+      }
+
+      .brand small {
+        display: none;
+      }
+
+      .lang-toggle {
+        min-width: 116px;
+        padding-inline: 12px;
+      }
+
+      .lang-menu {
+        right: -6px;
+        width: min(340px, 92vw);
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .hero h1 {
+        letter-spacing: -2.5px;
+      }
+
+      .stats,
+      .grid,
+      .modules,
+      .footer-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .quick {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .cta-box,
+      .panel {
+        padding: 34px 24px;
+      }
+    }
   </style>
 </head>
 <body>
@@ -26,11 +826,39 @@
         <a href="#ecosystem">Ecosystem</a>
         <a href="#roadmap">Roadmap</a>
         <a href="#contact">Contact</a>
-        <div class="lang">
-          <button aria-label="Choose language">🌐 Language</button>
-          <div class="lang-menu" aria-label="Language menu">
-            <a href="#">English</a><a href="#">Türkçe</a><a href="#">Deutsch</a><a href="#">Français</a><a href="#">Italiano</a><a href="#">Español</a><a href="#">Nederlands</a><a href="#">Polski</a><a href="#">Português</a><a href="#">Română</a><a href="#">Svenska</a><a href="#">Dansk</a><a href="#">Suomi</a><a href="#">Čeština</a><a href="#">Slovenčina</a><a href="#">Magyar</a><a href="#">Ελληνικά</a><a href="#">Български</a><a href="#">Русский</a><a href="#">Українська</a><a href="#">العربية</a><a href="#">中文</a><a href="#">日本語</a><a href="#">한국어</a><a href="#">हिन्दी</a>
-          </div>
+        <div class="lang" data-language-picker>
+          <button class="lang-toggle" type="button" aria-haspopup="true" aria-expanded="false" aria-controls="language-menu">
+            <span aria-hidden="true">🌐</span>
+            <span id="current-language">English</span>
+            <span class="chevron" aria-hidden="true">⌄</span>
+          </button>
+          <ul class="lang-menu" id="language-menu" aria-label="Choose language">
+            <li><a href="?lang=en" hreflang="en" data-lang="en">English</a></li>
+            <li><a href="?lang=tr" hreflang="tr" data-lang="tr">Türkçe</a></li>
+            <li><a href="?lang=de" hreflang="de" data-lang="de">Deutsch</a></li>
+            <li><a href="?lang=fr" hreflang="fr" data-lang="fr">Français</a></li>
+            <li><a href="?lang=it" hreflang="it" data-lang="it">Italiano</a></li>
+            <li><a href="?lang=es" hreflang="es" data-lang="es">Español</a></li>
+            <li><a href="?lang=nl" hreflang="nl" data-lang="nl">Nederlands</a></li>
+            <li><a href="?lang=pl" hreflang="pl" data-lang="pl">Polski</a></li>
+            <li><a href="?lang=pt" hreflang="pt" data-lang="pt">Português</a></li>
+            <li><a href="?lang=ro" hreflang="ro" data-lang="ro">Română</a></li>
+            <li><a href="?lang=sv" hreflang="sv" data-lang="sv">Svenska</a></li>
+            <li><a href="?lang=da" hreflang="da" data-lang="da">Dansk</a></li>
+            <li><a href="?lang=fi" hreflang="fi" data-lang="fi">Suomi</a></li>
+            <li><a href="?lang=cs" hreflang="cs" data-lang="cs">Čeština</a></li>
+            <li><a href="?lang=sk" hreflang="sk" data-lang="sk">Slovenčina</a></li>
+            <li><a href="?lang=hu" hreflang="hu" data-lang="hu">Magyar</a></li>
+            <li><a href="?lang=el" hreflang="el" data-lang="el">Ελληνικά</a></li>
+            <li><a href="?lang=bg" hreflang="bg" data-lang="bg">Български</a></li>
+            <li><a href="?lang=ru" hreflang="ru" data-lang="ru">Русский</a></li>
+            <li><a href="?lang=uk" hreflang="uk" data-lang="uk">Українська</a></li>
+            <li><a href="?lang=ar" hreflang="ar" data-lang="ar">العربية</a></li>
+            <li><a href="?lang=zh" hreflang="zh" data-lang="zh">中文</a></li>
+            <li><a href="?lang=ja" hreflang="ja" data-lang="ja">日本語</a></li>
+            <li><a href="?lang=ko" hreflang="ko" data-lang="ko">한국어</a></li>
+            <li><a href="?lang=hi" hreflang="hi" data-lang="hi">हिन्दी</a></li>
+          </ul>
         </div>
       </nav>
     </div>
@@ -42,24 +870,26 @@
         <div>
           <div class="eyebrow">🔐 Entelekron Native Wallet Infrastructure</div>
           <h1>The intelligent wallet for <span>assets, identity and trust.</span></h1>
-          <p class="lead">EnteleWALLET is the secure multi-chain wallet layer of the Entelekron ecosystem, built for digital assets, token access, identity, compliance, payments, staking, recovery, and AI-assisted Web3 operations.</p>
           <div class="hero-actions">
             <a class="btn primary" href="#contact">Request Early Access</a>
             <a class="btn secondary" href="#features">Explore Features</a>
           </div>
-          <div class="trust">
-            <span>✓ Non-custodial design</span><span>✓ Multi-chain ready</span><span>✓ Identity-aware</span><span>✓ Security-first</span>
+          <div class="trust" aria-label="Platform highlights">
+            <span>Non-custodial</span>
+            <span>Multi-chain</span>
+            <span>Identity-aware</span>
+            <span>Security-first</span>
           </div>
         </div>
         <div class="device" aria-label="Wallet interface preview">
           <div class="phone">
             <div class="wallet-top"><div class="pill">EnteleWALLET</div><div class="pill">Protected</div></div>
-            <div class="balance"><small>Total Portfolio</small><h2>$128,420.88</h2><span style="color:#8ff0c2;font-weight:900">+12.8% this month</span></div>
+            <div class="balance"><small>Total Portfolio</small><h2>$128,420.88</h2><span class="portfolio-status">+12.8% this month</span></div>
             <div class="cards">
-              <div class="asset"><div class="asset-left"><div class="token">ENK</div><div><b>EnteleKRON</b><span>Native ecosystem asset</span></div></div><b>42,000</b></div>
-              <div class="asset"><div class="asset-left"><div class="token">ENM</div><div><b>EnergieMIND</b><span>Energy finance layer</span></div></div><b>18,700</b></div>
-              <div class="asset"><div class="asset-left"><div class="token">S</div><div><b>SOVRA</b><span>AI protocol access</span></div></div><b>9,450</b></div>
-              <div class="asset"><div class="asset-left"><div class="token">ID</div><div><b>TVK ID</b><span>Verified identity pass</span></div></div><b>Active</b></div>
+              <div class="asset"><div class="asset-left"><div class="token">ENK</div><b>EnteleKRON</b></div><b>42,000</b></div>
+              <div class="asset"><div class="asset-left"><div class="token">ENM</div><b>EnergieMIND</b></div><b>18,700</b></div>
+              <div class="asset"><div class="asset-left"><div class="token">S</div><b>SOVRA</b></div><b>9,450</b></div>
+              <div class="asset"><div class="asset-left"><div class="token">ID</div><b>TVK ID</b></div><b>Active</b></div>
             </div>
             <div class="quick"><div>Send</div><div>Receive</div><div>Stake</div><div>Swap</div></div>
           </div>
@@ -67,59 +897,76 @@
       </div>
     </section>
 
-    <section id="features">
+    <div class="container stats" aria-label="Website capabilities">
+      <div class="stat"><strong>25</strong><span>Languages</span></div>
+      <div class="stat"><strong>4</strong><span>Core actions</span></div>
+      <div class="stat"><strong>12</strong><span>Ecosystem modules</span></div>
+      <div class="stat"><strong>24/7</strong><span>Security stance</span></div>
+    </div>
+
+    <section id="features" class="light">
       <div class="container">
-        <div class="section-head"><h2>One wallet for the full Entelekron ecosystem.</h2><p>Designed as a unified gateway for users, investors, validators, builders, companies, and communities operating inside TVK Labs’ intelligent blockchain infrastructure.</p></div>
+        <div class="section-head"><h2>One wallet for the full Entelekron ecosystem.</h2></div>
         <div class="grid">
-          <div class="card"><div class="icon">🌐</div><h3>Multi-Chain Asset Control</h3><p>Manage tokens and assets across Ethereum, Base, future Entelekron chain integrations, and supported partner networks from one clean interface.</p></div>
-          <div class="card"><div class="icon">🪪</div><h3>Identity-Aware Wallet</h3><p>Connect TVK ID, Q-Presence, KYC-ready access permissions, proof-of-presence logic, and compliance-friendly identity layers.</p></div>
-          <div class="card"><div class="icon">🤖</div><h3>SOVRA AI Assistance</h3><p>AI-guided portfolio insights, risk prompts, transaction explanation, wallet hygiene suggestions, and ecosystem navigation support.</p></div>
-          <div class="card"><div class="icon">⚡</div><h3>Payments & Utility</h3><p>Built for future merchant payments, token-gated access, internal ecosystem transactions, staking, validator rewards, and project subscriptions.</p></div>
-          <div class="card"><div class="icon">🧭</div><h3>Portfolio & Modules</h3><p>Access EnteleSCAN, EnteleVAULT, GraphVAULT, ChronoSEAL, EnergieMIND, Sentient Signals, and other connected TVK modules.</p></div>
-          <div class="card"><div class="icon">🛡️</div><h3>Recovery & Protection</h3><p>Designed to support secure backup education, risk warnings, device hygiene, wallet recovery workflows, and anti-phishing protection.</p></div>
+          <div class="card"><div class="icon">🌐</div><h3>Multi-Chain Asset Control</h3></div>
+          <div class="card"><div class="icon">🪪</div><h3>Identity-Aware Wallet</h3></div>
+          <div class="card"><div class="icon">🤖</div><h3>SOVRA AI Assistance</h3></div>
+          <div class="card"><div class="icon">⚡</div><h3>Payments & Utility</h3></div>
+          <div class="card"><div class="icon">🧭</div><h3>Portfolio & Modules</h3></div>
+          <div class="card"><div class="icon">🛡️</div><h3>Recovery & Protection</h3></div>
         </div>
       </div>
     </section>
 
-    <section id="security">
+    <section id="security" class="light">
       <div class="container split">
         <div class="panel">
           <h2>Security-first, not hype-first.</h2>
-          <p>EnteleWALLET is planned around real user protection: clear transaction visibility, non-custodial control, safe recovery education, device-level warnings, and future integration with EnteleCLOS cybersecurity modules.</p>
         </div>
         <div class="list">
-          <div class="row"><div class="check">✓</div><div><h3>Non-custodial principle</h3><p>Users should remain in control of their own private keys, seed phrases, and wallet access credentials.</p></div></div>
-          <div class="row"><div class="check">✓</div><div><h3>Human-readable risk warnings</h3><p>Transactions, signatures, unknown contracts, suspicious links, and risky approvals should be explained in simple language.</p></div></div>
-          <div class="row"><div class="check">✓</div><div><h3>Recovery education</h3><p>Clear guidance for backups, seed phrase safety, device protection, and emergency recovery preparation.</p></div></div>
-          <div class="row"><div class="check">✓</div><div><h3>Compliance-ready access layers</h3><p>Future support for verified user flows, business wallets, project dashboards, and regulated access environments.</p></div></div>
+          <div class="row"><div class="check">✓</div><h3>Non-custodial principle</h3></div>
+          <div class="row"><div class="check">✓</div><h3>Human-readable risk warnings</h3></div>
+          <div class="row"><div class="check">✓</div><h3>Recovery education</h3></div>
+          <div class="row"><div class="check">✓</div><h3>Compliance-ready access layers</h3></div>
         </div>
       </div>
     </section>
 
-    <section id="ecosystem" class="ecosystem">
+    <section id="ecosystem" class="light ecosystem-band">
       <div class="container">
-        <div class="section-head"><h2>Connected to the Entelekron architecture.</h2><p>EnteleWALLET is not only a wallet. It is the access point to a larger modular ecosystem for identity, intelligence, energy, finance, verification, and digital ownership.</p></div>
+        <div class="section-head"><h2>Connected to the Entelekron architecture.</h2></div>
         <div class="modules">
-          <div class="module">EnteleKRON<span>Core blockchain ecosystem</span></div><div class="module">SOVRA<span>AI intelligence layer</span></div><div class="module">EnergieMIND<span>Energy and finance module</span></div><div class="module">EnteleSCAN<span>Explorer and transparency</span></div><div class="module">EnteleVAULT<span>Secure storage layer</span></div><div class="module">EnteleCLOS<span>Cybersecurity and recovery</span></div><div class="module">GraphVAULT<span>Graph-based proof systems</span></div><div class="module">ChronoSEAL<span>Timestamping and proof-of-action</span></div><div class="module">Q-Presence<span>Biometric proof-of-presence</span></div><div class="module">Sentient Signals<span>AI market intelligence</span></div><div class="module">TVKWallet<span>Corporate wallet layer</span></div><div class="module">TVK ID<span>Identity and access</span></div>
+          <div class="module">EnteleKRON</div>
+          <div class="module">SOVRA</div>
+          <div class="module">EnergieMIND</div>
+          <div class="module">EnteleSCAN</div>
+          <div class="module">EnteleVAULT</div>
+          <div class="module">EnteleCLOS</div>
+          <div class="module">GraphVAULT</div>
+          <div class="module">ChronoSEAL</div>
+          <div class="module">Q-Presence</div>
+          <div class="module">Sentient Signals</div>
+          <div class="module">TVKWallet</div>
+          <div class="module">TVK ID</div>
         </div>
       </div>
     </section>
 
-    <section id="roadmap">
+    <section id="roadmap" class="light">
       <div class="container">
-        <div class="section-head"><h2>Development roadmap.</h2><p>A staged approach from public website and brand layer to secure MVP, ecosystem integrations, business wallet features, and future mainnet-native access.</p></div>
+        <div class="section-head"><h2>Development roadmap.</h2></div>
         <div class="grid">
-          <div class="card"><div class="icon">01</div><h3>Brand & Website</h3><p>Public identity, product positioning, 25-language navigation, ecosystem explanation, and early-access channel.</p></div>
-          <div class="card"><div class="icon">02</div><h3>Wallet MVP</h3><p>Non-custodial wallet interface, token portfolio, send/receive flows, network support, and transaction history.</p></div>
-          <div class="card"><div class="icon">03</div><h3>Security Layer</h3><p>Anti-phishing warnings, approval review, backup education, device safety checklist, and EnteleCLOS integration path.</p></div>
-          <div class="card"><div class="icon">04</div><h3>Ecosystem Access</h3><p>ENK, ENM, SOVRA, KRON family tokens, staking, validator rewards, identity passes, and project dashboards.</p></div>
-          <div class="card"><div class="icon">05</div><h3>Business Wallet</h3><p>Company wallets, treasury views, role permissions, project finance, reports, and compliance-oriented workflows.</p></div>
-          <div class="card"><div class="icon">06</div><h3>Mainnet Expansion</h3><p>Future Entelekron-native wallet support, custom chain modules, validator access, and AI-enhanced operations.</p></div>
+          <div class="phase"><b>01</b><h3>Brand & Website</h3></div>
+          <div class="phase"><b>02</b><h3>Wallet MVP</h3></div>
+          <div class="phase"><b>03</b><h3>Security Layer</h3></div>
+          <div class="phase"><b>04</b><h3>Ecosystem Access</h3></div>
+          <div class="phase"><b>05</b><h3>Business Wallet</h3></div>
+          <div class="phase"><b>06</b><h3>Mainnet Expansion</h3></div>
         </div>
       </div>
     </section>
 
-    <section>
+    <section class="light">
       <div class="container warning">
         <strong>Important notice:</strong> EnteleWALLET is a technology and ecosystem wallet project under development. It is not financial advice, not a bank, and not a guarantee of investment returns. Digital assets involve risk. Users must protect their seed phrases, private keys, devices, and account access at all times.
       </div>
@@ -128,7 +975,6 @@
     <section id="contact" class="cta">
       <div class="container cta-box">
         <h2>Build your Web3 access layer with EnteleWALLET.</h2>
-        <p>For partnerships, early access, ecosystem integrations, security collaboration, and investor communication, contact the TVK Labs team.</p>
         <a class="btn secondary" href="mailto:contact@entelewallet.com">contact@entelewallet.com</a>
       </div>
     </section>
@@ -137,7 +983,7 @@
   <footer class="footer">
     <div class="container">
       <div class="footer-grid">
-        <div><h3>EnteleWALLET</h3><p>The secure wallet and access layer of the Entelekron ecosystem by TVK Labs.</p></div>
+        <div><h3>EnteleWALLET</h3></div>
         <div><h4>Product</h4><a href="#features">Features</a><a href="#security">Security</a><a href="#roadmap">Roadmap</a></div>
         <div><h4>Ecosystem</h4><a href="https://tvk.group">TVK Group</a><a href="#ecosystem">Entelekron Modules</a><a href="#contact">Partnerships</a></div>
         <div><h4>Contact</h4><a href="mailto:contact@entelewallet.com">contact@entelewallet.com</a><a href="mailto:security@entelewallet.com">security@entelewallet.com</a><a href="mailto:partners@entelewallet.com">partners@entelewallet.com</a></div>
@@ -145,5 +991,107 @@
       <div class="legal">© 2026 EnteleWALLET. A TVK Labs ecosystem project. All rights reserved. This website is informational and does not provide financial, legal, tax, or investment advice.</div>
     </div>
   </footer>
+
+  <script>
+    (() => {
+      const picker = document.querySelector("[data-language-picker]");
+      if (!picker) return;
+
+      const toggle = picker.querySelector(".lang-toggle");
+      const label = picker.querySelector("#current-language");
+      const links = [...picker.querySelectorAll("[data-lang]")];
+      const menu = picker.querySelector("#language-menu");
+      const storageKey = "entelewallet-language";
+
+      const languageNames = Object.fromEntries(
+        links.map((link) => [link.dataset.lang, link.textContent.trim()])
+      );
+
+      const getRequestedLanguage = () => {
+        const params = new URLSearchParams(window.location.search);
+        return params.get("lang") || localStorage.getItem(storageKey) || "en";
+      };
+
+      const closeMenu = () => {
+        picker.classList.remove("is-open");
+        toggle.setAttribute("aria-expanded", "false");
+      };
+
+      const openMenu = () => {
+        picker.classList.add("is-open");
+        toggle.setAttribute("aria-expanded", "true");
+      };
+
+      const applyLanguage = (code, updateUrl = true) => {
+        const language = languageNames[code] ? code : "en";
+        label.textContent = languageNames[language];
+        document.documentElement.lang = language;
+        document.documentElement.dir = language === "ar" ? "rtl" : "ltr";
+        localStorage.setItem(storageKey, language);
+
+        links.forEach((link) => {
+          const isActive = link.dataset.lang === language;
+          link.setAttribute("aria-current", String(isActive));
+        });
+
+        if (updateUrl) {
+          const url = new URL(window.location.href);
+          url.searchParams.set("lang", language);
+          window.history.pushState({ language }, "", url);
+        }
+      };
+
+      toggle.addEventListener("click", () => {
+        picker.classList.contains("is-open") ? closeMenu() : openMenu();
+      });
+
+      toggle.addEventListener("keydown", (event) => {
+        if (event.key === "ArrowDown") {
+          event.preventDefault();
+          openMenu();
+          links[0]?.focus();
+        }
+      });
+
+      links.forEach((link, index) => {
+        link.addEventListener("click", (event) => {
+          event.preventDefault();
+          applyLanguage(link.dataset.lang);
+          closeMenu();
+          toggle.focus();
+        });
+
+        link.addEventListener("keydown", (event) => {
+          if (event.key === "ArrowDown") {
+            event.preventDefault();
+            links[(index + 1) % links.length].focus();
+          }
+
+          if (event.key === "ArrowUp") {
+            event.preventDefault();
+            links[(index - 1 + links.length) % links.length].focus();
+          }
+
+          if (event.key === "Escape") {
+            closeMenu();
+            toggle.focus();
+          }
+        });
+      });
+
+      document.addEventListener("click", (event) => {
+        if (!picker.contains(event.target)) closeMenu();
+      });
+
+      window.addEventListener("popstate", () => applyLanguage(getRequestedLanguage(), false));
+      menu.addEventListener("focusout", () => {
+        window.setTimeout(() => {
+          if (!picker.contains(document.activeElement)) closeMenu();
+        }, 0);
+      });
+
+      applyLanguage(getRequestedLanguage(), false);
+    })();
+  </script>
 </body>
 </html>
