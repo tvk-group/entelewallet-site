@@ -1049,7 +1049,15 @@
         if (event.key === "ArrowDown") {
           event.preventDefault();
           openMenu();
-          links[0]?.focus();
+        }
+
+        if (event.key === "ArrowUp") {
+          event.preventDefault();
+          openMenu();
+        }
+
+        if (event.key === "Escape") {
+          closeMenu();
         }
       });
 
@@ -1081,6 +1089,13 @@
 
       document.addEventListener("click", (event) => {
         if (!picker.contains(event.target)) closeMenu();
+      });
+
+      document.addEventListener("keydown", (event) => {
+        if (event.key === "Escape" && picker.classList.contains("is-open")) {
+          closeMenu();
+          toggle.focus();
+        }
       });
 
       window.addEventListener("popstate", () => applyLanguage(getRequestedLanguage(), false));
