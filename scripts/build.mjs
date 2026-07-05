@@ -1,10 +1,11 @@
 #!/usr/bin/env node
-import { readFile, writeFile, mkdir } from "node:fs/promises";
+import { readFile, writeFile, mkdir, rm } from "node:fs/promises";
 import { join, dirname } from "node:path";
 import { fileURLToPath } from "node:url";
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), "..");
-const SITE_URL = "https://www.entelewallet.com";
+const OUT = join(ROOT, "dist");
+const SITE_URL = "https://entelewallet.com";
 const APP_URL = "https://app.entelewallet.com";
 
 const MINI_PNG = Buffer.from(
@@ -552,7 +553,7 @@ function renderPage({ pageId, path, languages, messages }) {
   <meta property="og:description" content="${esc(enMeta.ogDescription || enMeta.description || "")}" />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="${SITE_URL}${path === "/" ? "" : path}" />
-  <meta property="og:image" content="${SITE_URL}/public/og/${pageId}.png" />
+  <meta property="og:image" content="${SITE_URL}/og/${pageId}.png" />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="${esc(enMeta.ogTitle || enMeta.title || "EnteleWALLET")}" />
   <meta name="twitter:description" content="${esc(enMeta.ogDescription || enMeta.description || "")}" />
@@ -587,12 +588,12 @@ async function main() {
     loadMessages(),
   ]);
 
-  await mkdir(join(ROOT, "assets"), { recursive: true });
-  await mkdir(join(ROOT, "messages"), { recursive: true });
-  await mkdir(join(ROOT, "public/og"), { recursive: true });
+  await rm(OUT, { recursive: true, force: true });
+  await mkdir(join(OUT, "assets"), { recursive: true });
+  await mkdir(join(OUT, "og"), { recursive: true });
 
-  await writeFile(join(ROOT, "assets/site.css"), css);
-  await writeFile(join(ROOT, "assets/site.js"), js);
+  await writeFile(join(OUT, "assets/site.css"), css);
+  await writeFile(join(OUT, "assets/site.js"), js);
 
   for (const page of PAGES) {
     const html = renderPage({
@@ -601,11 +602,11 @@ async function main() {
       languages,
       messages,
     });
-    await writeFile(join(ROOT, page.file), html);
-    await writeFile(join(ROOT, "public/og", `${page.id}.png`), MINI_PNG);
+    await writeFile(join(OUT, page.file), html);
+    await writeFile(join(OUT, "og", `${page.id}.png`), MINI_PNG);
   }
 
-  console.log(`Built ${PAGES.length} pages, ${languages.length} locales, assets and OG placeholders.`);
+  console.log(`Built ${PAGES.length} pages to dist/, ${languages.length} locales.`);
 }
 
 main().catch((err) => {
