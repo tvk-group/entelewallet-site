@@ -26,7 +26,9 @@ npm run typecheck  # Type-check config/languages.ts
 | `scripts/check-i18n.mjs` | Translation completeness checker |
 | `assets/site.css` | Shared styles |
 | `assets/site.js` | Client-side i18n runtime |
-| `*.html` | Generated pages (do not edit by hand — run `npm run build`) |
+| `*.html` (in `dist/`) | Generated pages — run `npm run build` before deploy |
+
+Vercel deploys the `dist/` folder (`outputDirectory` in `vercel.json`).
 
 ## Pages
 
