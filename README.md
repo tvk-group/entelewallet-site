@@ -1,20 +1,37 @@
-# EnteleWALLET Website
+# EnteleWALLET Site
 
-Official public website for EnteleWALLET — the secure multi-chain wallet and Web3 access layer of the Entelekron ecosystem by TVK Labs.
+Official public website for **EnteleWALLET** — marketing, trust, security, roadmap, documentation, and domain verification.
 
-## Domain
+- **Website:** https://entelewallet.com
+- **Wallet app (separate repo):** https://app.entelewallet.com
 
-https://www.entelewallet.com
+This repository is **not** the wallet application. The current public product positioning is **EnteleWALLET Lite** — a secure wallet-connected dashboard for verification and read-only monitoring.
+
+## Development
+
+```bash
+npm install
+npm run build      # Generate all HTML pages from messages + templates
+npm run i18n:check # Validate all 25 locale files against messages/en.json
+npm run typecheck  # Type-check config/languages.ts
+```
 
 ## Structure
 
-- `index.html` — complete single-page website
-- `vercel.json` — Vercel static deployment config
-- `.gitignore` — standard deployment exclusions
+| Path | Purpose |
+|------|---------|
+| `messages/*.json` | i18n source (25 languages, `en.json` is master) |
+| `config/languages.json` | Official 25-language list |
+| `scripts/build.mjs` | Static site generator |
+| `scripts/check-i18n.mjs` | Translation completeness checker |
+| `assets/site.css` | Shared styles |
+| `assets/site.js` | Client-side i18n runtime |
+| `*.html` | Generated pages (do not edit by hand — run `npm run build`) |
 
-## Deployment
+## Pages
 
-Framework: Other  
-Build Command: leave empty  
-Output Directory: leave empty  
-Install Command: leave empty
+`/`, `/features`, `/security`, `/ecosystem`, `/roadmap`, `/docs`, `/domains`, `/contact`, `/legal`, `/privacy`, `/terms`, `/risk`, `/faq`
+
+## Deploy
+
+Deployed on Vercel with `cleanUrls: true` — `features.html` is served at `/features`.
