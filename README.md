@@ -9,6 +9,7 @@ https://www.entelewallet.com
 ## Structure
 
 - `index.html` — complete single-page website
+- `security.html` — official EnteleWALLET security and trust page served at `/security`
 - `vercel.json` — Vercel static deployment config
 - `.gitignore` — standard deployment exclusions
 
