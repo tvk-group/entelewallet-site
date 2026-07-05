@@ -1,0 +1,566 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>EnteleWALLET Security | Official Wallet Safety & Trust Center</title>
+  <meta name="description" content="Official EnteleWALLET security page for wallet safety, verified domains, signature protection, phishing warnings and EnteleKRON ecosystem trust information." />
+  <meta property="og:title" content="EnteleWALLET Security" />
+  <meta property="og:description" content="Official wallet safety, verified domains and security guidance for the EnteleWALLET ecosystem." />
+  <meta property="og:type" content="website" />
+  <meta name="theme-color" content="#f4f9ff" />
+  <style>
+    :root {
+      --bg: #f4f9ff;
+      --panel: #ffffff;
+      --ink: #0b1e35;
+      --muted: #4f637d;
+      --line: #d9e8fb;
+      --soft: #edf5ff;
+      --blue: #136ef8;
+      --cyan: #2ac7ff;
+      --violet: #626dff;
+      --warn-bg: #fff4de;
+      --warn-line: #f3d6a1;
+      --danger-bg: #fff0f0;
+      --danger-line: #f4b9b9;
+      --shadow: 0 20px 60px rgba(11, 30, 53, 0.1);
+      --radius: 24px;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+      background: radial-gradient(circle at top left, #e7f2ff, transparent 34%),
+        radial-gradient(circle at top right, #eef1ff, transparent 32%),
+        var(--bg);
+      color: var(--ink);
+      line-height: 1.6;
+    }
+    a { color: inherit; text-decoration: none; }
+    .container { width: min(1120px, 92%); margin: 0 auto; }
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 30;
+      background: rgba(244, 249, 255, 0.9);
+      border-bottom: 1px solid var(--line);
+      backdrop-filter: blur(16px);
+    }
+    .nav {
+      min-height: 76px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      padding: 14px 0;
+    }
+    .brand { display: flex; align-items: center; gap: 12px; font-weight: 900; }
+    .mark {
+      width: 42px;
+      height: 42px;
+      border-radius: 13px;
+      display: grid;
+      place-items: center;
+      color: white;
+      font-weight: 900;
+      background: linear-gradient(135deg, var(--blue), var(--cyan));
+      box-shadow: 0 14px 30px rgba(19, 110, 248, 0.25);
+    }
+    .brand small {
+      display: block;
+      font-size: 11px;
+      color: var(--muted);
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+    }
+    .nav-links { display: flex; align-items: center; gap: 18px; font-size: 14px; font-weight: 700; color: #274160; }
+    .nav-links a:hover { color: var(--blue); }
+    .lang { position: relative; }
+    .lang button {
+      border: 1px solid var(--line);
+      background: white;
+      border-radius: 999px;
+      padding: 10px 14px;
+      font-weight: 800;
+      cursor: pointer;
+      color: var(--ink);
+    }
+    .lang-menu {
+      position: absolute;
+      right: 0;
+      top: 46px;
+      width: 260px;
+      max-height: 410px;
+      overflow: auto;
+      background: white;
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      box-shadow: var(--shadow);
+      padding: 10px;
+      display: none;
+    }
+    .lang.is-open .lang-menu { display: grid; grid-template-columns: 1fr 1fr; gap: 4px; }
+    .lang-menu a {
+      padding: 8px 10px;
+      border-radius: 10px;
+      font-size: 13px;
+      color: #294261;
+    }
+    .lang-menu a[aria-current="true"],
+    .lang-menu a:hover { background: var(--soft); color: var(--blue); font-weight: 900; }
+    .hero { padding: 72px 0 44px; }
+    .eyebrow {
+      display: inline-flex;
+      padding: 8px 12px;
+      border-radius: 999px;
+      border: 1px solid var(--line);
+      background: rgba(255, 255, 255, 0.84);
+      color: var(--blue);
+      font-size: 13px;
+      font-weight: 900;
+      margin-bottom: 18px;
+    }
+    h1 {
+      font-size: clamp(38px, 5.2vw, 64px);
+      line-height: 1.03;
+      letter-spacing: -1.5px;
+      margin-bottom: 14px;
+    }
+    .hero p { max-width: 900px; color: var(--muted); font-size: 19px; }
+    main section { padding: 22px 0 18px; }
+    .section-card {
+      background: rgba(255, 255, 255, 0.88);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      box-shadow: 0 10px 28px rgba(11, 30, 53, 0.05);
+      padding: 28px;
+    }
+    .section-card h2 {
+      font-size: clamp(25px, 3.2vw, 34px);
+      line-height: 1.12;
+      margin-bottom: 14px;
+      letter-spacing: -0.8px;
+    }
+    .section-card p { color: var(--muted); margin-bottom: 12px; }
+    ul { padding-left: 20px; display: grid; gap: 8px; color: #203754; }
+    li strong { color: var(--ink); }
+    .grid-two {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px;
+      margin-top: 14px;
+    }
+    .pill {
+      background: linear-gradient(180deg, #ffffff, #f4f9ff);
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      padding: 14px;
+      font-weight: 800;
+      color: #1e3654;
+    }
+    .warning {
+      margin-top: 16px;
+      background: var(--warn-bg);
+      border: 1px solid var(--warn-line);
+      border-radius: 16px;
+      padding: 14px 16px;
+      color: #5c430d;
+      font-weight: 800;
+    }
+    .danger {
+      margin-top: 14px;
+      background: var(--danger-bg);
+      border: 1px solid var(--danger-line);
+      border-radius: 16px;
+      padding: 16px;
+      color: #672121;
+    }
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      padding: 6px 10px;
+      border-radius: 999px;
+      font-size: 12px;
+      font-weight: 900;
+      color: #2f3f75;
+      background: #eef0ff;
+      border: 1px solid #d8dcff;
+      margin-bottom: 12px;
+    }
+    .roadmap li { list-style: "⟡  "; }
+    .cta {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      margin-top: 10px;
+      padding: 13px 18px;
+      border-radius: 999px;
+      background: linear-gradient(135deg, var(--blue), var(--violet));
+      color: white;
+      font-weight: 900;
+      box-shadow: 0 16px 38px rgba(19, 110, 248, 0.24);
+    }
+    .legal {
+      margin: 30px 0 70px;
+      color: #52657f;
+      font-size: 14px;
+      text-align: center;
+    }
+    [dir="rtl"] body { text-align: right; }
+    [dir="rtl"] .lang-menu { right: auto; left: 0; }
+    @media (max-width: 760px) {
+      .nav-links a { display: none; }
+      .grid-two { grid-template-columns: 1fr; }
+      .hero { padding-top: 44px; }
+      .section-card { padding: 22px; }
+      .lang-menu { right: auto; left: -90px; }
+    }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <div class="container nav">
+      <a class="brand" href="/" aria-label="EnteleWALLET home">
+        <div class="mark">EW</div>
+        <div>EnteleWALLET<small data-i18n="brandSub">Security & Trust Center</small></div>
+      </a>
+      <nav class="nav-links" aria-label="Primary">
+        <a href="/" data-i18n="navHome">Home</a>
+        <a href="/security" data-i18n="navSecurity">Security</a>
+        <a href="https://entelekron.io/transparency" target="_blank" rel="noreferrer noopener" data-i18n="navTransparency">Transparency</a>
+        <div class="lang" data-language-picker>
+          <button class="lang-toggle" type="button" aria-haspopup="true" aria-expanded="false" aria-controls="language-menu">
+            🌐 <span id="current-language" data-i18n="languageLabel">Language</span>
+          </button>
+          <div class="lang-menu" id="language-menu" aria-label="Language menu">
+            <a href="?lang=en" hreflang="en" data-lang="en">English</a><a href="?lang=tr" hreflang="tr" data-lang="tr">Türkçe</a><a href="?lang=de" hreflang="de" data-lang="de">Deutsch</a><a href="?lang=fr" hreflang="fr" data-lang="fr">Français</a><a href="?lang=it" hreflang="it" data-lang="it">Italiano</a><a href="?lang=es" hreflang="es" data-lang="es">Español</a><a href="?lang=nl" hreflang="nl" data-lang="nl">Nederlands</a><a href="?lang=pl" hreflang="pl" data-lang="pl">Polski</a><a href="?lang=pt" hreflang="pt" data-lang="pt">Português</a><a href="?lang=ro" hreflang="ro" data-lang="ro">Română</a><a href="?lang=sv" hreflang="sv" data-lang="sv">Svenska</a><a href="?lang=da" hreflang="da" data-lang="da">Dansk</a><a href="?lang=fi" hreflang="fi" data-lang="fi">Suomi</a><a href="?lang=cs" hreflang="cs" data-lang="cs">Čeština</a><a href="?lang=sk" hreflang="sk" data-lang="sk">Slovenčina</a><a href="?lang=hu" hreflang="hu" data-lang="hu">Magyar</a><a href="?lang=el" hreflang="el" data-lang="el">Ελληνικά</a><a href="?lang=bg" hreflang="bg" data-lang="bg">Български</a><a href="?lang=ru" hreflang="ru" data-lang="ru">Русский</a><a href="?lang=uk" hreflang="uk" data-lang="uk">Українська</a><a href="?lang=ar" hreflang="ar" data-lang="ar">العربية</a><a href="?lang=zh" hreflang="zh" data-lang="zh">中文</a><a href="?lang=ja" hreflang="ja" data-lang="ja">日本語</a><a href="?lang=ko" hreflang="ko" data-lang="ko">한국어</a><a href="?lang=hi" hreflang="hi" data-lang="hi">हिन्दी</a>
+          </div>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="container">
+        <div class="eyebrow" data-i18n="eyebrow">Official Trust & Security Page</div>
+        <h1 data-i18n="heroTitle">Security-first wallet access for the EnteleKRON ecosystem</h1>
+        <p data-i18n="heroSubtitle">EnteleWALLET is being built with a security-first approach for wallet verification, ecosystem asset monitoring, and future non-custodial wallet functionality.</p>
+      </div>
+    </section>
+
+    <section>
+      <div class="container section-card">
+        <h2 data-i18n="domainsTitle">1. Official EnteleWALLET Domains</h2>
+        <div class="grid-two">
+          <div class="pill">entelewallet.com</div>
+          <div class="pill">app.entelewallet.com</div>
+          <div class="pill">entelewallet.app</div>
+          <div class="pill">entelewallet.org</div>
+          <div class="pill">wallet.entelekron.io</div>
+        </div>
+        <div class="warning" data-i18n="domainsWarning">Always check the domain before connecting a wallet or signing any message.</div>
+      </div>
+    </section>
+
+    <section>
+      <div class="container section-card">
+        <h2 data-i18n="liteTitle">2. EnteleWALLET Lite Safety</h2>
+        <ul>
+          <li data-i18n="lite1">EnteleWALLET Lite does not store seed phrases.</li>
+          <li data-i18n="lite2">EnteleWALLET Lite does not store private keys.</li>
+          <li data-i18n="lite3">EnteleWALLET Lite does not custody funds.</li>
+          <li data-i18n="lite4">EnteleWALLET Lite connects to existing wallets only.</li>
+          <li data-i18n="lite5">Wallet verification uses safe message signatures.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section>
+      <div class="container section-card">
+        <h2 data-i18n="sigTitle">3. Signature Safety</h2>
+        <p data-i18n="sigIntro">A valid EnteleWALLET signature must only verify wallet ownership.</p>
+        <ul>
+          <li data-i18n="sig1">It must not transfer tokens.</li>
+          <li data-i18n="sig2">It must not approve spending.</li>
+          <li data-i18n="sig3">It must not create a blockchain transaction.</li>
+          <li data-i18n="sig4">It must not cost gas.</li>
+        </ul>
+        <div class="warning" data-i18n="sigWarning">Never sign messages you do not understand.</div>
+      </div>
+    </section>
+
+    <section>
+      <div class="container section-card">
+        <h2 data-i18n="seedTitle">4. Seed Phrase and Private Key Warning</h2>
+        <p data-i18n="seedIntro">EnteleWALLET, EnteleKRON, TVK Group, TVK Labs, SOVRA, support staff, admins, partners, or community moderators will never ask for:</p>
+        <div class="danger">
+          <ul>
+            <li data-i18n="seed1">seed phrase</li>
+            <li data-i18n="seed2">private key</li>
+            <li data-i18n="seed3">recovery phrase</li>
+            <li data-i18n="seed4">wallet password</li>
+            <li data-i18n="seed5">remote access to your computer</li>
+            <li data-i18n="seed6">payment through social media messages</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="container section-card">
+        <h2 data-i18n="walletsTitle">5. Supported Wallets</h2>
+        <ul>
+          <li>MetaMask</li>
+          <li>Rabby</li>
+          <li data-i18n="wallets3">WalletConnect wallets</li>
+          <li>Coinbase Wallet</li>
+          <li>Trust Wallet</li>
+          <li>Rainbow</li>
+          <li data-i18n="wallets7">Ledger through supported wallet routes</li>
+        </ul>
+      </div>
+    </section>
+
+    <section>
+      <div class="container section-card">
+        <h2 data-i18n="verifyTitle">6. Official Address Verification</h2>
+        <p data-i18n="verifyText">Use the Transparency Center to verify official contracts, treasury wallets, presale wallets, and ecosystem addresses.</p>
+        <a class="cta" href="https://entelekron.io/transparency" target="_blank" rel="noreferrer noopener" data-i18n="verifyCta">Open Transparency Center</a>
+      </div>
+    </section>
+
+    <section>
+      <div class="container section-card">
+        <h2 data-i18n="phishTitle">7. Phishing Protection</h2>
+        <ul>
+          <li data-i18n="ph1">Never trust payment addresses sent by Telegram, Discord, X, Instagram, or email.</li>
+          <li data-i18n="ph2">Always verify payment instructions inside the official investor dashboard.</li>
+          <li data-i18n="ph3">Never install fake wallet extensions.</li>
+          <li data-i18n="ph4">Bookmark the official domains.</li>
+          <li data-i18n="ph5">Verify SSL/HTTPS.</li>
+          <li data-i18n="ph6">Avoid sponsored search-result links for wallet access.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section>
+      <div class="container section-card">
+        <div class="badge" data-i18n="roadBadge">Future Roadmap — Not active today</div>
+        <h2 data-i18n="roadTitle">8. Future EnteleWALLET Security Roadmap</h2>
+        <ul class="roadmap">
+          <li data-i18n="road1">wallet ownership verification</li>
+          <li data-i18n="road2">portfolio monitoring</li>
+          <li data-i18n="road3">transaction warnings</li>
+          <li data-i18n="road4">malicious approval warnings</li>
+          <li data-i18n="road5">hardware wallet support</li>
+          <li data-i18n="road6">transaction simulation</li>
+          <li data-i18n="road7">smart account support</li>
+          <li data-i18n="road8">recovery architecture</li>
+          <li data-i18n="road9">independent security audits</li>
+          <li data-i18n="road10">bug bounty program</li>
+        </ul>
+      </div>
+    </section>
+
+    <section>
+      <div class="container section-card">
+        <h2 data-i18n="contactTitle">9. Contact / Report Security Issue</h2>
+        <p data-i18n="contactIntro">For security concerns, contact:</p>
+        <ul>
+          <li><a href="mailto:security@tvk.group">security@tvk.group</a></li>
+        </ul>
+        <a class="cta" href="mailto:security@tvk.group?subject=Security%20Concern%20-%20EnteleWALLET" data-i18n="contactCta">Report a Security Concern</a>
+      </div>
+    </section>
+
+    <section>
+      <div class="container section-card">
+        <h2 data-i18n="legalTitle">10. Legal / Risk Notice</h2>
+        <p data-i18n="legalText">EnteleWALLET Lite is a wallet connection and verification interface. It does not custody funds, store seed phrases, provide investment advice, or guarantee token value, liquidity, listing, or returns.</p>
+      </div>
+    </section>
+  </main>
+
+  <p class="legal" data-i18n="footer">© 2026 EnteleWALLET Security Center</p>
+
+  <script>
+    (() => {
+      const keys = [
+        "brandSub","navHome","navSecurity","navTransparency","languageLabel","eyebrow","heroTitle","heroSubtitle","domainsTitle","domainsWarning",
+        "liteTitle","lite1","lite2","lite3","lite4","lite5","sigTitle","sigIntro","sig1","sig2","sig3","sig4","sigWarning","seedTitle","seedIntro",
+        "seed1","seed2","seed3","seed4","seed5","seed6","walletsTitle","wallets3","wallets7","verifyTitle","verifyText","verifyCta","phishTitle","ph1","ph2",
+        "ph3","ph4","ph5","ph6","roadBadge","roadTitle","road1","road2","road3","road4","road5","road6","road7","road8","road9","road10","contactTitle",
+        "contactIntro","contactCta","legalTitle","legalText","footer","pageTitle","metaDescription","ogTitle","ogDescription"
+      ];
+
+      const en = {
+        brandSub: "Security & Trust Center",
+        navHome: "Home",
+        navSecurity: "Security",
+        navTransparency: "Transparency",
+        languageLabel: "Language",
+        eyebrow: "Official Trust & Security Page",
+        heroTitle: "Security-first wallet access for the EnteleKRON ecosystem",
+        heroSubtitle: "EnteleWALLET is being built with a security-first approach for wallet verification, ecosystem asset monitoring, and future non-custodial wallet functionality.",
+        domainsTitle: "1. Official EnteleWALLET Domains",
+        domainsWarning: "Always check the domain before connecting a wallet or signing any message.",
+        liteTitle: "2. EnteleWALLET Lite Safety",
+        lite1: "EnteleWALLET Lite does not store seed phrases.",
+        lite2: "EnteleWALLET Lite does not store private keys.",
+        lite3: "EnteleWALLET Lite does not custody funds.",
+        lite4: "EnteleWALLET Lite connects to existing wallets only.",
+        lite5: "Wallet verification uses safe message signatures.",
+        sigTitle: "3. Signature Safety",
+        sigIntro: "A valid EnteleWALLET signature must only verify wallet ownership.",
+        sig1: "It must not transfer tokens.",
+        sig2: "It must not approve spending.",
+        sig3: "It must not create a blockchain transaction.",
+        sig4: "It must not cost gas.",
+        sigWarning: "Never sign messages you do not understand.",
+        seedTitle: "4. Seed Phrase and Private Key Warning",
+        seedIntro: "EnteleWALLET, EnteleKRON, TVK Group, TVK Labs, SOVRA, support staff, admins, partners, or community moderators will never ask for:",
+        seed1: "seed phrase",
+        seed2: "private key",
+        seed3: "recovery phrase",
+        seed4: "wallet password",
+        seed5: "remote access to your computer",
+        seed6: "payment through social media messages",
+        walletsTitle: "5. Supported Wallets",
+        wallets3: "WalletConnect wallets",
+        wallets7: "Ledger through supported wallet routes",
+        verifyTitle: "6. Official Address Verification",
+        verifyText: "Use the Transparency Center to verify official contracts, treasury wallets, presale wallets, and ecosystem addresses.",
+        verifyCta: "Open Transparency Center",
+        phishTitle: "7. Phishing Protection",
+        ph1: "Never trust payment addresses sent by Telegram, Discord, X, Instagram, or email.",
+        ph2: "Always verify payment instructions inside the official investor dashboard.",
+        ph3: "Never install fake wallet extensions.",
+        ph4: "Bookmark the official domains.",
+        ph5: "Verify SSL/HTTPS.",
+        ph6: "Avoid sponsored search-result links for wallet access.",
+        roadBadge: "Future Roadmap — Not active today",
+        roadTitle: "8. Future EnteleWALLET Security Roadmap",
+        road1: "wallet ownership verification",
+        road2: "portfolio monitoring",
+        road3: "transaction warnings",
+        road4: "malicious approval warnings",
+        road5: "hardware wallet support",
+        road6: "transaction simulation",
+        road7: "smart account support",
+        road8: "recovery architecture",
+        road9: "independent security audits",
+        road10: "bug bounty program",
+        contactTitle: "9. Contact / Report Security Issue",
+        contactIntro: "For security concerns, contact:",
+        contactCta: "Report a Security Concern",
+        legalTitle: "10. Legal / Risk Notice",
+        legalText: "EnteleWALLET Lite is a wallet connection and verification interface. It does not custody funds, store seed phrases, provide investment advice, or guarantee token value, liquidity, listing, or returns.",
+        footer: "© 2026 EnteleWALLET Security Center",
+        pageTitle: "EnteleWALLET Security | Official Wallet Safety & Trust Center",
+        metaDescription: "Official EnteleWALLET security page for wallet safety, verified domains, signature protection, phishing warnings and EnteleKRON ecosystem trust information.",
+        ogTitle: "EnteleWALLET Security",
+        ogDescription: "Official wallet safety, verified domains and security guidance for the EnteleWALLET ecosystem."
+      };
+
+      const translations = {
+        en,
+        tr: { ...en, languageLabel: "Dil", navHome: "Ana Sayfa", navTransparency: "Şeffaflık", heroTitle: "EnteleKRON ekosistemi için güvenlik öncelikli cüzdan erişimi", pageTitle: "EnteleWALLET Güvenlik | Resmi Cüzdan Güvenliği ve Güven Merkezi", metaDescription: "Cüzdan güvenliği, doğrulanmış alan adları, imza koruması ve kimlik avı uyarıları için resmi EnteleWALLET güvenlik sayfası.", ogTitle: "EnteleWALLET Güvenlik", ogDescription: "EnteleWALLET ekosistemi için resmi cüzdan güvenliği ve doğrulanmış alan adı rehberi." },
+        de: { ...en, languageLabel: "Sprache", navHome: "Startseite", navTransparency: "Transparenz", heroTitle: "Sicherheitsorientierter Wallet-Zugang für das EnteleKRON-Ökosystem", pageTitle: "EnteleWALLET Sicherheit | Offizielles Wallet-Sicherheits- & Vertrauenszentrum", metaDescription: "Offizielle EnteleWALLET-Sicherheitsseite für Wallet-Schutz, verifizierte Domains, Signaturschutz und Phishing-Warnungen.", ogTitle: "EnteleWALLET Sicherheit", ogDescription: "Offizielle Wallet-Sicherheit und Domain-Verifizierung für das EnteleWALLET-Ökosystem." },
+        fr: { ...en, languageLabel: "Langue", navHome: "Accueil", navTransparency: "Transparence", heroTitle: "Accès portefeuille axé sécurité pour l’écosystème EnteleKRON", pageTitle: "Sécurité EnteleWALLET | Centre officiel de sécurité et de confiance", metaDescription: "Page officielle de sécurité EnteleWALLET : sécurité du wallet, domaines vérifiés, protection des signatures et anti-phishing.", ogTitle: "Sécurité EnteleWALLET", ogDescription: "Guide officiel de sécurité wallet et domaines vérifiés pour l’écosystème EnteleWALLET." },
+        it: { ...en, languageLabel: "Lingua", navHome: "Home", navTransparency: "Trasparenza", heroTitle: "Accesso wallet con approccio security-first per l’ecosistema EnteleKRON", pageTitle: "Sicurezza EnteleWALLET | Centro ufficiale sicurezza e fiducia", metaDescription: "Pagina ufficiale sicurezza EnteleWALLET per sicurezza wallet, domini verificati, protezione firme e avvisi phishing.", ogTitle: "Sicurezza EnteleWALLET", ogDescription: "Sicurezza wallet ufficiale e domini verificati per l’ecosistema EnteleWALLET." },
+        es: { ...en, languageLabel: "Idioma", navHome: "Inicio", navTransparency: "Transparencia", heroTitle: "Acceso wallet con enfoque de seguridad primero para el ecosistema EnteleKRON", pageTitle: "Seguridad EnteleWALLET | Centro oficial de seguridad y confianza", metaDescription: "Página oficial de seguridad de EnteleWALLET para seguridad wallet, dominios verificados, protección de firmas y alertas phishing.", ogTitle: "Seguridad EnteleWALLET", ogDescription: "Guía oficial de seguridad wallet y dominios verificados del ecosistema EnteleWALLET." },
+        nl: { ...en, languageLabel: "Taal", navHome: "Home", navTransparency: "Transparantie", pageTitle: "EnteleWALLET Beveiliging | Officieel Wallet Veiligheids- en Vertrouwenscentrum" },
+        pl: { ...en, languageLabel: "Język", navHome: "Strona główna", navTransparency: "Przejrzystość", pageTitle: "Bezpieczeństwo EnteleWALLET | Oficjalne centrum zaufania i bezpieczeństwa portfela" },
+        pt: { ...en, languageLabel: "Idioma", navHome: "Início", navTransparency: "Transparência", pageTitle: "Segurança EnteleWALLET | Centro oficial de segurança e confiança da carteira" },
+        ro: { ...en, languageLabel: "Limbă", navHome: "Acasă", navTransparency: "Transparență", pageTitle: "Securitate EnteleWALLET | Centrul oficial de siguranță și încredere" },
+        sv: { ...en, languageLabel: "Språk", navHome: "Hem", navTransparency: "Transparens", pageTitle: "EnteleWALLET Säkerhet | Officiellt säkerhets- och förtroendecenter" },
+        da: { ...en, languageLabel: "Sprog", navHome: "Hjem", navTransparency: "Gennemsigtighed", pageTitle: "EnteleWALLET Sikkerhed | Officielt sikkerheds- og tillidscenter" },
+        fi: { ...en, languageLabel: "Kieli", navHome: "Etusivu", navTransparency: "Läpinäkyvyys", pageTitle: "EnteleWALLET Turvallisuus | Virallinen turvallisuus- ja luottamuskeskus" },
+        cs: { ...en, languageLabel: "Jazyk", navHome: "Domů", navTransparency: "Transparentnost", pageTitle: "Bezpečnost EnteleWALLET | Oficiální centrum důvěry a bezpečnosti" },
+        sk: { ...en, languageLabel: "Jazyk", navHome: "Domov", navTransparency: "Transparentnosť", pageTitle: "Bezpečnosť EnteleWALLET | Oficiálne centrum bezpečnosti a dôvery" },
+        hu: { ...en, languageLabel: "Nyelv", navHome: "Főoldal", navTransparency: "Átláthatóság", pageTitle: "EnteleWALLET Biztonság | Hivatalos biztonsági és bizalmi központ" },
+        el: { ...en, languageLabel: "Γλώσσα", navHome: "Αρχική", navTransparency: "Διαφάνεια", pageTitle: "Ασφάλεια EnteleWALLET | Επίσημο κέντρο ασφάλειας και εμπιστοσύνης" },
+        bg: { ...en, languageLabel: "Език", navHome: "Начало", navTransparency: "Прозрачност", pageTitle: "Сигурност EnteleWALLET | Официален център за доверие и сигурност" },
+        ru: { ...en, languageLabel: "Язык", navHome: "Главная", navTransparency: "Прозрачность", pageTitle: "Безопасность EnteleWALLET | Официальный центр безопасности и доверия" },
+        uk: { ...en, languageLabel: "Мова", navHome: "Головна", navTransparency: "Прозорість", pageTitle: "Безпека EnteleWALLET | Офіційний центр довіри та безпеки" },
+        ar: { ...en, languageLabel: "اللغة", navHome: "الرئيسية", navTransparency: "الشفافية", pageTitle: "أمان EnteleWALLET | مركز الأمان والثقة الرسمي" },
+        zh: { ...en, languageLabel: "语言", navHome: "首页", navTransparency: "透明中心", pageTitle: "EnteleWALLET 安全 | 官方钱包安全与信任中心" },
+        ja: { ...en, languageLabel: "言語", navHome: "ホーム", navTransparency: "透明性", pageTitle: "EnteleWALLET セキュリティ | 公式ウォレット安全・信頼センター" },
+        ko: { ...en, languageLabel: "언어", navHome: "홈", navTransparency: "투명성", pageTitle: "EnteleWALLET 보안 | 공식 월렛 안전 및 신뢰 센터" },
+        hi: { ...en, languageLabel: "भाषा", navHome: "होम", navTransparency: "पारदर्शिता", pageTitle: "EnteleWALLET सुरक्षा | आधिकारिक वॉलेट सुरक्षा एवं ट्रस्ट सेंटर" }
+      };
+
+      const languageNames = {
+        en: "English", tr: "Türkçe", de: "Deutsch", fr: "Français", it: "Italiano", es: "Español", nl: "Nederlands", pl: "Polski", pt: "Português",
+        ro: "Română", sv: "Svenska", da: "Dansk", fi: "Suomi", cs: "Čeština", sk: "Slovenčina", hu: "Magyar", el: "Ελληνικά", bg: "Български",
+        ru: "Русский", uk: "Українська", ar: "العربية", zh: "中文", ja: "日本語", ko: "한국어", hi: "हिन्दी"
+      };
+
+      const aliases = { "zh-cn": "zh", "zh-hans": "zh" };
+      const picker = document.querySelector("[data-language-picker]");
+      const toggle = picker?.querySelector(".lang-toggle");
+      const links = [...document.querySelectorAll("[data-lang]")];
+      const currentLanguage = document.querySelector("#current-language");
+      const storageKey = "entelewallet-security-language";
+
+      const requestedLanguage = () => {
+        const params = new URLSearchParams(window.location.search);
+        const code = (params.get("lang") || localStorage.getItem(storageKey) || "en").toLowerCase();
+        return aliases[code] || (translations[code] ? code : "en");
+      };
+
+      const closeMenu = () => {
+        picker?.classList.remove("is-open");
+        toggle?.setAttribute("aria-expanded", "false");
+      };
+
+      const applyLanguage = (code, updateUrl = true) => {
+        const lang = translations[code] ? code : "en";
+        const copy = translations[lang];
+        document.documentElement.lang = lang;
+        document.documentElement.dir = lang === "ar" ? "rtl" : "ltr";
+        keys.forEach((key) => {
+          document.querySelectorAll(`[data-i18n="${key}"]`).forEach((node) => {
+            if (copy[key]) node.textContent = copy[key];
+          });
+        });
+        document.title = copy.pageTitle || en.pageTitle;
+        document.querySelector('meta[name="description"]')?.setAttribute("content", copy.metaDescription || en.metaDescription);
+        document.querySelector('meta[property="og:title"]')?.setAttribute("content", copy.ogTitle || en.ogTitle);
+        document.querySelector('meta[property="og:description"]')?.setAttribute("content", copy.ogDescription || en.ogDescription);
+        if (currentLanguage) currentLanguage.textContent = languageNames[lang] || "English";
+        links.forEach((link) => link.setAttribute("aria-current", String(link.dataset.lang === lang)));
+        localStorage.setItem(storageKey, lang);
+        if (updateUrl) {
+          const url = new URL(window.location.href);
+          url.searchParams.set("lang", lang);
+          window.history.pushState({ lang }, "", url);
+        }
+      };
+
+      toggle?.addEventListener("click", () => {
+        const isOpen = picker.classList.toggle("is-open");
+        toggle.setAttribute("aria-expanded", String(isOpen));
+      });
+      links.forEach((link) => {
+        link.addEventListener("click", (event) => {
+          event.preventDefault();
+          applyLanguage(link.dataset.lang);
+          closeMenu();
+          toggle?.focus();
+        });
+      });
+      document.addEventListener("click", (event) => {
+        if (picker && !picker.contains(event.target)) closeMenu();
+      });
+      document.addEventListener("keydown", (event) => {
+        if (event.key === "Escape") closeMenu();
+      });
+      window.addEventListener("popstate", () => applyLanguage(requestedLanguage(), false));
+      applyLanguage(requestedLanguage(), false);
+    })();
+  </script>
+</body>
+</html>
