@@ -56,7 +56,8 @@
     "emailSecurityTvk": "security@tvk.group",
     "emailSupport": "support@tvk.group",
     "navNetworks": "Rețele",
-    "footerNetworks": "Rețele suportate"
+    "footerNetworks": "Rețele suportate",
+    "brandTagline": "SECURE • INTELLIGENT • CONNECTED"
   },
   "home": {
     "eyebrow": "Strat nativ de acces la portofel EnteleKRON",
@@ -119,7 +120,18 @@
     "ecosystemPreviewTitle": "Construit pentru ecosistemul EnteleKRON",
     "ecosystemPreviewDescription": "EnteleWALLET Lite este conceput ca strat de acces la portofel care conectează utilizatorii la EnteleKRON, ENK, SOVRA, EnergieMIND, EnteleSCAN, EnteleVAULT și infrastructura mai largă TVK Group.",
     "noticeTitle": "Notificare importantă",
-    "noticeText": "EnteleWALLET Lite este o interfață de conectare și verificare a portofelului în dezvoltare activă. Activele digitale implică riscuri. Verificați întotdeauna domeniile oficiale înainte de a conecta un portofel sau de a semna un mesaj."
+    "noticeText": "EnteleWALLET Lite este o interfață de conectare și verificare a portofelului în dezvoltare activă. Activele digitale implică riscuri. Verificați întotdeauna domeniile oficiale înainte de a conecta un portofel sau de a semna un mesaj.",
+    "productIdentity": "Activ în EnteleWALLET Lite · Doar semnături sigure · Monitorizare doar citire",
+    "walletFlowTitle": "EnteleWALLET Lite — Ce face EnteleWALLET Lite",
+    "walletFlowSubtitle": "EnteleWALLET Lite este stratul de acces la portofel axat pe securitate pentru ecosistemul EnteleKRON. Conectați portofelul existent, verificați proprietatea cu semnături sigure, monitorizați activele în mod doar citire și accesați resurse oficiale de transparență — fără a stoca fraze seed, chei private sau a custodia fonduri.",
+    "walletFlowStep1Title": "Conexiune de portofel existentă",
+    "walletFlowStep1Description": "Conectați portofelele stabilite prin furnizori de încredere. EnteleWALLET Lite nu creează portofele și nu generează fraze de bază.",
+    "walletFlowStep2Title": "Verificare sigură a semnăturii",
+    "walletFlowStep2Description": "Verificați deținerea portofelului utilizând semnături de mesaje sigure, numai pentru citire, care nu transferă jetoane, nu aprobă cheltuieli sau nu costă benzină.",
+    "walletFlowStep3Title": "Monitorizarea activelor numai în citire",
+    "walletFlowStep3Description": "Monitorizați soldurile jetoanelor ecosistemului EnteleKRON și vizibilitatea legată de portofel în modul numai citire, fără a muta fonduri.",
+    "walletFlowStep4Title": "Construit pentru ecosistemul EnteleKRON",
+    "walletFlowStep4Description": "EnteleWALLET Lite este conceput ca strat de acces la portofel care conectează utilizatorii la EnteleKRON, ENK, SOVRA, EnergieMIND, EnteleSCAN, EnteleVAULT și infrastructura mai largă TVK Group."
   },
   "features": {
     "eyebrow": "Funcții EnteleWALLET Lite",

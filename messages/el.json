@@ -56,7 +56,8 @@
     "emailSecurityTvk": "security@tvk.group",
     "emailSupport": "support@tvk.group",
     "navNetworks": "Δίκτυα",
-    "footerNetworks": "Υποστηριζόμενα δίκτυα"
+    "footerNetworks": "Υποστηριζόμενα δίκτυα",
+    "brandTagline": "SECURE • INTELLIGENT • CONNECTED"
   },
   "home": {
     "eyebrow": "Εγγενές επίπεδο πρόσβασης πορτοφολιού EnteleKRON",
@@ -119,7 +120,18 @@
     "ecosystemPreviewTitle": "Σχεδιασμένο για το οικοσύστημα EnteleKRON",
     "ecosystemPreviewDescription": "Το EnteleWALLET Lite σχεδιάστηκε ως επίπεδο πρόσβασης πορτοφολιού που συνδέει τους χρήστες με το EnteleKRON, ENK, SOVRA, EnergieMIND, EnteleSCAN, EnteleVAULT και την ευρύτερη υποδομή TVK Group.",
     "noticeTitle": "Σημαντική ειδοποίηση",
-    "noticeText": "Το EnteleWALLET Lite είναι διεπαφή σύνδεσης και επαλήθευσης πορτοφολιού υπό ενεργή ανάπτυξη. Τα ψηφιακά περιουσιακά στοιχεία ενέχουν κινδύνους. Επαληθεύετε πάντα τους επίσημους τομείς πριν συνδέσετε πορτοφόλι ή υπογράψετε μήνυμα."
+    "noticeText": "Το EnteleWALLET Lite είναι διεπαφή σύνδεσης και επαλήθευσης πορτοφολιού υπό ενεργή ανάπτυξη. Τα ψηφιακά περιουσιακά στοιχεία ενέχουν κινδύνους. Επαληθεύετε πάντα τους επίσημους τομείς πριν συνδέσετε πορτοφόλι ή υπογράψετε μήνυμα.",
+    "productIdentity": "Ενεργό στο EnteleWALLET Lite · Μόνο ασφαλείς υπογραφές · Παρακολούθηση μόνο ανάγνωσης",
+    "walletFlowTitle": "EnteleWALLET Lite — Τι κάνει το EnteleWALLET Lite",
+    "walletFlowSubtitle": "Το EnteleWALLET Lite είναι το επίπεδο πρόσβασης πορτοφολιού με προτεραιότητα στην ασφάλεια για το οικοσύστημα EnteleKRON. Συνδέστε το υπάρχον πορτοφόλι σας, επαληθεύστε την κυριότητα με ασφαλείς υπογραφές, παρακολουθήστε περιουσιακά στοιχεία σε λειτουργία μόνο ανάγνωσης και αποκτήστε πρόσβαση σε επίσημους πόρους διαφάνειας — χωρίς αποθήκευση φράσεων seed, ιδιωτικών κλειδιών ή φύλαξη κεφαλαίων.",
+    "walletFlowStep1Title": "Υπάρχουσα σύνδεση πορτοφολιού",
+    "walletFlowStep1Description": "Συνδέστε καθιερωμένα πορτοφόλια μέσω αξιόπιστων παρόχων. Το EnteleWALLET Lite δεν δημιουργεί πορτοφόλια ούτε δημιουργεί φράσεις σποράς.",
+    "walletFlowStep2Title": "Ασφαλής επαλήθευση υπογραφής",
+    "walletFlowStep2Description": "Επαληθεύστε την ιδιοκτησία του πορτοφολιού χρησιμοποιώντας ασφαλείς υπογραφές μηνυμάτων μόνο για ανάγνωση που δεν μεταφέρουν διακριτικά, δεν εγκρίνουν δαπάνες ή δεν κοστίζουν βενζίνη.",
+    "walletFlowStep3Title": "Παρακολούθηση περιουσιακών στοιχείων μόνο για ανάγνωση",
+    "walletFlowStep3Description": "Παρακολουθήστε τα υπόλοιπα διακριτικών του οικοσυστήματος __PRESERVE_2__ και την ορατότητα που συνδέεται με το πορτοφόλι σε λειτουργία μόνο για ανάγνωση χωρίς μετακίνηση χρημάτων.",
+    "walletFlowStep4Title": "Σχεδιασμένο για το οικοσύστημα EnteleKRON",
+    "walletFlowStep4Description": "Το EnteleWALLET Lite σχεδιάστηκε ως επίπεδο πρόσβασης πορτοφολιού που συνδέει τους χρήστες με το EnteleKRON, ENK, SOVRA, EnergieMIND, EnteleSCAN, EnteleVAULT και την ευρύτερη υποδομή TVK Group."
   },
   "features": {
     "eyebrow": "Λειτουργίες EnteleWALLET Lite",

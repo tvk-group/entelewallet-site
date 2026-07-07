@@ -56,7 +56,8 @@
     "emailSecurityTvk": "security@tvk.group",
     "emailSupport": "support@tvk.group",
     "navNetworks": "Netzwerke",
-    "footerNetworks": "Unterstützte Netzwerke"
+    "footerNetworks": "Unterstützte Netzwerke",
+    "brandTagline": "SECURE • INTELLIGENT • CONNECTED"
   },
   "home": {
     "eyebrow": "EnteleKRON Native Wallet-Zugangsschicht",
@@ -119,7 +120,18 @@
     "ecosystemPreviewTitle": "Für das EnteleKRON-Ökosystem entwickelt",
     "ecosystemPreviewDescription": "EnteleWALLET Lite ist als Wallet-Zugangsschicht konzipiert, die Nutzer mit EnteleKRON, ENK, SOVRA, EnergieMIND, EnteleSCAN, EnteleVAULT und der breiteren TVK Group-Infrastruktur verbindet.",
     "noticeTitle": "Wichtiger Hinweis",
-    "noticeText": "EnteleWALLET Lite ist eine Wallet-Verbindungs- und Verifizierungsschnittstelle in aktiver Entwicklung. Digitale Vermögenswerte bergen Risiken. Verifizieren Sie immer offizielle Domains, bevor Sie eine Wallet verbinden oder eine Nachricht signieren."
+    "noticeText": "EnteleWALLET Lite ist eine Wallet-Verbindungs- und Verifizierungsschnittstelle in aktiver Entwicklung. Digitale Vermögenswerte bergen Risiken. Verifizieren Sie immer offizielle Domains, bevor Sie eine Wallet verbinden oder eine Nachricht signieren.",
+    "productIdentity": "Aktiv in EnteleWALLET Lite · Nur sichere Signaturen · Nur-Lese-Überwachung",
+    "walletFlowTitle": "EnteleWALLET Lite — Was EnteleWALLET Lite tut",
+    "walletFlowSubtitle": "EnteleWALLET Lite ist die sicherheitsorientierte Wallet-Zugangsschicht für das EnteleKRON-Ökosystem. Verbinden Sie Ihre bestehende Wallet, verifizieren Sie die Eigentümerschaft mit sicheren Signaturen, überwachen Sie Vermögenswerte im Nur-Lese-Modus und greifen Sie auf offizielle Transparenzressourcen zu — ohne Seed-Phrasen, private Schlüssel zu speichern oder Gelder zu verwahren.",
+    "walletFlowStep1Title": "Bestehende Wallet-Verbindung",
+    "walletFlowStep1Description": "Verbinden Sie etablierte Wallets über vertrauenswürdige Anbieter. EnteleWALLET Lite erstellt keine Wallets und generiert keine Seed-Phrasen.",
+    "walletFlowStep2Title": "Sichere Signaturverifizierung",
+    "walletFlowStep2Description": "Verifizieren Sie die Wallet-Eigentümerschaft mit sicheren Nur-Lese-Nachrichtensignaturen, die keine Token übertragen, Ausgaben genehmigen oder Gas kosten.",
+    "walletFlowStep3Title": "Nur-Lese-Vermögensüberwachung",
+    "walletFlowStep3Description": "Überwachen Sie EnteleKRON-Ökosystem-Token-Salden und wallet-verknüpfte Sichtbarkeit im Nur-Lese-Modus ohne Geldbewegung.",
+    "walletFlowStep4Title": "Für das EnteleKRON-Ökosystem entwickelt",
+    "walletFlowStep4Description": "EnteleWALLET Lite ist als Wallet-Zugangsschicht konzipiert, die Nutzer mit EnteleKRON, ENK, SOVRA, EnergieMIND, EnteleSCAN, EnteleVAULT und der breiteren TVK Group-Infrastruktur verbindet."
   },
   "features": {
     "eyebrow": "EnteleWALLET Lite Funktionen",

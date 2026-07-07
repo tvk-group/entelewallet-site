@@ -56,7 +56,8 @@
     "emailSecurityTvk": "security@tvk.group",
     "emailSupport": "support@tvk.group",
     "navNetworks": "Redes",
-    "footerNetworks": "Redes suportadas"
+    "footerNetworks": "Redes suportadas",
+    "brandTagline": "SECURE • INTELLIGENT • CONNECTED"
   },
   "home": {
     "eyebrow": "Camada nativa de acesso à carteira EnteleKRON",
@@ -119,7 +120,18 @@
     "ecosystemPreviewTitle": "Concebido para o ecossistema EnteleKRON",
     "ecosystemPreviewDescription": "O EnteleWALLET Lite foi concebido como a camada de acesso à carteira que liga os utilizadores ao EnteleKRON, ENK, SOVRA, EnergieMIND, EnteleSCAN, EnteleVAULT e à infraestrutura mais ampla do TVK Group.",
     "noticeTitle": "Aviso importante",
-    "noticeText": "O EnteleWALLET Lite é uma interface de ligação e verificação de carteiras em desenvolvimento ativo. Os ativos digitais envolvem risco. Verifique sempre os domínios oficiais antes de ligar uma carteira ou assinar qualquer mensagem."
+    "noticeText": "O EnteleWALLET Lite é uma interface de ligação e verificação de carteiras em desenvolvimento ativo. Os ativos digitais envolvem risco. Verifique sempre os domínios oficiais antes de ligar uma carteira ou assinar qualquer mensagem.",
+    "productIdentity": "Ativo no EnteleWALLET Lite · Apenas assinaturas seguras · Monitorização só de leitura",
+    "walletFlowTitle": "EnteleWALLET Lite — O que o EnteleWALLET Lite faz",
+    "walletFlowSubtitle": "O EnteleWALLET Lite é a camada de acesso à carteira com prioridade à segurança para o ecossistema EnteleKRON. Ligue a sua carteira existente, verifique a propriedade com assinaturas seguras, monitorize ativos em modo só de leitura e aceda a recursos oficiais de transparência — sem armazenar frases de recuperação, chaves privadas ou custodiar fundos.",
+    "walletFlowStep1Title": "Ligação a carteira existente",
+    "walletFlowStep1Description": "Ligue carteiras estabelecidas através de fornecedores de confiança. O EnteleWALLET Lite não cria carteiras nem gera frases de recuperação.",
+    "walletFlowStep2Title": "Verificação por assinatura segura",
+    "walletFlowStep2Description": "Verifique a propriedade da carteira com assinaturas de mensagens seguras e só de leitura que não transferem tokens, aprovam gastos ou custam gas.",
+    "walletFlowStep3Title": "Monitorização de ativos só de leitura",
+    "walletFlowStep3Description": "Monitorize saldos de tokens do ecossistema EnteleKRON e visibilidade associada à carteira em modo só de leitura, sem mover fundos.",
+    "walletFlowStep4Title": "Concebido para o ecossistema EnteleKRON",
+    "walletFlowStep4Description": "O EnteleWALLET Lite foi concebido como a camada de acesso à carteira que liga os utilizadores ao EnteleKRON, ENK, SOVRA, EnergieMIND, EnteleSCAN, EnteleVAULT e à infraestrutura mais ampla do TVK Group."
   },
   "features": {
     "eyebrow": "Funcionalidades do EnteleWALLET Lite",

@@ -56,7 +56,8 @@
     "emailSecurityTvk": "security@tvk.group",
     "emailSupport": "support@tvk.group",
     "navNetworks": "ქსელები",
-    "footerNetworks": "მხარდაჭერილი ქსელები"
+    "footerNetworks": "მხარდაჭერილი ქსელები",
+    "brandTagline": "SECURE • INTELLIGENT • CONNECTED"
   },
   "home": {
     "eyebrow": "EnteleKRON საფულის წვდომის ფენა",
@@ -119,7 +120,18 @@
     "ecosystemPreviewTitle": "აგებულია EnteleKRON ეკოსისტემისთვის",
     "ecosystemPreviewDescription": "EnteleWALLET Lite შექმნილია, როგორც საფულეზე წვდომის ფენა, რომელიც აკავშირებს მომხმარებლებს EnteleKRON, ENK, SOVRA, EnergieMIND, EnteleSCAN, EnteleVAULT და უფრო ფართო TVK Group ინფრასტრუქტურასთან.",
     "noticeTitle": "მნიშვნელოვანი შენიშვნა",
-    "noticeText": "EnteleWALLET Lite არის საფულის კავშირისა და გადამოწმების ინტერფეისი აქტიური განვითარების პროცესში. ციფრული აქტივები შეიცავს რისკს. ყოველთვის გადაამოწმეთ ოფიციალური დომენები საფულის დაკავშირებამდე ან რაიმე შეტყობინების ხელმოწერამდე."
+    "noticeText": "EnteleWALLET Lite არის საფულის კავშირისა და გადამოწმების ინტერფეისი აქტიური განვითარების პროცესში. ციფრული აქტივები შეიცავს რისკს. ყოველთვის გადაამოწმეთ ოფიციალური დომენები საფულის დაკავშირებამდე ან რაიმე შეტყობინების ხელმოწერამდე.",
+    "productIdentity": "აქტიურია EnteleWALLET Lite-ში · მხოლოდ უსაფრთხო ხელმოწერები · მხოლოდ წაკითხვის მონიტორინგი",
+    "walletFlowTitle": "EnteleWALLET Lite — რასაც EnteleWALLET Lite აკეთებს",
+    "walletFlowSubtitle": "EnteleWALLET Lite არის უსაფრთხოების პირველი საფულეზე წვდომის ფენა EnteleKRON ეკოსისტემისთვის. შეაერთეთ თქვენი არსებული საფულე, დაადასტურეთ საკუთრება უსაფრთხო ხელმოწერებით, აკონტროლეთ აქტივები read-only რეჟიმში და შედით ოფიციალურ გამჭვირვალობის რესურსებზე — seed phrases, private keys-ის, ან სახსრების შენახვის გარეშე.",
+    "walletFlowStep1Title": "არსებული საფულე კავშირი",
+    "walletFlowStep1Description": "დააკავშირეთ დადგენილი საფულეები სანდო პროვაიდერების მეშვეობით. EnteleWALLET Lite არ ქმნის საფულეებს და არ ქმნის seed phrases.",
+    "walletFlowStep2Title": "ხელმოწერის უსაფრთხო შემოწმება",
+    "walletFlowStep2Description": "დაადასტურეთ საფულის მფლობელობა უსაფრთხო, read-only შეტყობინებების ხელმოწერების გამოყენებით, რომლებიც არ გადარიცხავენ ტოკენებს, არ ამტკიცებენ ხარჯვას და არ ღირს gas.",
+    "walletFlowStep3Title": "მხოლოდ წაკითხვადი აქტივების მონიტორინგი",
+    "walletFlowStep3Description": "აკონტროლეთ EnteleKRON ეკოსისტემის ტოკენის ნაშთები და საფულესთან დაკავშირებული ხილვადობა read-only რეჟიმში თანხების გადაადგილების გარეშე.",
+    "walletFlowStep4Title": "აგებულია EnteleKRON ეკოსისტემისთვის",
+    "walletFlowStep4Description": "EnteleWALLET Lite შექმნილია, როგორც საფულეზე წვდომის ფენა, რომელიც აკავშირებს მომხმარებლებს EnteleKRON, ENK, SOVRA, EnergieMIND, EnteleSCAN, EnteleVAULT და უფრო ფართო TVK Group ინფრასტრუქტურასთან."
   },
   "features": {
     "eyebrow": "EnteleWALLET Lite მახასიათებლები",

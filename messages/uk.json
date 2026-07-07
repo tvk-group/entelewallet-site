@@ -56,7 +56,8 @@
     "emailSecurityTvk": "security@tvk.group",
     "emailSupport": "support@tvk.group",
     "navNetworks": "Мережі",
-    "footerNetworks": "Підтримувані мережі"
+    "footerNetworks": "Підтримувані мережі",
+    "brandTagline": "SECURE • INTELLIGENT • CONNECTED"
   },
   "home": {
     "eyebrow": "Нативний рівень доступу до гаманця EnteleKRON",
@@ -119,7 +120,18 @@
     "ecosystemPreviewTitle": "Створено для екосистеми EnteleKRON",
     "ecosystemPreviewDescription": "EnteleWALLET Lite спроєктовано як рівень доступу до гаманця, що з'єднує користувачів з EnteleKRON, ENK, SOVRA, EnergieMIND, EnteleSCAN, EnteleVAULT і ширшою інфраструктурою TVK Group.",
     "noticeTitle": "Важливе повідомлення",
-    "noticeText": "EnteleWALLET Lite — це інтерфейс підключення та перевірки гаманця в активній розробці. Цифрові активи пов'язані з ризиком. Завжди перевіряйте офіційні домени перед підключенням гаманця або підписанням повідомлення."
+    "noticeText": "EnteleWALLET Lite — це інтерфейс підключення та перевірки гаманця в активній розробці. Цифрові активи пов'язані з ризиком. Завжди перевіряйте офіційні домени перед підключенням гаманця або підписанням повідомлення.",
+    "productIdentity": "Активно в EnteleWALLET Lite · Лише безпечні підписи · Моніторинг лише читання",
+    "walletFlowTitle": "EnteleWALLET Lite — Що робить EnteleWALLET Lite",
+    "walletFlowSubtitle": "EnteleWALLET Lite — це рівень доступу до гаманця з пріоритетом безпеки для екосистеми EnteleKRON. Підключайте наявний гаманець, підтверджуйте власність безпечними підписами, моніторьте активи в режимі лише читання та отримуйте доступ до офіційних ресурсів прозорості — без зберігання seed-фраз, приватних ключів чи зберігання коштів.",
+    "walletFlowStep1Title": "Існуюче підключення гаманця",
+    "walletFlowStep1Description": "Підключайте встановлені гаманці через надійних постачальників. EnteleWALLET Lite не створює гаманці та не генерує початкові фрази.",
+    "walletFlowStep2Title": "Безпечна перевірка підпису",
+    "walletFlowStep2Description": "Перевірте право власності на гаманець за допомогою безпечних підписів повідомлень, доступних лише для читання, які не передають токени, не схвалюють витрати та не оплачують газ.",
+    "walletFlowStep3Title": "Моніторинг активів лише для читання",
+    "walletFlowStep3Description": "Відстежуйте баланс токенів екосистеми EnteleKRON і видимість, пов’язану з гаманцем, у режимі лише для читання без переміщення коштів.",
+    "walletFlowStep4Title": "Створено для екосистеми EnteleKRON",
+    "walletFlowStep4Description": "EnteleWALLET Lite спроєктовано як рівень доступу до гаманця, що з'єднує користувачів з EnteleKRON, ENK, SOVRA, EnergieMIND, EnteleSCAN, EnteleVAULT і ширшою інфраструктурою TVK Group."
   },
   "features": {
     "eyebrow": "Можливості EnteleWALLET Lite",

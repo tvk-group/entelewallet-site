@@ -56,7 +56,8 @@
     "emailSecurityTvk": "security@tvk.group",
     "emailSupport": "support@tvk.group",
     "navNetworks": "网络",
-    "footerNetworks": "支持的网络"
+    "footerNetworks": "支持的网络",
+    "brandTagline": "SECURE • INTELLIGENT • CONNECTED"
   },
   "home": {
     "eyebrow": "EnteleKRON 原生钱包访问层",
@@ -119,7 +120,18 @@
     "ecosystemPreviewTitle": "为 EnteleKRON 生态系统而构建",
     "ecosystemPreviewDescription": "EnteleWALLET Lite 被设计为连接用户与 EnteleKRON、ENK、SOVRA、EnergieMIND、EnteleSCAN、EnteleVAULT 及更广泛的 TVK Group 基础设施的钱包访问层。",
     "noticeTitle": "重要提示",
-    "noticeText": "EnteleWALLET Lite 是正在积极开发中的钱包连接与验证界面。数字资产涉及风险。连接钱包或签署任何消息前，请务必验证官方域名。"
+    "noticeText": "EnteleWALLET Lite 是正在积极开发中的钱包连接与验证界面。数字资产涉及风险。连接钱包或签署任何消息前，请务必验证官方域名。",
+    "productIdentity": "EnteleWALLET Lite 已启用 · 仅安全签名 · 只读监控",
+    "walletFlowTitle": "EnteleWALLET Lite — EnteleWALLET Lite 做什么",
+    "walletFlowSubtitle": "EnteleWALLET Lite 是 EnteleKRON 生态系统的安全优先钱包访问层。连接您现有的钱包，通过安全签名验证所有权，以只读模式监控资产，并访问官方透明度资源 — 无需存储助记词、私钥或托管资金。",
+    "walletFlowStep1Title": "现有钱包连接",
+    "walletFlowStep1Description": "通过可信提供商连接成熟钱包。EnteleWALLET Lite 不创建钱包或生成助记词。",
+    "walletFlowStep2Title": "安全签名验证",
+    "walletFlowStep2Description": "使用安全、只读的消息签名验证钱包所有权，不转移代币、不批准支出、不消耗 gas。",
+    "walletFlowStep3Title": "只读资产监控",
+    "walletFlowStep3Description": "以只读模式监控 EnteleKRON 生态系统代币余额和钱包关联可见性，不移动资金。",
+    "walletFlowStep4Title": "为 EnteleKRON 生态系统而构建",
+    "walletFlowStep4Description": "EnteleWALLET Lite 被设计为连接用户与 EnteleKRON、ENK、SOVRA、EnergieMIND、EnteleSCAN、EnteleVAULT 及更广泛的 TVK Group 基础设施的钱包访问层。"
   },
   "features": {
     "eyebrow": "EnteleWALLET Lite 功能",

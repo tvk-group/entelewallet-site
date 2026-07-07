@@ -56,7 +56,8 @@
     "emailSecurityTvk": "security@tvk.group",
     "emailSupport": "support@tvk.group",
     "navNetworks": "Мрежи",
-    "footerNetworks": "Поддържани мрежи"
+    "footerNetworks": "Поддържани мрежи",
+    "brandTagline": "SECURE • INTELLIGENT • CONNECTED"
   },
   "home": {
     "eyebrow": "Нативен слой за достъп до портфейл EnteleKRON",
@@ -119,7 +120,18 @@
     "ecosystemPreviewTitle": "Създаден за екосистемата EnteleKRON",
     "ecosystemPreviewDescription": "EnteleWALLET Lite е проектиран като слой за достъп до портфейл, свързващ потребителите с EnteleKRON, ENK, SOVRA, EnergieMIND, EnteleSCAN, EnteleVAULT и по-широката инфраструктура на TVK Group.",
     "noticeTitle": "Важно съобщение",
-    "noticeText": "EnteleWALLET Lite е интерфейс за свързване и потвърждаване на портфейл в активна разработка. Дигиталните активи носят риск. Винаги проверявайте официалните домейни, преди да свържете портфейл или да подпишете съобщение."
+    "noticeText": "EnteleWALLET Lite е интерфейс за свързване и потвърждаване на портфейл в активна разработка. Дигиталните активи носят риск. Винаги проверявайте официалните домейни, преди да свържете портфейл или да подпишете съобщение.",
+    "productIdentity": "Активно в EnteleWALLET Lite · Само безопасни подписи · Наблюдение само за четене",
+    "walletFlowTitle": "EnteleWALLET Lite — Какво прави EnteleWALLET Lite",
+    "walletFlowSubtitle": "EnteleWALLET Lite е слой за достъп до портфейл с приоритет на сигурността за екосистемата EnteleKRON. Свържете съществуващия си портфейл, потвърдете собствеността с безопасни подписи, наблюдавайте активите в режим само за четене и получете достъп до официални ресурси за прозрачност — без съхранение на seed фрази, частни ключове или попечителство над средства.",
+    "walletFlowStep1Title": "Съществуваща връзка с портфейла",
+    "walletFlowStep1Description": "Свържете установени портфейли чрез доверени доставчици. EnteleWALLET Lite не създава портфейли или генерира начални фрази.",
+    "walletFlowStep2Title": "Сигурна проверка на подписа",
+    "walletFlowStep2Description": "Потвърдете собствеността върху портфейла, като използвате безопасни подписи на съобщения само за четене, които не прехвърлят токени, не одобряват разходи или не струват газ.",
+    "walletFlowStep3Title": "Мониторинг на активи само за четене",
+    "walletFlowStep3Description": "Наблюдавайте балансите на токени на екосистемата EnteleKRON и видимостта, свързана с портфейла, в режим само за четене, без да премествате средства.",
+    "walletFlowStep4Title": "Създаден за екосистемата EnteleKRON",
+    "walletFlowStep4Description": "EnteleWALLET Lite е проектиран като слой за достъп до портфейл, свързващ потребителите с EnteleKRON, ENK, SOVRA, EnergieMIND, EnteleSCAN, EnteleVAULT и по-широката инфраструктура на TVK Group."
   },
   "features": {
     "eyebrow": "Функции на EnteleWALLET Lite",

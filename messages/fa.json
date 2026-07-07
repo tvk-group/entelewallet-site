@@ -56,7 +56,8 @@
     "emailSecurityTvk": "security@tvk.group",
     "emailSupport": "support@tvk.group",
     "navNetworks": "شبکه‌ها",
-    "footerNetworks": "شبکه‌های پشتیبانی‌شده"
+    "footerNetworks": "شبکه‌های پشتیبانی‌شده",
+    "brandTagline": "SECURE • INTELLIGENT • CONNECTED"
   },
   "home": {
     "eyebrow": "EnteleKRON لایه دسترسی کیف پول بومی",
@@ -119,7 +120,18 @@
     "ecosystemPreviewTitle": "برای اکوسیستم EnteleKRON ساخته شده است",
     "ecosystemPreviewDescription": "EnteleWALLET Lite به عنوان لایه دسترسی به کیف پول طراحی شده است که کاربران را به EnteleKRON، ENK، ​​SOVRA، EnergieMIND، EnteleSCAN، EnteleVAULT و زیرساخت های گسترده تر TVK Group متصل می کند.",
     "noticeTitle": "اطلاعیه مهم",
-    "noticeText": "EnteleWALLET Lite یک رابط اتصال و تأیید کیف پول است که در حال توسعه فعال است. دارایی های دیجیتال ریسک دارد. همیشه قبل از اتصال کیف پول یا امضای هر پیامی، دامنه های رسمی را تأیید کنید."
+    "noticeText": "EnteleWALLET Lite یک رابط اتصال و تأیید کیف پول است که در حال توسعه فعال است. دارایی های دیجیتال ریسک دارد. همیشه قبل از اتصال کیف پول یا امضای هر پیامی، دامنه های رسمی را تأیید کنید.",
+    "productIdentity": "فعال در EnteleWALLET Lite · فقط امضای ایمن · نظارت فقط خواندنی",
+    "walletFlowTitle": "EnteleWALLET Lite — کاری که EnteleWALLET Lite انجام می دهد - و انجام نمی دهد",
+    "walletFlowSubtitle": "EnteleWALLET Lite اولین لایه دسترسی به کیف پول امنیتی برای اکوسیستم EnteleKRON است. کیف پول موجود خود را وصل کنید، مالکیت را با امضاهای ایمن تأیید کنید، دارایی‌ها را در حالت read-only نظارت کنید، و به منابع رسمی شفاف‌سازی دسترسی پیدا کنید - بدون ذخیره‌سازی seed phrases، private keys، یا ذخیره وجوه.",
+    "walletFlowStep1Title": "اتصال کیف پول موجود",
+    "walletFlowStep1Description": "کیف پول های تاسیس شده را از طریق ارائه دهندگان مورد اعتماد وصل کنید. EnteleWALLET Lite کیف پول ایجاد نمی کند یا seed phrases را تولید نمی کند.",
+    "walletFlowStep2Title": "تأیید امضای امن",
+    "walletFlowStep2Description": "مالکیت کیف پول را با استفاده از امضاهای پیام read-only ایمن که نشانه‌ها را منتقل نمی‌کنند، هزینه‌ها را تأیید نمی‌کنند، یا هزینه‌ای gas ندارند، تأیید کنید.",
+    "walletFlowStep3Title": "نظارت بر دارایی فقط خواندنی",
+    "walletFlowStep3Description": "تعادل رمزهای اکوسیستم EnteleKRON و قابلیت مشاهده مرتبط با کیف پول را در حالت read-only بدون جابجایی وجوه نظارت کنید.",
+    "walletFlowStep4Title": "برای اکوسیستم EnteleKRON ساخته شده است",
+    "walletFlowStep4Description": "EnteleWALLET Lite به عنوان لایه دسترسی به کیف پول طراحی شده است که کاربران را به EnteleKRON، ENK، ​​SOVRA، EnergieMIND، EnteleSCAN، EnteleVAULT و زیرساخت های گسترده تر TVK Group متصل می کند."
   },
   "features": {
     "eyebrow": "EnteleWALLET Lite ویژگی ها",

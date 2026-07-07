@@ -56,7 +56,8 @@
     "emailSecurityTvk": "security@tvk.group",
     "emailSupport": "support@tvk.group",
     "navNetworks": "Сети",
-    "footerNetworks": "Поддерживаемые сети"
+    "footerNetworks": "Поддерживаемые сети",
+    "brandTagline": "SECURE • INTELLIGENT • CONNECTED"
   },
   "home": {
     "eyebrow": "Нативный уровень доступа к кошельку EnteleKRON",
@@ -119,7 +120,18 @@
     "ecosystemPreviewTitle": "Создан для экосистемы EnteleKRON",
     "ecosystemPreviewDescription": "EnteleWALLET Lite разработан как уровень доступа к кошельку, связывающий пользователей с EnteleKRON, ENK, SOVRA, EnergieMIND, EnteleSCAN, EnteleVAULT и более широкой инфраструктурой TVK Group.",
     "noticeTitle": "Важное уведомление",
-    "noticeText": "EnteleWALLET Lite — интерфейс подключения и проверки кошелька в активной разработке. Цифровые активы сопряжены с риском. Всегда проверяйте официальные домены перед подключением кошелька или подписанием сообщений."
+    "noticeText": "EnteleWALLET Lite — интерфейс подключения и проверки кошелька в активной разработке. Цифровые активы сопряжены с риском. Всегда проверяйте официальные домены перед подключением кошелька или подписанием сообщений.",
+    "productIdentity": "Активно в EnteleWALLET Lite · Только безопасные подписи · Мониторинг только для чтения",
+    "walletFlowTitle": "EnteleWALLET Lite — Что делает EnteleWALLET Lite",
+    "walletFlowSubtitle": "EnteleWALLET Lite — уровень доступа к кошельку с приоритетом безопасности для экосистемы EnteleKRON. Подключите существующий кошелёк, подтвердите владение безопасными подписями, отслеживайте активы в режиме только чтения и получайте доступ к официальным ресурсам прозрачности — без хранения seed-фраз, приватных ключей и средств.",
+    "walletFlowStep1Title": "Подключение существующего кошелька",
+    "walletFlowStep1Description": "Подключайте проверенные кошельки через доверенных провайдеров. EnteleWALLET Lite не создаёт кошельки и не генерирует seed-фразы.",
+    "walletFlowStep2Title": "Проверка безопасной подписью",
+    "walletFlowStep2Description": "Проверяйте владение кошельком с помощью безопасных подписей сообщений только для чтения, которые не переводят токены, не одобряют расход и не требуют gas.",
+    "walletFlowStep3Title": "Мониторинг активов только для чтения",
+    "walletFlowStep3Description": "Отслеживайте балансы токенов экосистемы EnteleKRON и видимость, связанную с кошельком, в режиме только чтения без перемещения средств.",
+    "walletFlowStep4Title": "Создан для экосистемы EnteleKRON",
+    "walletFlowStep4Description": "EnteleWALLET Lite разработан как уровень доступа к кошельку, связывающий пользователей с EnteleKRON, ENK, SOVRA, EnergieMIND, EnteleSCAN, EnteleVAULT и более широкой инфраструктурой TVK Group."
   },
   "features": {
     "eyebrow": "Возможности EnteleWALLET Lite",
