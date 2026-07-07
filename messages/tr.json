@@ -56,7 +56,8 @@
     "emailSecurityTvk": "security@tvk.group",
     "emailSupport": "support@tvk.group",
     "navNetworks": "Ağlar",
-    "footerNetworks": "Desteklenen Ağlar"
+    "footerNetworks": "Desteklenen Ağlar",
+    "brandTagline": "SECURE • INTELLIGENT • CONNECTED"
   },
   "home": {
     "eyebrow": "EnteleKRON Yerel Cüzdan Erişim Katmanı",
@@ -119,7 +120,18 @@
     "ecosystemPreviewTitle": "EnteleKRON ekosistemi için tasarlandı",
     "ecosystemPreviewDescription": "EnteleWALLET Lite, kullanıcıları EnteleKRON, ENK, SOVRA, EnergieMIND, EnteleSCAN, EnteleVAULT ve daha geniş TVK Group altyapısına bağlayan cüzdan erişim katmanı olarak tasarlanmıştır.",
     "noticeTitle": "Önemli uyarı",
-    "noticeText": "EnteleWALLET Lite, aktif geliştirme aşamasındaki bir cüzdan bağlantı ve doğrulama arayüzüdür. Dijital varlıklar risk içerir. Cüzdan bağlamadan veya mesaj imzalamadan önce her zaman resmi alan adlarını doğrulayın."
+    "noticeText": "EnteleWALLET Lite, aktif geliştirme aşamasındaki bir cüzdan bağlantı ve doğrulama arayüzüdür. Dijital varlıklar risk içerir. Cüzdan bağlamadan veya mesaj imzalamadan önce her zaman resmi alan adlarını doğrulayın.",
+    "productIdentity": "EnteleWALLET Lite'da aktif · Yalnızca güvenli imzalar · Salt okunur izleme",
+    "walletFlowTitle": "EnteleWALLET Lite — EnteleWALLET Lite ne yapar",
+    "walletFlowSubtitle": "EnteleWALLET Lite, EnteleKRON ekosistemi için güvenlik odaklı cüzdan erişim katmanıdır. Mevcut cüzdanınızı bağlayın, güvenli imzalarla sahipliği doğrulayın, varlıkları salt okunur modda izleyin ve resmi şeffaflık kaynaklarına erişin — tohum ifadelerini, özel anahtarları depolamadan veya fonları saklamadan.",
+    "walletFlowStep1Title": "Mevcut cüzdan bağlantısı",
+    "walletFlowStep1Description": "Güvenilir sağlayıcılar aracılığıyla yerleşik cüzdanlara bağlanın. EnteleWALLET Lite cüzdan oluşturmaz veya tohum ifadesi üretmez.",
+    "walletFlowStep2Title": "Güvenli imza doğrulama",
+    "walletFlowStep2Description": "Token transferi yapmayan, harcama onayı vermeyen veya gas maliyeti oluşturmayan güvenli, salt okunur mesaj imzalarıyla cüzdan sahipliğini doğrulayın.",
+    "walletFlowStep3Title": "Salt okunur varlık izleme",
+    "walletFlowStep3Description": "Fonları hareket ettirmeden EnteleKRON ekosistem token bakiyelerini ve cüzdana bağlı görünürlüğü salt okunur modda izleyin.",
+    "walletFlowStep4Title": "EnteleKRON ekosistemi için tasarlandı",
+    "walletFlowStep4Description": "EnteleWALLET Lite, kullanıcıları EnteleKRON, ENK, SOVRA, EnergieMIND, EnteleSCAN, EnteleVAULT ve daha geniş TVK Group altyapısına bağlayan cüzdan erişim katmanı olarak tasarlanmıştır."
   },
   "features": {
     "eyebrow": "EnteleWALLET Lite Özellikleri",

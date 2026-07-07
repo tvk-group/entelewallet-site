@@ -56,7 +56,8 @@
     "emailSecurityTvk": "security@tvk.group",
     "emailSupport": "support@tvk.group",
     "navNetworks": "نیٹ ورکس",
-    "footerNetworks": "معاون نیٹ ورکس"
+    "footerNetworks": "معاون نیٹ ورکس",
+    "brandTagline": "SECURE • INTELLIGENT • CONNECTED"
   },
   "home": {
     "eyebrow": "EnteleKRON مقامی والیٹ تک رسائی کی تہہ",
@@ -119,7 +120,18 @@
     "ecosystemPreviewTitle": "EnteleKRON ماحولیاتی نظام کے لیے بنایا گیا ہے۔",
     "ecosystemPreviewDescription": "EnteleWALLET Lite صارفین کو EnteleKRON, ENK, SOVRA, EnergieMIND, EnteleSCAN, EnteleVAULT, اور وسیع تر TVK Group انفراسٹرکچر سے مربوط کرنے والی والیٹ رسائی پرت کے طور پر ڈیزائن کیا گیا ہے۔",
     "noticeTitle": "اہم نوٹس",
-    "noticeText": "EnteleWALLET Lite ایک بٹوے کنکشن اور فعال ترقی کے تحت تصدیقی انٹرفیس ہے۔ ڈیجیٹل اثاثوں میں خطرہ شامل ہے۔ بٹوے کو جوڑنے یا کسی بھی پیغام پر دستخط کرنے سے پہلے ہمیشہ آفیشل ڈومینز کی تصدیق کریں۔"
+    "noticeText": "EnteleWALLET Lite ایک بٹوے کنکشن اور فعال ترقی کے تحت تصدیقی انٹرفیس ہے۔ ڈیجیٹل اثاثوں میں خطرہ شامل ہے۔ بٹوے کو جوڑنے یا کسی بھی پیغام پر دستخط کرنے سے پہلے ہمیشہ آفیشل ڈومینز کی تصدیق کریں۔",
+    "productIdentity": "EnteleWALLET Lite میں فعال · صرف محفوظ دستخط · صرف پڑھنے کی نگرانی",
+    "walletFlowTitle": "EnteleWALLET Lite — EnteleWALLET Lite کیا کرتا ہے",
+    "walletFlowSubtitle": "EnteleWALLET Lite EnteleKRON ایکو سسٹم کے لیے سیکیورٹی کی پہلی والیٹ ایکسیس لیئر ہے۔ اپنے موجودہ والیٹ کو جوڑیں، محفوظ دستخطوں سے ملکیت کی تصدیق کریں، read-only موڈ میں اثاثوں کی نگرانی کریں، اور سرکاری شفافیت کے وسائل تک رسائی حاصل کریں — seed phrases، private keys، یا فنڈز کو ذخیرہ کیے بغیر۔",
+    "walletFlowStep1Title": "پرس کا موجودہ کنکشن",
+    "walletFlowStep1Description": "قابل اعتماد فراہم کنندگان کے ذریعے قائم شدہ بٹوے کو جوڑیں۔ EnteleWALLET Lite پرس نہیں بناتا اور نہ ہی seed phrases بناتا ہے۔",
+    "walletFlowStep2Title": "محفوظ دستخط کی تصدیق",
+    "walletFlowStep2Description": "محفوظ، read-only پیغام کے دستخطوں کا استعمال کرتے ہوئے والیٹ کی ملکیت کی تصدیق کریں جو ٹوکن منتقل نہیں کرتے، خرچ کی منظوری نہیں دیتے، یا لاگت gas۔",
+    "walletFlowStep3Title": "صرف پڑھنے والے اثاثوں کی نگرانی",
+    "walletFlowStep3Description": "فنڈز منتقل کیے بغیر read-only موڈ میں EnteleKRON ایکو سسٹم ٹوکن بیلنس اور والیٹ سے منسلک مرئیت کی نگرانی کریں۔",
+    "walletFlowStep4Title": "EnteleKRON ماحولیاتی نظام کے لیے بنایا گیا ہے۔",
+    "walletFlowStep4Description": "EnteleWALLET Lite صارفین کو EnteleKRON, ENK, SOVRA, EnergieMIND, EnteleSCAN, EnteleVAULT, اور وسیع تر TVK Group انفراسٹرکچر سے مربوط کرنے والی والیٹ رسائی پرت کے طور پر ڈیزائن کیا گیا ہے۔"
   },
   "features": {
     "eyebrow": "EnteleWALLET Lite خصوصیات",

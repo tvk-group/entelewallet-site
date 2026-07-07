@@ -56,7 +56,8 @@
     "emailSecurityTvk": "security@tvk.group",
     "emailSupport": "support@tvk.group",
     "navNetworks": "नेटवर्क",
-    "footerNetworks": "समर्थित नेटवर्क"
+    "footerNetworks": "समर्थित नेटवर्क",
+    "brandTagline": "SECURE • INTELLIGENT • CONNECTED"
   },
   "home": {
     "eyebrow": "EnteleKRON नेटिव वॉलेट एक्सेस लेयर",
@@ -119,7 +120,18 @@
     "ecosystemPreviewTitle": "EnteleKRON इकोसिस्टम के लिए निर्मित",
     "ecosystemPreviewDescription": "EnteleWALLET Lite को उपयोगकर्ताओं को EnteleKRON, ENK, SOVRA, EnergieMIND, EnteleSCAN, EnteleVAULT और व्यापक TVK Group बुनियादी ढाँचे से जोड़ने वाली वॉलेट एक्सेस लेयर के रूप में डिज़ाइन किया गया है।",
     "noticeTitle": "महत्वपूर्ण सूचना",
-    "noticeText": "EnteleWALLET Lite एक विकासाधीन वॉलेट कनेक्शन और सत्यापन इंटरफ़ेस है। डिजिटल संपत्ति में जोखिम शामिल है। वॉलेट कनेक्ट करने या कोई संदेश हस्ताक्षरित करने से पहले हमेशा आधिकारिक डोमेन सत्यापित करें।"
+    "noticeText": "EnteleWALLET Lite एक विकासाधीन वॉलेट कनेक्शन और सत्यापन इंटरफ़ेस है। डिजिटल संपत्ति में जोखिम शामिल है। वॉलेट कनेक्ट करने या कोई संदेश हस्ताक्षरित करने से पहले हमेशा आधिकारिक डोमेन सत्यापित करें।",
+    "productIdentity": "EnteleWALLET Lite में सक्रिय · केवल सुरक्षित हस्ताक्षर · केवल-पढ़ने निगरानी",
+    "walletFlowTitle": "EnteleWALLET Lite — EnteleWALLET Lite क्या करता है",
+    "walletFlowSubtitle": "EnteleWALLET Lite EnteleKRON इकोसिस्टम के लिए सुरक्षा-प्रथम वॉलेट एक्सेस लेयर है। अपने मौजूदा वॉलेट को कनेक्ट करें, सुरक्षित हस्ताक्षरों से स्वामित्व सत्यापित करें, केवल-पढ़ने मोड में संपत्ति की निगरानी करें, और आधिकारिक पारदर्शिता संसाधनों तक पहुँचें — बिना सीड वाक्यांश, निजी कुंजी संग्रहीत किए या धन की अभिरक्षा किए।",
+    "walletFlowStep1Title": "मौजूदा वॉलेट कनेक्शन",
+    "walletFlowStep1Description": "विश्वसनीय प्रदाताओं के माध्यम से स्थापित वॉलेट कनेक्ट करें। EnteleWALLET Lite वॉलेट नहीं बनाता या बीज वाक्यांश उत्पन्न नहीं करता।",
+    "walletFlowStep2Title": "सुरक्षित हस्ताक्षर सत्यापन",
+    "walletFlowStep2Description": "सुरक्षित, केवल पढ़ने योग्य संदेश हस्ताक्षरों का उपयोग करके वॉलेट स्वामित्व सत्यापित करें जो टोकन स्थानांतरित नहीं करता है, खर्च को मंजूरी नहीं देता है, या गैस की लागत नहीं देता है।",
+    "walletFlowStep3Title": "केवल पढ़ने योग्य संपत्ति की निगरानी",
+    "walletFlowStep3Description": "धनराशि स्थानांतरित किए बिना रीड-ओनली मोड में __PRESERVE_2__ इकोसिस्टम टोकन बैलेंस और वॉलेट-लिंक्ड दृश्यता की निगरानी करें।",
+    "walletFlowStep4Title": "EnteleKRON इकोसिस्टम के लिए निर्मित",
+    "walletFlowStep4Description": "EnteleWALLET Lite को उपयोगकर्ताओं को EnteleKRON, ENK, SOVRA, EnergieMIND, EnteleSCAN, EnteleVAULT और व्यापक TVK Group बुनियादी ढाँचे से जोड़ने वाली वॉलेट एक्सेस लेयर के रूप में डिज़ाइन किया गया है।"
   },
   "features": {
     "eyebrow": "EnteleWALLET Lite सुविधाएँ",

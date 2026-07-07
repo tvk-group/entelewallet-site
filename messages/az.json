@@ -56,7 +56,8 @@
     "emailSecurityTvk": "security@tvk.group",
     "emailSupport": "support@tvk.group",
     "navNetworks": "Şəbəkələr",
-    "footerNetworks": "Dəstəklənən şəbəkələr"
+    "footerNetworks": "Dəstəklənən şəbəkələr",
+    "brandTagline": "SECURE • INTELLIGENT • CONNECTED"
   },
   "home": {
     "eyebrow": "EnteleKRON Doğma Pulqabı Giriş Qatına",
@@ -119,7 +120,18 @@
     "ecosystemPreviewTitle": "EnteleKRON ekosistemi üçün yaradılmışdır",
     "ecosystemPreviewDescription": "EnteleWALLET Lite istifadəçiləri EnteleKRON, ENK, SOVRA, EnergieMIND, EnteleSCAN, EnteleVAULT və daha geniş TVK Group infrastruktura birləşdirən pul kisəsinə giriş təbəqəsi kimi nəzərdə tutulmuşdur.",
     "noticeTitle": "Vacib bildiriş",
-    "noticeText": "EnteleWALLET Lite aktiv inkişaf mərhələsində olan pul kisəsi bağlantısı və yoxlama interfeysidir. Rəqəmsal aktivlər risk ehtiva edir. Pul kisəsi bağlamadan və ya hər hansı mesajı imzalamadan əvvəl həmişə rəsmi domenləri yoxlayın."
+    "noticeText": "EnteleWALLET Lite aktiv inkişaf mərhələsində olan pul kisəsi bağlantısı və yoxlama interfeysidir. Rəqəmsal aktivlər risk ehtiva edir. Pul kisəsi bağlamadan və ya hər hansı mesajı imzalamadan əvvəl həmişə rəsmi domenləri yoxlayın.",
+    "productIdentity": "EnteleWALLET Lite-da aktivdir · Yalnız təhlükəsiz imzalar · Yalnız oxumaq üçün monitorinq",
+    "walletFlowTitle": "EnteleWALLET Lite — EnteleWALLET Lite nə edir",
+    "walletFlowSubtitle": "EnteleWALLET Lite EnteleKRON ekosistemi üçün təhlükəsizlik baxımından birinci pul kisəsinə giriş qatıdır. seed phrases, private keys və ya vəsaitləri saxlamadan mövcud pul kisənizi birləşdirin, təhlükəsiz imzalarla sahibliyi yoxlayın, read-only rejimində aktivlərə nəzarət edin və rəsmi şəffaflıq resurslarına daxil olun.",
+    "walletFlowStep1Title": "Mövcud pul kisəsi bağlantısı",
+    "walletFlowStep1Description": "Etibarlı provayderlər vasitəsilə qurulmuş pul kisələrini birləşdirin. EnteleWALLET Lite pul kisələri yaratmır və ya seed phrases yaratmır.",
+    "walletFlowStep2Title": "Təhlükəsiz imza yoxlaması",
+    "walletFlowStep2Description": "Tokenləri köçürməyən, xərcləri təsdiqləməyən və ya gas dəyəri olmayan təhlükəsiz, read-only mesaj imzalarından istifadə edərək pul kisəsinin sahibliyini doğrulayın.",
+    "walletFlowStep3Title": "Yalnız oxunan aktivlərin monitorinqi",
+    "walletFlowStep3Description": "Vəsaitləri köçürmədən read-only rejimində EnteleKRON ekosistem token balanslarına və pul kisəsi ilə əlaqəli görünməyə nəzarət edin.",
+    "walletFlowStep4Title": "EnteleKRON ekosistemi üçün yaradılmışdır",
+    "walletFlowStep4Description": "EnteleWALLET Lite istifadəçiləri EnteleKRON, ENK, SOVRA, EnergieMIND, EnteleSCAN, EnteleVAULT və daha geniş TVK Group infrastruktura birləşdirən pul kisəsinə giriş təbəqəsi kimi nəzərdə tutulmuşdur."
   },
   "features": {
     "eyebrow": "EnteleWALLET Lite Xüsusiyyətlər",

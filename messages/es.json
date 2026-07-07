@@ -56,7 +56,8 @@
     "emailSecurityTvk": "security@tvk.group",
     "emailSupport": "support@tvk.group",
     "navNetworks": "Redes",
-    "footerNetworks": "Redes compatibles"
+    "footerNetworks": "Redes compatibles",
+    "brandTagline": "SECURE • INTELLIGENT • CONNECTED"
   },
   "home": {
     "eyebrow": "EnteleKRON Capa de acceso a billetera nativa",
@@ -119,7 +120,18 @@
     "ecosystemPreviewTitle": "Creado para el ecosistema EnteleKRON",
     "ecosystemPreviewDescription": "EnteleWALLET Lite está diseñado como la capa de acceso a la billetera que conecta a los usuarios con EnteleKRON, ENK, SOVRA, EnergieMIND, EnteleSCAN, EnteleVAULT y la infraestructura más amplia de TVK Group.",
     "noticeTitle": "Aviso importante",
-    "noticeText": "EnteleWALLET Lite es una interfaz de verificación y conexión de billetera en desarrollo activo. Los activos digitales implican riesgo. Verifique siempre los dominios oficiales antes de conectar una billetera o firmar cualquier mensaje."
+    "noticeText": "EnteleWALLET Lite es una interfaz de verificación y conexión de billetera en desarrollo activo. Los activos digitales implican riesgo. Verifique siempre los dominios oficiales antes de conectar una billetera o firmar cualquier mensaje.",
+    "productIdentity": "Activo en EnteleWALLET Lite · Sólo firmas seguras · Monitoreo de solo lectura",
+    "walletFlowTitle": "EnteleWALLET Lite — Lo que EnteleWALLET Lite hace y no hace",
+    "walletFlowSubtitle": "EnteleWALLET Lite es la capa de acceso a billetera que prioriza la seguridad para el ecosistema EnteleKRON. Conecte su billetera existente, verifique la propiedad con firmas seguras, supervise los activos en modo de solo lectura y acceda a recursos oficiales de transparencia, sin almacenar frases iniciales, claves privadas ni fondos de custodia.",
+    "walletFlowStep1Title": "Conexión de billetera existente",
+    "walletFlowStep1Description": "Conecte billeteras establecidas a través de proveedores confiables. EnteleWALLET Lite no crea billeteras ni genera frases iniciales.",
+    "walletFlowStep2Title": "Verificación de firma segura",
+    "walletFlowStep2Description": "Verifique la propiedad de la billetera mediante firmas de mensajes seguras y de solo lectura que no transfieran tokens, aprueben gastos ni cuesten gasolina.",
+    "walletFlowStep3Title": "Monitoreo de activos de solo lectura",
+    "walletFlowStep3Description": "Supervise los saldos de tokens del ecosistema EnteleKRON y la visibilidad vinculada a la billetera en modo de solo lectura sin mover fondos.",
+    "walletFlowStep4Title": "Creado para el ecosistema EnteleKRON",
+    "walletFlowStep4Description": "EnteleWALLET Lite está diseñado como la capa de acceso a la billetera que conecta a los usuarios con EnteleKRON, ENK, SOVRA, EnergieMIND, EnteleSCAN, EnteleVAULT y la infraestructura más amplia de TVK Group."
   },
   "features": {
     "eyebrow": "EnteleWALLET Lite Características",

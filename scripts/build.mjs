@@ -15,10 +15,21 @@ const OUT = join(ROOT, "dist");
 const SITE_URL = "https://entelewallet.com";
 const APP_URL = "https://app.entelewallet.com";
 
-const MINI_PNG = Buffer.from(
-  "iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mP8z8BQDwAEhQGAhKmMIQAAAABJRU5ErkJggg==",
-  "base64",
-);
+const BRAND = {
+  appIcon: "/brand/entelewallet-app-icon.png",
+  wordmark: "/brand/entelewallet-wordmark.png",
+  wordmarkDark: "/brand/entelewallet-wordmark-dark.png",
+  logoDark: "/brand/entelewallet-logo-dark.png",
+  logoHorizontal: "/brand/entelewallet-logo-horizontal.png",
+  iconMark: "/brand/entelewallet-icon-mark.png",
+  icon512: "/brand/entelewallet-icon-512.png",
+  favicon16: "/icons/favicon-16.png",
+  favicon32: "/icons/favicon-32.png",
+  icon192: "/icons/icon-192.png",
+  icon512Pwa: "/icons/icon-512.png",
+  appleTouchIcon: "/icons/apple-touch-icon.png",
+  ogImage: "/og/entelewallet-lite-og.png",
+};
 
 const PAGES = [
   { id: "home", file: "index.html", path: "/" },
@@ -218,8 +229,8 @@ function renderHeader({ languages, activePath }) {
   return `<header class="topbar">
     <div class="container nav">
       <a class="brand" href="/" aria-label="EnteleWALLET home">
-        <div class="mark">EW</div>
-        <div>EnteleWALLET<small ${di("common.brandSubtitle")}>${T("common.brandSubtitle")}</small></div>
+        <img src="${BRAND.appIcon}" alt="" class="brand-icon" width="44" height="44" />
+        <img src="${BRAND.wordmark}" alt="EnteleWALLET" class="brand-wordmark" width="200" height="40" />
       </a>
       <nav class="links" aria-label="Primary navigation">
         ${renderNav(activePath)}
@@ -240,7 +251,11 @@ function renderFooter() {
     <div class="container">
       <div class="footer-grid">
         <div>
-          <h3>EnteleWALLET</h3>
+          <div class="footer-brand">
+            <img src="${BRAND.appIcon}" alt="" class="footer-brand-icon" width="40" height="40" />
+            <img src="${BRAND.wordmarkDark}" alt="EnteleWALLET" class="footer-brand-wordmark" width="180" height="36" />
+          </div>
+          <p class="brand-tagline" ${di("common.brandTagline")}>${T("common.brandTagline")}</p>
           <p ${di("common.brandSubtitle")}>${T("common.brandSubtitle")}</p>
           <p ${di("common.footerNotice")}>${T("common.footerNotice")}</p>
         </div>
@@ -286,6 +301,9 @@ function renderFooter() {
 function pageHero(eyebrowKey, titleKey, subtitleKey) {
   return `<section class="page-hero">
       <div class="container">
+        <div class="page-hero-brand">
+          <img src="${BRAND.logoDark}" alt="EnteleWALLET" class="page-hero-banner" width="360" height="80" />
+        </div>
         <div class="eyebrow" ${di(eyebrowKey)}>${T(eyebrowKey)}</div>
         <h1 ${di(titleKey)}>${T(titleKey)}</h1>
         <p class="lead" ${di(subtitleKey)}>${T(subtitleKey)}</p>
@@ -424,6 +442,18 @@ function pageHero(eyebrowKey, titleKey, subtitleKey) {
     (k) => `<div class="wallet-item" ${di(k)}>${T(k)}</div>`,
   ).join("\n          ");
 
+  const walletFlowSteps = [
+    ["home.walletFlowStep1Title", "home.walletFlowStep1Description"],
+    ["home.walletFlowStep2Title", "home.walletFlowStep2Description"],
+    ["home.walletFlowStep3Title", "home.walletFlowStep3Description"],
+    ["home.walletFlowStep4Title", "home.walletFlowStep4Description"],
+  ]
+    .map(
+      ([tk, dk], i) =>
+        `<div class="flow-step"><div class="flow-step-num">${i + 1}</div><div><h3 ${di(tk)}>${T(tk)}</h3><p ${di(dk)}>${T(dk)}</p></div></div>`,
+    )
+    .join("\n          ");
+
   return {
     renderHeader,
     renderFooter,
@@ -432,10 +462,14 @@ function pageHero(eyebrowKey, titleKey, subtitleKey) {
     <section class="hero">
       <div class="container hero-grid">
         <div>
+          <div class="hero-brand-banner">
+            <img src="${BRAND.logoDark}" alt="EnteleWALLET — Secure • Intelligent • Connected" class="hero-banner" width="380" height="84" />
+          </div>
           <div class="eyebrow" ${di("home.eyebrow")}>${T("home.eyebrow")}</div>
           <h1><span class="plain" ${di("home.heroTitle")}>${T("home.heroTitle")}</span></h1>
-          <p class="lead" style="font-size:clamp(22px,3vw,28px);font-weight:800;color:var(--ink)" ${di("home.heroHeadline")}>${T("home.heroHeadline")}</p>
+          <p class="lead hero-headline" ${di("home.heroHeadline")}>${T("home.heroHeadline")}</p>
           <p class="lead" ${di("home.heroSubtitle")}>${T("home.heroSubtitle")}</p>
+          <p class="product-identity" ${di("home.productIdentity")}>${T("home.productIdentity")}</p>
           <div class="hero-actions">
             <a class="btn primary" href="${APP_URL}" ${di("home.ctaOpenApp")}>${T("home.ctaOpenApp")}</a>
             <a class="btn secondary" href="/security" ${di("home.ctaSecurity")}>${T("home.ctaSecurity")}</a>
@@ -451,13 +485,19 @@ function pageHero(eyebrowKey, titleKey, subtitleKey) {
         <div class="device" aria-label="Wallet Lite preview">
           <div class="phone">
             <div class="wallet-top">
-              <div class="pill">EnteleWALLET</div>
+              <img src="${BRAND.appIcon}" alt="" class="phone-brand-icon" width="28" height="28" />
               <div class="pill" ${di("home.previewBadge")}>${T("home.previewBadge")}</div>
             </div>
             <div class="preview-title" ${di("home.previewTitle")}>${T("home.previewTitle")}</div>
             <div class="preview-status-list">${previewRows}</div>
           </div>
         </div>
+      </div>
+    </section>
+    <section class="wallet-flow">
+      <div class="container">
+        <div class="section-head"><h2 ${di("home.walletFlowTitle")}>${T("home.walletFlowTitle")}</h2><p ${di("home.walletFlowSubtitle")}>${T("home.walletFlowSubtitle")}</p></div>
+        <div class="flow-grid">${walletFlowSteps}</div>
       </div>
     </section>
     <section>
@@ -668,11 +708,16 @@ function renderPage({ pageId, path, languages, messages, networkSectionsHtml = "
   <meta property="og:description" content="${esc(enMeta.ogDescription || enMeta.description || "")}" />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="${SITE_URL}${path === "/" ? "" : path}" />
-  <meta property="og:image" content="${SITE_URL}/og/${pageId}.png" />
+  <meta property="og:image" content="${SITE_URL}${BRAND.ogImage}" />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="${esc(enMeta.ogTitle || enMeta.title || "EnteleWALLET")}" />
   <meta name="twitter:description" content="${esc(enMeta.ogDescription || enMeta.description || "")}" />
-  <meta name="theme-color" content="#f8fbff" />
+  <meta name="twitter:image" content="${SITE_URL}${BRAND.ogImage}" />
+  <meta name="theme-color" content="#0a1628" />
+  <link rel="icon" type="image/png" sizes="32x32" href="${BRAND.favicon32}" />
+  <link rel="icon" type="image/png" sizes="16x16" href="${BRAND.favicon16}" />
+  <link rel="apple-touch-icon" href="${BRAND.appleTouchIcon}" />
+  <link rel="manifest" href="/manifest.webmanifest" />
   <link rel="stylesheet" href="/assets/site.css" />
 </head>
 <body>
@@ -736,12 +781,35 @@ async function main() {
   await mkdir(join(OUT, "og"), { recursive: true });
   await mkdir(join(OUT, "data"), { recursive: true });
   await mkdir(join(OUT, "icons/chains"), { recursive: true });
+  await mkdir(join(OUT, "brand"), { recursive: true });
 
   await writeFile(join(OUT, "assets/site.css"), css);
   await writeFile(join(OUT, "assets/site.js"), js);
   await writeFile(join(OUT, "data/chain-registry.json"), JSON.stringify(registry, null, 2) + "\n");
   await writeFile(join(OUT, "data/network-list.json"), JSON.stringify(networkList, null, 2) + "\n");
   await cp(join(ROOT, "public/icons/chains"), join(OUT, "icons/chains"), { recursive: true });
+  await cp(join(ROOT, "public/brand"), join(OUT, "brand"), { recursive: true });
+  await cp(join(ROOT, "public/icons/icon-192.png"), join(OUT, "icons/icon-192.png"));
+  await cp(join(ROOT, "public/icons/icon-512.png"), join(OUT, "icons/icon-512.png"));
+  await cp(join(ROOT, "public/icons/favicon-16.png"), join(OUT, "icons/favicon-16.png"));
+  await cp(join(ROOT, "public/icons/favicon-32.png"), join(OUT, "icons/favicon-32.png"));
+  await cp(join(ROOT, "public/icons/apple-touch-icon.png"), join(OUT, "icons/apple-touch-icon.png"));
+  await cp(join(ROOT, "public/og"), join(OUT, "og"), { recursive: true });
+
+  const manifest = {
+    name: "EnteleWALLET",
+    short_name: "EnteleWALLET",
+    description: "Secure Wallet Access Layer for the EnteleKRON Ecosystem",
+    start_url: "/",
+    display: "standalone",
+    background_color: "#0a1628",
+    theme_color: "#0a1628",
+    icons: [
+      { src: "/icons/icon-192.png", sizes: "192x192", type: "image/png" },
+      { src: "/icons/icon-512.png", sizes: "512x512", type: "image/png" },
+    ],
+  };
+  await writeFile(join(OUT, "manifest.webmanifest"), JSON.stringify(manifest, null, 2) + "\n");
 
   for (const page of PAGES) {
     const html = renderPage({
@@ -753,7 +821,6 @@ async function main() {
       networkNavHtml,
     });
     await writeFile(join(OUT, page.file), html);
-    await writeFile(join(OUT, "og", `${page.id}.png`), MINI_PNG);
   }
 
   console.log(`Built ${PAGES.length} pages to dist/, ${languages.length} locales, chain registry exported.`);

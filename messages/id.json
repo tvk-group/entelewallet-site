@@ -56,7 +56,8 @@
     "emailSecurityTvk": "security@tvk.group",
     "emailSupport": "support@tvk.group",
     "navNetworks": "Jaringan",
-    "footerNetworks": "Jaringan yang didukung"
+    "footerNetworks": "Jaringan yang didukung",
+    "brandTagline": "SECURE • INTELLIGENT • CONNECTED"
   },
   "home": {
     "eyebrow": "Lapisan Akses Dompet Native EnteleKRON",
@@ -119,7 +120,18 @@
     "ecosystemPreviewTitle": "Dibangun untuk ekosistem EnteleKRON",
     "ecosystemPreviewDescription": "EnteleWALLET Lite dirancang sebagai lapisan akses dompet yang menghubungkan pengguna ke EnteleKRON, ENK, SOVRA, EnergieMIND, EnteleSCAN, EnteleVAULT, dan infrastruktur TVK Group yang lebih luas.",
     "noticeTitle": "Pemberitahuan penting",
-    "noticeText": "EnteleWALLET Lite adalah antarmuka koneksi dan verifikasi dompet yang sedang aktif dikembangkan. Aset digital mengandung risiko. Selalu verifikasi domain resmi sebelum menghubungkan dompet atau menandatangani pesan apa pun."
+    "noticeText": "EnteleWALLET Lite adalah antarmuka koneksi dan verifikasi dompet yang sedang aktif dikembangkan. Aset digital mengandung risiko. Selalu verifikasi domain resmi sebelum menghubungkan dompet atau menandatangani pesan apa pun.",
+    "productIdentity": "Aktif di EnteleWALLET Lite · Hanya tanda tangan aman · Pemantauan hanya-baca",
+    "walletFlowTitle": "EnteleWALLET Lite — Apa yang dilakukan EnteleWALLET Lite",
+    "walletFlowSubtitle": "EnteleWALLET Lite adalah lapisan akses dompet yang mengutamakan keamanan untuk ekosistem EnteleKRON. Hubungkan dompet yang sudah ada, verifikasi kepemilikan dengan tanda tangan yang aman, pantau aset dalam mode hanya-baca, dan akses sumber daya transparansi resmi — tanpa menyimpan seed phrase, kunci privat, atau menahan dana.",
+    "walletFlowStep1Title": "Koneksi dompet yang sudah ada",
+    "walletFlowStep1Description": "Hubungkan dompet mapan melalui penyedia tepercaya. EnteleWALLET Lite tidak membuat dompet atau menghasilkan seed phrase.",
+    "walletFlowStep2Title": "Verifikasi tanda tangan aman",
+    "walletFlowStep2Description": "Verifikasi kepemilikan dompet menggunakan tanda tangan pesan aman hanya-baca yang tidak mentransfer token, menyetujui pengeluaran, atau memerlukan gas.",
+    "walletFlowStep3Title": "Pemantauan aset hanya-baca",
+    "walletFlowStep3Description": "Pantau saldo token ekosistem EnteleKRON dan visibilitas dompet dalam mode hanya-baca tanpa memindahkan dana.",
+    "walletFlowStep4Title": "Dibangun untuk ekosistem EnteleKRON",
+    "walletFlowStep4Description": "EnteleWALLET Lite dirancang sebagai lapisan akses dompet yang menghubungkan pengguna ke EnteleKRON, ENK, SOVRA, EnergieMIND, EnteleSCAN, EnteleVAULT, dan infrastruktur TVK Group yang lebih luas."
   },
   "features": {
     "eyebrow": "Fitur EnteleWALLET Lite",

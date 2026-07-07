@@ -56,7 +56,8 @@
     "emailSecurityTvk": "security@tvk.group",
     "emailSupport": "support@tvk.group",
     "navNetworks": "Réseaux",
-    "footerNetworks": "Réseaux pris en charge"
+    "footerNetworks": "Réseaux pris en charge",
+    "brandTagline": "SECURE • INTELLIGENT • CONNECTED"
   },
   "home": {
     "eyebrow": "EnteleKRON Couche d'accès au portefeuille natif",
@@ -119,7 +120,18 @@
     "ecosystemPreviewTitle": "Conçu pour l'écosystème EnteleKRON",
     "ecosystemPreviewDescription": "EnteleWALLET Lite est conçu comme la couche d'accès au portefeuille connectant les utilisateurs à EnteleKRON, ENK, SOVRA, EnergieMIND, EnteleSCAN, EnteleVAULT et à l'infrastructure plus large TVK Group.",
     "noticeTitle": "Avis important",
-    "noticeText": "EnteleWALLET Lite est une interface de connexion et de vérification de portefeuille en cours de développement actif. Les actifs numériques comportent des risques. Vérifiez toujours les domaines officiels avant de connecter un portefeuille ou de signer un message."
+    "noticeText": "EnteleWALLET Lite est une interface de connexion et de vérification de portefeuille en cours de développement actif. Les actifs numériques comportent des risques. Vérifiez toujours les domaines officiels avant de connecter un portefeuille ou de signer un message.",
+    "productIdentity": "Actif dans EnteleWALLET Lite · Signatures sécurisées uniquement · Surveillance en lecture seule",
+    "walletFlowTitle": "EnteleWALLET Lite — Ce que EnteleWALLET Lite fait – et ne fait pas",
+    "walletFlowSubtitle": "EnteleWALLET Lite est la couche d'accès au portefeuille axée sur la sécurité pour l'écosystème EnteleKRON. Connectez votre portefeuille existant, vérifiez la propriété avec des signatures sécurisées, surveillez les actifs en mode lecture seule et accédez aux ressources officielles de transparence, sans stocker de phrases de départ, de clés privées ou de garde de fonds.",
+    "walletFlowStep1Title": "Connexion au portefeuille existante",
+    "walletFlowStep1Description": "Connectez des portefeuilles établis via des fournisseurs de confiance. EnteleWALLET Lite ne crée pas de portefeuilles ni ne génère de phrases de départ.",
+    "walletFlowStep2Title": "Vérification sécurisée des signatures",
+    "walletFlowStep2Description": "Vérifiez la propriété du portefeuille à l'aide de signatures de message sécurisées en lecture seule qui ne transfèrent pas de jetons, n'approuvent pas les dépenses et ne coûtent pas d'essence.",
+    "walletFlowStep3Title": "Surveillance des actifs en lecture seule",
+    "walletFlowStep3Description": "Surveillez les soldes de jetons de l'écosystème EnteleKRON et la visibilité liée au portefeuille en mode lecture seule sans déplacer de fonds.",
+    "walletFlowStep4Title": "Conçu pour l'écosystème EnteleKRON",
+    "walletFlowStep4Description": "EnteleWALLET Lite est conçu comme la couche d'accès au portefeuille connectant les utilisateurs à EnteleKRON, ENK, SOVRA, EnergieMIND, EnteleSCAN, EnteleVAULT et à l'infrastructure plus large TVK Group."
   },
   "features": {
     "eyebrow": "EnteleWALLET Lite Caractéristiques",

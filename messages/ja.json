@@ -56,7 +56,8 @@
     "emailSecurityTvk": "security@tvk.group",
     "emailSupport": "support@tvk.group",
     "navNetworks": "ネットワーク",
-    "footerNetworks": "対応ネットワーク"
+    "footerNetworks": "対応ネットワーク",
+    "brandTagline": "SECURE • INTELLIGENT • CONNECTED"
   },
   "home": {
     "eyebrow": "EnteleKRON ネイティブウォレットアクセスレイヤー",
@@ -119,7 +120,18 @@
     "ecosystemPreviewTitle": "EnteleKRON エコシステム向けに構築",
     "ecosystemPreviewDescription": "EnteleWALLET Lite は、ユーザーを EnteleKRON、ENK、SOVRA、EnergieMIND、EnteleSCAN、EnteleVAULT、およびより広範な TVK Group インフラに接続するウォレットアクセスレイヤーとして設計されています。",
     "noticeTitle": "重要なお知らせ",
-    "noticeText": "EnteleWALLET Lite は開発中のウォレット接続・検証インターフェースです。デジタル資産にはリスクが伴います。ウォレットを接続したりメッセージに署名する前に、必ず公式ドメインを確認してください。"
+    "noticeText": "EnteleWALLET Lite は開発中のウォレット接続・検証インターフェースです。デジタル資産にはリスクが伴います。ウォレットを接続したりメッセージに署名する前に、必ず公式ドメインを確認してください。",
+    "productIdentity": "EnteleWALLET Lite で稼働中 · 安全な署名のみ · 読み取り専用監視",
+    "walletFlowTitle": "EnteleWALLET Lite — EnteleWALLET Lite が行うこと",
+    "walletFlowSubtitle": "EnteleWALLET Lite は EnteleKRON エコシステム向けのセキュリティファーストのウォレットアクセスレイヤーです。既存のウォレットを接続し、安全な署名で所有権を検証し、読み取り専用モードで資産を監視し、公式の透明性リソースにアクセスできます。シードフレーズ、秘密鍵の保存や資金の保管は行いません。",
+    "walletFlowStep1Title": "既存のウォレット接続",
+    "walletFlowStep1Description": "信頼できるプロバイダーを通じて確立されたウォレットに接続します。 EnteleWALLET Lite はウォレットを作成したり、シード フレーズを生成したりしません。",
+    "walletFlowStep2Title": "安全な署名の検証",
+    "walletFlowStep2Description": "トークンの転送、支出の承認、ガソリン代の発生を伴わない、安全な読み取り専用のメッセージ署名を使用してウォレットの所有権を確認します。",
+    "walletFlowStep3Title": "読み取り専用の資産監視",
+    "walletFlowStep3Description": "__PRESERVE_2__ エコシステム トークンの残高とウォレットにリンクされた可視性を、資金を移動せずに読み取り専用モードで監視します。",
+    "walletFlowStep4Title": "EnteleKRON エコシステム向けに構築",
+    "walletFlowStep4Description": "EnteleWALLET Lite は、ユーザーを EnteleKRON、ENK、SOVRA、EnergieMIND、EnteleSCAN、EnteleVAULT、およびより広範な TVK Group インフラに接続するウォレットアクセスレイヤーとして設計されています。"
   },
   "features": {
     "eyebrow": "EnteleWALLET Lite 機能",

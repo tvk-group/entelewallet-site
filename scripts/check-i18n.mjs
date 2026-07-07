@@ -43,6 +43,8 @@ function isExempt(key, value) {
   if (key.endsWith("Email") || key.includes("email") || key.includes("Email")) return true;
   if (key.endsWith("Title") && /^(Entele|TVK|SOVRA|Energie|Graph|Chrono|Q-Presence|Sentient|ENK|MetaMask|Rabby|Rainbow|Ledger|Coinbase|WalletConnect)/.test(value)) return true;
   if (key === "home.heroTitle" || value === "EnteleWALLET Lite") return true;
+  if (key === "common.brandTagline") return true;
+  if (key === "home.productIdentity") return true;
   if (key === "roadmap.phase1Title" || key.startsWith("roadmap.phase")) return value.includes("EnteleWALLET") || value.includes("Phase");
   if (key.includes("wallet") && /^(MetaMask|Rabby|Rainbow|Ledger|Coinbase|Trust|WalletConnect)/.test(value)) return true;
   if (value.includes("tvk.group") || value.includes("entelewallet.") || value.includes("entelekron.")) return true;

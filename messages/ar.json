@@ -56,7 +56,8 @@
     "emailSecurityTvk": "security@tvk.group",
     "emailSupport": "support@tvk.group",
     "navNetworks": "الشبكات",
-    "footerNetworks": "الشبكات المدعومة"
+    "footerNetworks": "الشبكات المدعومة",
+    "brandTagline": "SECURE • INTELLIGENT • CONNECTED"
   },
   "home": {
     "eyebrow": "طبقة الوصول الأصلية لمحفظة EnteleKRON",
@@ -119,7 +120,18 @@
     "ecosystemPreviewTitle": "مصمم لنظام EnteleKRON البيئي",
     "ecosystemPreviewDescription": "صُمم EnteleWALLET Lite كطبقة وصول للمحفظة تربط المستخدمين بـ EnteleKRON وENK وSOVRA وEnergieMIND وEnteleSCAN وEnteleVAULT والبنية التحتية الأوسع لـ TVK Group.",
     "noticeTitle": "إشعار مهم",
-    "noticeText": "EnteleWALLET Lite واجهة لربط المحفظة والتحقق منها قيد التطوير النشط. تنطوي الأصول الرقمية على مخاطر. تحقق دائمًا من النطاقات الرسمية قبل ربط محفظة أو توقيع أي رسالة."
+    "noticeText": "EnteleWALLET Lite واجهة لربط المحفظة والتحقق منها قيد التطوير النشط. تنطوي الأصول الرقمية على مخاطر. تحقق دائمًا من النطاقات الرسمية قبل ربط محفظة أو توقيع أي رسالة.",
+    "productIdentity": "نشط في EnteleWALLET Lite · التوقيعات الآمنة فقط · مراقبة للقراءة فقط",
+    "walletFlowTitle": "EnteleWALLET Lite — ما يفعله EnteleWALLET Lite",
+    "walletFlowSubtitle": "EnteleWALLET Lite هو طبقة الوصول للمحفظة التي تضع الأمان أولاً في نظام EnteleKRON البيئي. اربط محفظتك الحالية، وتحقق من الملكية بتوقيعات آمنة، وراقب الأصول في وضع القراءة فقط، واحصل على موارد الشفافية الرسمية — دون تخزين عبارات الاسترداد أو المفاتيح الخاصة أو الاحتفاظ بالأموال.",
+    "walletFlowStep1Title": "ربط المحفظة الحالية",
+    "walletFlowStep1Description": "اربط المحافظ المعروفة عبر مزودين موثوقين. لا ينشئ EnteleWALLET Lite محافظ ولا يولّد عبارات استرداد.",
+    "walletFlowStep2Title": "التحقق بالتوقيع الآمن",
+    "walletFlowStep2Description": "تحقق من ملكية المحفظة بتوقيعات رسائل آمنة للقراءة فقط لا تحوّل الرموز ولا توافق على الإنفاق ولا تكلف gas.",
+    "walletFlowStep3Title": "مراقبة الأصول للقراءة فقط",
+    "walletFlowStep3Description": "راقب أرصدة رموز نظام EnteleKRON البيئي ورؤية المحفظة في وضع القراءة فقط دون نقل الأموال.",
+    "walletFlowStep4Title": "مصمم لنظام EnteleKRON البيئي",
+    "walletFlowStep4Description": "صُمم EnteleWALLET Lite كطبقة وصول للمحفظة تربط المستخدمين بـ EnteleKRON وENK وSOVRA وEnergieMIND وEnteleSCAN وEnteleVAULT والبنية التحتية الأوسع لـ TVK Group."
   },
   "features": {
     "eyebrow": "ميزات EnteleWALLET Lite",

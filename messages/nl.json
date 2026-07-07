@@ -56,7 +56,8 @@
     "emailSecurityTvk": "security@tvk.group",
     "emailSupport": "support@tvk.group",
     "navNetworks": "Netwerken",
-    "footerNetworks": "Ondersteunde netwerken"
+    "footerNetworks": "Ondersteunde netwerken",
+    "brandTagline": "SECURE • INTELLIGENT • CONNECTED"
   },
   "home": {
     "eyebrow": "EnteleKRON native wallet-toegangslaag",
@@ -119,7 +120,18 @@
     "ecosystemPreviewTitle": "Gebouwd voor het EnteleKRON-ecosysteem",
     "ecosystemPreviewDescription": "EnteleWALLET Lite is ontworpen als de wallet-toegangslaag die gebruikers verbindt met EnteleKRON, ENK, SOVRA, EnergieMIND, EnteleSCAN, EnteleVAULT en de bredere TVK Group-infrastructuur.",
     "noticeTitle": "Belangrijke mededeling",
-    "noticeText": "EnteleWALLET Lite is een walletverbindings- en verificatie-interface in actieve ontwikkeling. Digitale activa brengen risico met zich mee. Verifieer altijd officiële domeinen voordat u een wallet verbindt of een bericht ondertekent."
+    "noticeText": "EnteleWALLET Lite is een walletverbindings- en verificatie-interface in actieve ontwikkeling. Digitale activa brengen risico met zich mee. Verifieer altijd officiële domeinen voordat u een wallet verbindt of een bericht ondertekent.",
+    "productIdentity": "Actief in EnteleWALLET Lite · Alleen veilige handtekeningen · Alleen-lezenmonitoring",
+    "walletFlowTitle": "EnteleWALLET Lite — Wat EnteleWALLET Lite wel en niet doet",
+    "walletFlowSubtitle": "EnteleWALLET Lite is de beveiligingsgerichte toegangslaag voor wallets in het EnteleKRON-ecosysteem. Verbind uw bestaande wallet, verifieer eigendom met veilige handtekeningen, monitor activa in alleen-lezenmodus en krijg toegang tot officiële transparantiebronnen — zonder seed phrases, privésleutels of fondsen te bewaren.",
+    "walletFlowStep1Title": "Bestaande walletverbinding",
+    "walletFlowStep1Description": "Verbind gevestigde wallets via vertrouwde providers. EnteleWALLET Lite maakt geen wallets aan en genereert geen seed phrases.",
+    "walletFlowStep2Title": "Veilige handtekeningverificatie",
+    "walletFlowStep2Description": "Verifieer walleteigendom met veilige, alleen-lezen berichthandtekeningen die geen tokens overmaken, uitgaven goedkeuren of gas kosten.",
+    "walletFlowStep3Title": "Alleen-lezen activamonitoring",
+    "walletFlowStep3Description": "Monitor EnteleKRON-ecosysteemtokensaldi en walletgekoppelde zichtbaarheid in alleen-lezenmodus zonder fondsen te verplaatsen.",
+    "walletFlowStep4Title": "Gebouwd voor het EnteleKRON-ecosysteem",
+    "walletFlowStep4Description": "EnteleWALLET Lite is ontworpen als de wallet-toegangslaag die gebruikers verbindt met EnteleKRON, ENK, SOVRA, EnergieMIND, EnteleSCAN, EnteleVAULT en de bredere TVK Group-infrastructuur."
   },
   "features": {
     "eyebrow": "EnteleWALLET Lite-functies",
