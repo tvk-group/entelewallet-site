@@ -201,18 +201,18 @@
   },
   {
     "id": "blockdag",
-    "chainId": null,
-    "name": "BlockDAG",
+    "chainId": 1404,
+    "name": "BlockDAG Mainnet",
     "shortName": "BDAG",
     "nativeCurrency": { "name": "BlockDAG", "symbol": "BDAG", "decimals": 18 },
-    "rpcUrls": [],
-    "blockExplorerUrls": [],
+    "rpcUrls": ["https://rpc.bdagscan.com/"],
+    "blockExplorerUrls": ["https://bdagscan.com/"],
     "icon": "/icons/chains/blockdag.svg",
-    "status": "planned",
-    "uiCategory": "coming-soon",
-    "tokenStandards": [],
-    "riskFlag": "unverified",
-    "capabilities": { "watchOnly": true, "walletConnect": false, "transactions": false },
+    "status": "experimental",
+    "uiCategory": "experimental",
+    "tokenStandards": ["native", "ERC-20", "ERC-721", "ERC-1155"],
+    "riskFlag": "medium",
+    "capabilities": { "watchOnly": true, "walletConnect": true, "transactions": false },
     "verification": {
       "rpcVerified": false,
       "explorerVerified": false,
@@ -220,6 +220,6 @@
       "balanceDetectionTested": false,
       "tokenDetectionTested": false
     },
-    "notes": "Planned / watch-only / portfolio tracking first. Full support requires official RPC, explorer, chain ID, wallet connection method, and transaction signing documentation."
+    "notes": "Official BlockDAG Mainnet (EVM-compatible, chain ID 1404). Watch-only and portfolio tracking until RPC, explorer, signing, and balance/token detection tests pass. Use only https://rpc.bdagscan.com/ and https://bdagscan.com/ when adding manually."
   }
 ]

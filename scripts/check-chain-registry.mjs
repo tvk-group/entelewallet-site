@@ -84,9 +84,17 @@ async function main() {
   if (!blockdag) {
     errors.push("BlockDAG entry missing");
   } else {
-    if (blockdag.status !== "planned") errors.push("BlockDAG must be planned");
-    if (!blockdag.capabilities.watchOnly) errors.push("BlockDAG must be watch-only first");
-    if (blockdag.rpcUrls.length) errors.push("BlockDAG must not have RPC URLs until documented");
+    if (blockdag.chainId !== 1404) errors.push("BlockDAG chainId must be 1404");
+    if (!blockdag.rpcUrls.includes("https://rpc.bdagscan.com/")) {
+      errors.push("BlockDAG must use official RPC https://rpc.bdagscan.com/");
+    }
+    if (!blockdag.blockExplorerUrls.includes("https://bdagscan.com/")) {
+      errors.push("BlockDAG must use official explorer https://bdagscan.com/");
+    }
+    if (!blockdag.capabilities.watchOnly) errors.push("BlockDAG must be watch-only until verification passes");
+    if (blockdag.capabilities.transactions) {
+      errors.push("BlockDAG transactions must remain gated until verification passes");
+    }
   }
 
   const moduleIds = new Set();

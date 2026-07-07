@@ -24,7 +24,7 @@ npm run typecheck  # Type-check config/languages.ts and chain-registry
 |------|---------|
 | `messages/*.json` | i18n source (25 languages, `en.json` is master) |
 | `config/languages.json` | Official 25-language list |
-| `config/chain-registry/` | Modular chain registry (Phase 1 EVM networks, TVK modules, BlockDAG planned) |
+| `config/chain-registry/` | Modular chain registry (Phase 1 EVM networks, TVK modules, BlockDAG Mainnet experimental) |
 | `scripts/build.mjs` | Static site generator |
 | `scripts/check-chain-registry.mjs` | Validates chain registry schema and security rules |
 | `scripts/verify-chains.mjs` | RPC, explorer, and detection verification tests |

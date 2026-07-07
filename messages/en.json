@@ -707,7 +707,7 @@
     },
     "networks": {
       "title": "EnteleWALLET Networks | Modular Chain Registry & TVK Ecosystem",
-      "description": "Official EnteleWALLET chain registry for Ethereum, Base, Polygon, BNB Chain, Arbitrum, Optimism, Avalanche, testnets, TVK ecosystem modules, and planned networks like BlockDAG.",
+      "description": "Official EnteleWALLET chain registry for Ethereum, Base, Polygon, BNB Chain, Arbitrum, Optimism, Avalanche, testnets, TVK ecosystem modules, and BlockDAG Mainnet.",
       "ogTitle": "EnteleWALLET Supported Networks",
       "ogDescription": "Modular chain registry with verification gates — active EVM networks, testnets, TVK ecosystem modules, and coming-soon integrations."
     }
