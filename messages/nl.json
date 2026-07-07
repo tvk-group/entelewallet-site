@@ -710,6 +710,9 @@
     "watchOnly": "Alleen bekijken",
     "walletConnect": "WalletConnect",
     "transactionsEnabled": "Transacties ingeschakeld",
-    "transactionsGated": "Transacties beperkt"
+    "transactionsGated": "Transacties beperkt",
+    "navTitle": "Netwerknavigatie",
+    "navCountLabel": "netwerken & modules",
+    "downloadNetworkList": "network-list.json downloaden"
   }
 }

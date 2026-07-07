@@ -129,4 +129,30 @@
 
   window.addEventListener("popstate", () => applyLanguage(getRequestedLanguage(), false));
   applyLanguage(getRequestedLanguage(), false);
+
+  async function initNetworkNav() {
+    const nav = document.querySelector("[data-network-nav]");
+    const main = document.querySelector("[data-networks-main]");
+    if (!nav || !main) return;
+
+    try {
+      const res = await fetch("/data/chain-registry.json", { cache: "no-store" });
+      if (!res.ok) return;
+      const registry = await res.json();
+      const cards = main.querySelectorAll(".network-card");
+      const count = (registry.chains?.length || 0) + (registry.tvkModules?.length || 0);
+      const countEl = nav.querySelector("[data-network-count]");
+      if (countEl) countEl.textContent = String(count);
+
+      if (cards.length < count) {
+        console.warn(
+          `[EnteleWALLET] Network page shows ${cards.length}/${count} entries — registry may be newer than cached HTML. Hard refresh or redeploy.`,
+        );
+      }
+    } catch (err) {
+      console.warn("[EnteleWALLET] Could not validate network registry:", err);
+    }
+  }
+
+  initNetworkNav();
 })();

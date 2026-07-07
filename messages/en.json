@@ -624,7 +624,10 @@
     "watchOnly": "Watch-only",
     "walletConnect": "WalletConnect",
     "transactionsEnabled": "Transactions enabled",
-    "transactionsGated": "Transactions gated"
+    "transactionsGated": "Transactions gated",
+    "navTitle": "Network navigation",
+    "navCountLabel": "networks & modules",
+    "downloadNetworkList": "Download network-list.json"
   },
   "meta": {
     "home": {

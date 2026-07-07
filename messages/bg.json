@@ -710,6 +710,9 @@
     "watchOnly": "Само наблюдение",
     "walletConnect": "WalletConnect",
     "transactionsEnabled": "Транзакции активни",
-    "transactionsGated": "Транзакции ограничени"
+    "transactionsGated": "Транзакции ограничени",
+    "navTitle": "Навигация в мрежи",
+    "navCountLabel": "мрежи и модули",
+    "downloadNetworkList": "Изтегли network-list.json"
   }
 }

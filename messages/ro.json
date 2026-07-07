@@ -710,6 +710,9 @@
     "watchOnly": "Doar vizualizare",
     "walletConnect": "WalletConnect",
     "transactionsEnabled": "Tranzacții activate",
-    "transactionsGated": "Tranzacții restricționate"
+    "transactionsGated": "Tranzacții restricționate",
+    "navTitle": "Navigare rețele",
+    "navCountLabel": "rețele și module",
+    "downloadNetworkList": "Descarcă network-list.json"
   }
 }

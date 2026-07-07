@@ -710,6 +710,9 @@
     "watchOnly": "조회 전용",
     "walletConnect": "WalletConnect",
     "transactionsEnabled": "거래 활성화",
-    "transactionsGated": "거래 제한"
+    "transactionsGated": "거래 제한",
+    "navTitle": "네트워크 탐색",
+    "navCountLabel": "네트워크 및 모듈",
+    "downloadNetworkList": "network-list.json 다운로드"
   }
 }

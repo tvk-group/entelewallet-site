@@ -710,6 +710,9 @@
     "watchOnly": "Solo lectura",
     "walletConnect": "WalletConnect",
     "transactionsEnabled": "Transacciones habilitadas",
-    "transactionsGated": "Transacciones restringidas"
+    "transactionsGated": "Transacciones restringidas",
+    "navTitle": "Navegación de redes",
+    "navCountLabel": "redes y módulos",
+    "downloadNetworkList": "Descargar network-list.json"
   }
 }

@@ -710,6 +710,9 @@
     "watchOnly": "صرف دیکھیں",
     "walletConnect": "WalletConnect",
     "transactionsEnabled": "لین دین فعال",
-    "transactionsGated": "لین دین محدود"
+    "transactionsGated": "لین دین محدود",
+    "navTitle": "نیٹ ورک نیویگیشن",
+    "navCountLabel": "نیٹ ورکس اور ماڈیولز",
+    "downloadNetworkList": "network-list.json ڈاؤن لوڈ"
   }
 }

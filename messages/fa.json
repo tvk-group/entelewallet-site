@@ -710,6 +710,9 @@
     "watchOnly": "فقط مشاهده",
     "walletConnect": "WalletConnect",
     "transactionsEnabled": "تراکنش‌ها فعال",
-    "transactionsGated": "تراکنش‌ها محدود"
+    "transactionsGated": "تراکنش‌ها محدود",
+    "navTitle": "ناوبری شبکه",
+    "navCountLabel": "شبکه و ماژول",
+    "downloadNetworkList": "دانلود network-list.json"
   }
 }

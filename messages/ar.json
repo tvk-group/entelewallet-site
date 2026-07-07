@@ -710,6 +710,9 @@
     "watchOnly": "قراءة فقط",
     "walletConnect": "WalletConnect",
     "transactionsEnabled": "المعاملات مفعلة",
-    "transactionsGated": "المعاملات مقيدة"
+    "transactionsGated": "المعاملات مقيدة",
+    "navTitle": "تنقل الشبكة",
+    "navCountLabel": "شبكات ووحدات",
+    "downloadNetworkList": "تنزيل network-list.json"
   }
 }

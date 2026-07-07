@@ -710,6 +710,9 @@
     "watchOnly": "Yalnız izləmə",
     "walletConnect": "WalletConnect",
     "transactionsEnabled": "Əməliyyatlar aktiv",
-    "transactionsGated": "Əməliyyatlar məhdud"
+    "transactionsGated": "Əməliyyatlar məhdud",
+    "navTitle": "Şəbəkə naviqasiyası",
+    "navCountLabel": "şəbəkə və modul",
+    "downloadNetworkList": "network-list.json yüklə"
   }
 }
