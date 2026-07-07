@@ -710,6 +710,9 @@
     "watchOnly": "केवल देखें",
     "walletConnect": "WalletConnect",
     "transactionsEnabled": "लेनदेन सक्षम",
-    "transactionsGated": "लेनदेन प्रतिबंधित"
+    "transactionsGated": "लेनदेन प्रतिबंधित",
+    "navTitle": "नेटवर्क नेविगेशन",
+    "navCountLabel": "नेटवर्क और मॉड्यूल",
+    "downloadNetworkList": "network-list.json डाउनलोड"
   }
 }

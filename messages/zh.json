@@ -710,6 +710,9 @@
     "watchOnly": "仅查看",
     "walletConnect": "WalletConnect",
     "transactionsEnabled": "交易已启用",
-    "transactionsGated": "交易受限"
+    "transactionsGated": "交易受限",
+    "navTitle": "网络导航",
+    "navCountLabel": "个网络与模块",
+    "downloadNetworkList": "下载 network-list.json"
   }
 }

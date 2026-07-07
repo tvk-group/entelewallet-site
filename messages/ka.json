@@ -710,6 +710,9 @@
     "watchOnly": "მხოლოდ ნახვა",
     "walletConnect": "WalletConnect",
     "transactionsEnabled": "ტრანზაქციები ჩართული",
-    "transactionsGated": "ტრანზაქციები შეზღუდული"
+    "transactionsGated": "ტრანზაქციები შეზღუდული",
+    "navTitle": "ქსელის ნავიგაცია",
+    "navCountLabel": "ქსელები და მოდულები",
+    "downloadNetworkList": "ჩამოტვირთე network-list.json"
   }
 }

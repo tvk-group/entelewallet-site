@@ -710,6 +710,9 @@
     "watchOnly": "Hanya pantau",
     "walletConnect": "WalletConnect",
     "transactionsEnabled": "Transaksi diaktifkan",
-    "transactionsGated": "Transaksi dibatasi"
+    "transactionsGated": "Transaksi dibatasi",
+    "navTitle": "Navigasi jaringan",
+    "navCountLabel": "jaringan & modul",
+    "downloadNetworkList": "Unduh network-list.json"
   }
 }

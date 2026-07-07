@@ -710,6 +710,9 @@
     "watchOnly": "閲覧のみ",
     "walletConnect": "WalletConnect",
     "transactionsEnabled": "トランザクション有効",
-    "transactionsGated": "トランザクション制限"
+    "transactionsGated": "トランザクション制限",
+    "navTitle": "ネットワークナビ",
+    "navCountLabel": "ネットワークとモジュール",
+    "downloadNetworkList": "network-list.jsonをダウンロード"
   }
 }

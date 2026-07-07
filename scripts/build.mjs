@@ -101,7 +101,7 @@ function renderNetworkCard(item, t, di, T, isModule = false) {
     ? `<p class="network-meta">${esc(item.description)}</p>`
     : `<p class="network-meta"><span ${di("networks.chainId")}>${T("networks.chainId")}</span> ${item.chainId ?? "—"} · ${esc(item.nativeCurrency.symbol)}</p>`;
 
-  return `<div class="network-card${isModule ? " module-card" : ""}" data-id="${esc(item.id)}">
+  return `<div class="network-card${isModule ? " module-card" : ""}" id="network-${esc(item.id)}" data-id="${esc(item.id)}">
       <div class="network-card-head">
         <img src="${esc(item.icon)}" alt="" class="network-icon" width="44" height="44" loading="lazy" />
         <div class="network-card-title">
@@ -121,6 +121,43 @@ function renderNetworkCard(item, t, di, T, isModule = false) {
         ${item.notes ? `<p class="network-note">${esc(item.notes)}</p>` : ""}
       </div>
     </div>`;
+}
+
+async function buildNetworkNavHtml(t) {
+  const T = (key) => esc(t(key) || key);
+  const di = (key) => `data-i18n="${key}"`;
+  const sections = await getRegistrySections();
+  const total = sections.reduce((n, s) => n + s.chains.length + s.modules.length, 0);
+
+  const groups = sections
+    .map((section) => {
+      const titleKey = SECTION_LABELS[section.id];
+      const items = [
+        ...section.chains.map((c) => ({ id: c.id, name: c.name, icon: c.icon })),
+        ...section.modules.map((m) => ({ id: m.id, name: m.name, icon: m.icon })),
+      ];
+      if (!items.length) return "";
+      const links = items
+        .map(
+          (item) =>
+            `<a class="networks-nav-link" href="#network-${esc(item.id)}"><img src="${esc(item.icon)}" alt="" width="20" height="20" loading="lazy" /><span>${esc(item.name)}</span></a>`,
+        )
+        .join("\n            ");
+      return `<div class="networks-nav-group" data-nav-section="${esc(section.id)}">
+          <h3 ${di(titleKey)}>${T(titleKey)}</h3>
+          <nav class="networks-nav-list" aria-label="${esc(T(titleKey))}">
+            ${links}
+          </nav>
+        </div>`;
+    })
+    .filter(Boolean)
+    .join("\n        ");
+
+  return `<aside class="networks-nav" data-network-nav aria-label="Network navigation">
+      <h2 class="networks-nav-title" ${di("networks.navTitle")}>${T("networks.navTitle")}</h2>
+      <p class="networks-nav-count"><span data-network-count>${total}</span> <span ${di("networks.navCountLabel")}>${T("networks.navCountLabel")}</span></p>
+      ${groups}
+    </aside>`;
 }
 
 async function buildNetworkSectionsHtml(t) {
@@ -145,7 +182,7 @@ async function buildNetworkSectionsHtml(t) {
     .join("\n    ");
 }
 
-function pageTemplates(t, networkSectionsHtml = "") {
+function pageTemplates(t, networkSectionsHtml = "", networkNavHtml = "") {
   const T = (key) => esc(t(key) || key);
   const di = (key) => `data-i18n="${key}"`;
 
@@ -480,11 +517,18 @@ function pageHero(eyebrowKey, titleKey, subtitleKey) {
     <section><div class="container prose-box"><h3 ${di("ecosystem.liteRoleTitle")}>Lite role</h3><p ${di("ecosystem.liteRoleDescription")}>Desc</p><a class="btn primary" href="https://entelekron.io/transparency" ${di("ecosystem.transparencyCta")}>Transparency</a> <a class="btn secondary" href="https://entelekron.org" ${di("ecosystem.entelekronCta")}>EnteleKRON</a></div></section>
   </main>`,
 
-    networks: `<main>
+    networks: `<main class="networks-page">
     ${pageHero("networks.eyebrow", "networks.title", "networks.subtitle")}
     <section><div class="container warning"><strong>🔒</strong> <span ${di("networks.securityRule")}>${T("networks.securityRule")}</span></div></section>
-    ${networkSectionsHtml}
-    <section><div class="container prose-box"><p ${di("networks.registryNote")}>${T("networks.registryNote")}</p><a class="btn secondary" href="/data/chain-registry.json" ${di("networks.downloadRegistry")}>${T("networks.downloadRegistry")}</a></div></section>
+    <section class="networks-layout-section">
+      <div class="container networks-layout">
+        ${networkNavHtml}
+        <div class="networks-main" data-networks-main>
+          ${networkSectionsHtml}
+        </div>
+      </div>
+    </section>
+    <section><div class="container prose-box"><p ${di("networks.registryNote")}>${T("networks.registryNote")}</p><a class="btn secondary" href="/data/chain-registry.json" ${di("networks.downloadRegistry")}>${T("networks.downloadRegistry")}</a> <a class="btn secondary" href="/data/network-list.json" ${di("networks.downloadNetworkList")}>${T("networks.downloadNetworkList")}</a></div></section>
   </main>`,
 
     roadmap: `<main>
@@ -602,11 +646,11 @@ function pageHero(eyebrowKey, titleKey, subtitleKey) {
   };
 }
 
-function renderPage({ pageId, path, languages, messages, networkSectionsHtml = "" }) {
+function renderPage({ pageId, path, languages, messages, networkSectionsHtml = "", networkNavHtml = "" }) {
   const enMeta = messages.en?.meta?.[pageId] || messages.en?.meta?.home || {};
   const enFlat = flatten(messages.en);
   const t = (key) => enFlat[key];
-  const layout = pageTemplates(t, networkSectionsHtml);
+  const layout = pageTemplates(t, networkSectionsHtml, networkNavHtml);
   const main = layout.pages[pageId];
   if (!main) throw new Error(`Missing template for page: ${pageId}`);
 
@@ -660,8 +704,32 @@ async function main() {
   ]);
 
   const enFlat = flatten(messages.en);
-  const networkSectionsHtml = await buildNetworkSectionsHtml((key) => enFlat[key]);
+  const t = (key) => enFlat[key];
+  const networkSectionsHtml = await buildNetworkSectionsHtml(t);
+  const networkNavHtml = await buildNetworkNavHtml(t);
   const registry = await loadRegistry();
+  const networkList = {
+    version: registry.version,
+    updatedAt: registry.updatedAt,
+    chains: registry.chains.map((c) => ({
+      id: c.id,
+      name: c.name,
+      chainId: c.chainId,
+      status: c.status,
+      uiCategory: c.uiCategory,
+      rpcUrls: c.rpcUrls,
+      blockExplorerUrls: c.blockExplorerUrls,
+      icon: c.icon,
+      nativeSymbol: c.nativeCurrency.symbol,
+    })),
+    tvkModules: registry.tvkModules.map((m) => ({
+      id: m.id,
+      name: m.name,
+      status: m.status,
+      uiCategory: m.uiCategory,
+      icon: m.icon,
+    })),
+  };
 
   await rm(OUT, { recursive: true, force: true });
   await mkdir(join(OUT, "assets"), { recursive: true });
@@ -672,6 +740,7 @@ async function main() {
   await writeFile(join(OUT, "assets/site.css"), css);
   await writeFile(join(OUT, "assets/site.js"), js);
   await writeFile(join(OUT, "data/chain-registry.json"), JSON.stringify(registry, null, 2) + "\n");
+  await writeFile(join(OUT, "data/network-list.json"), JSON.stringify(networkList, null, 2) + "\n");
   await cp(join(ROOT, "public/icons/chains"), join(OUT, "icons/chains"), { recursive: true });
 
   for (const page of PAGES) {
@@ -681,6 +750,7 @@ async function main() {
       languages,
       messages,
       networkSectionsHtml,
+      networkNavHtml,
     });
     await writeFile(join(OUT, page.file), html);
     await writeFile(join(OUT, "og", `${page.id}.png`), MINI_PNG);

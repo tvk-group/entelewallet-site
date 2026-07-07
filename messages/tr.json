@@ -710,6 +710,9 @@
     "watchOnly": "Salt okunur",
     "walletConnect": "WalletConnect",
     "transactionsEnabled": "İşlemler etkin",
-    "transactionsGated": "İşlemler kısıtlı"
+    "transactionsGated": "İşlemler kısıtlı",
+    "navTitle": "Ağ gezintisi",
+    "navCountLabel": "ağ ve modül",
+    "downloadNetworkList": "network-list.json indir"
   }
 }

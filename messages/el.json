@@ -710,6 +710,9 @@
     "watchOnly": "Μόνο παρακολούθηση",
     "walletConnect": "WalletConnect",
     "transactionsEnabled": "Συναλλαγές ενεργές",
-    "transactionsGated": "Συναλλαγές περιορισμένες"
+    "transactionsGated": "Συναλλαγές περιορισμένες",
+    "navTitle": "Πλοήγηση δικτύου",
+    "navCountLabel": "δίκτυα και μονάδες",
+    "downloadNetworkList": "Λήψη network-list.json"
   }
 }

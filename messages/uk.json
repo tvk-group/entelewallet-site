@@ -710,6 +710,9 @@
     "watchOnly": "Лише перегляд",
     "walletConnect": "WalletConnect",
     "transactionsEnabled": "Транзакції увімкнено",
-    "transactionsGated": "Транзакції обмежено"
+    "transactionsGated": "Транзакції обмежено",
+    "navTitle": "Навігація мережами",
+    "navCountLabel": "мереж і модулів",
+    "downloadNetworkList": "Завантажити network-list.json"
   }
 }
