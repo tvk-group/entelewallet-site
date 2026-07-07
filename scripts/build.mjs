@@ -1,7 +1,14 @@
 #!/usr/bin/env node
-import { readFile, writeFile, mkdir, rm } from "node:fs/promises";
+import { readFile, writeFile, mkdir, rm, cp } from "node:fs/promises";
 import { join, dirname } from "node:path";
 import { fileURLToPath } from "node:url";
+import {
+  getRegistrySections,
+  loadRegistry,
+  SECTION_LABELS,
+  STATUS_LABELS,
+  RISK_LABELS,
+} from "../config/chain-registry/registry.mjs";
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), "..");
 const OUT = join(ROOT, "dist");
@@ -18,6 +25,7 @@ const PAGES = [
   { id: "features", file: "features.html", path: "/features" },
   { id: "security", file: "security.html", path: "/security" },
   { id: "ecosystem", file: "ecosystem.html", path: "/ecosystem" },
+  { id: "networks", file: "networks.html", path: "/networks" },
   { id: "roadmap", file: "roadmap.html", path: "/roadmap" },
   { id: "docs", file: "docs.html", path: "/docs" },
   { id: "domains", file: "domains.html", path: "/domains" },
@@ -34,6 +42,7 @@ const NAV = [
   { key: "common.navFeatures", href: "/features" },
   { key: "common.navSecurity", href: "/security" },
   { key: "common.navEcosystem", href: "/ecosystem" },
+  { key: "common.navNetworks", href: "/networks" },
   { key: "common.navRoadmap", href: "/roadmap" },
   { key: "common.navDocs", href: "/docs" },
   { key: "common.navDomains", href: "/domains" },
@@ -82,7 +91,61 @@ function esc(s) {
     .replace(/"/g, "&quot;");
 }
 
-function pageTemplates(t) {
+function renderNetworkCard(item, t, di, T, isModule = false) {
+  const statusKey = STATUS_LABELS[item.status] || "networks.statusPlanned";
+  const riskKey = RISK_LABELS[item.riskFlag] || "networks.riskUnverified";
+  const caps = item.capabilities || {};
+  const txLabel = caps.transactions ? "networks.transactionsEnabled" : "networks.transactionsGated";
+  const standards = (item.tokenStandards || []).join(", ") || "—";
+  const chainMeta = isModule
+    ? `<p class="network-meta">${esc(item.description)}</p>`
+    : `<p class="network-meta"><span ${di("networks.chainId")}>${T("networks.chainId")}</span> ${item.chainId ?? "—"} · ${esc(item.nativeCurrency.symbol)}</p>`;
+
+  return `<div class="network-card${isModule ? " module-card" : ""}" data-id="${esc(item.id)}">
+      <div class="network-card-head">
+        <img src="${esc(item.icon)}" alt="" class="network-icon" width="44" height="44" loading="lazy" />
+        <div class="network-card-title">
+          <h3>${esc(item.name)}</h3>
+          ${chainMeta}
+        </div>
+        <span class="network-badge ${esc(item.status)}">${T(statusKey)}</span>
+      </div>
+      <div class="network-card-body">
+        ${!isModule ? `<p class="network-row"><strong ${di("networks.tokenStandards")}>${T("networks.tokenStandards")}</strong> ${esc(standards)}</p>` : ""}
+        <p class="network-row"><strong ${di("networks.riskLabel")}>${T("networks.riskLabel")}</strong> <span class="risk-flag ${esc(item.riskFlag)}">${T(riskKey)}</span></p>
+        <div class="network-caps">
+          ${caps.watchOnly ? `<span class="cap-chip" ${di("networks.watchOnly")}>${T("networks.watchOnly")}</span>` : ""}
+          ${caps.walletConnect ? `<span class="cap-chip" ${di("networks.walletConnect")}>${T("networks.walletConnect")}</span>` : ""}
+          <span class="cap-chip ${caps.transactions ? "enabled" : "gated"}" ${di(txLabel)}>${T(txLabel)}</span>
+        </div>
+        ${item.notes ? `<p class="network-note">${esc(item.notes)}</p>` : ""}
+      </div>
+    </div>`;
+}
+
+async function buildNetworkSectionsHtml(t) {
+  const T = (key) => esc(t(key) || key);
+  const di = (key) => `data-i18n="${key}"`;
+  const sections = await getRegistrySections();
+
+  return sections
+    .map((section) => {
+      const titleKey = SECTION_LABELS[section.id];
+      const cards = [
+        ...section.chains.map((c) => renderNetworkCard(c, t, di, T, false)),
+        ...section.modules.map((m) => renderNetworkCard(m, t, di, T, true)),
+      ].join("\n          ");
+      return `<section class="network-section" data-section="${esc(section.id)}">
+      <div class="container">
+        <div class="section-head"><h2 ${di(titleKey)}>${T(titleKey)}</h2></div>
+        <div class="network-grid">${cards}</div>
+      </div>
+    </section>`;
+    })
+    .join("\n    ");
+}
+
+function pageTemplates(t, networkSectionsHtml = "") {
   const T = (key) => esc(t(key) || key);
   const di = (key) => `data-i18n="${key}"`;
 
@@ -151,6 +214,7 @@ function renderFooter() {
           <a href="/roadmap" ${di("common.footerRoadmap")}>${T("common.footerRoadmap")}</a>
           <a href="/docs" ${di("common.footerDocs")}>${T("common.footerDocs")}</a>
           <a href="/domains" ${di("common.footerDomains")}>${T("common.footerDomains")}</a>
+          <a href="/networks" ${di("common.footerNetworks")}>${T("common.footerNetworks")}</a>
           <a href="/faq" ${di("common.footerFaq")}>${T("common.footerFaq")}</a>
         </div>
         <div>
@@ -416,6 +480,13 @@ function pageHero(eyebrowKey, titleKey, subtitleKey) {
     <section><div class="container prose-box"><h3 ${di("ecosystem.liteRoleTitle")}>Lite role</h3><p ${di("ecosystem.liteRoleDescription")}>Desc</p><a class="btn primary" href="https://entelekron.io/transparency" ${di("ecosystem.transparencyCta")}>Transparency</a> <a class="btn secondary" href="https://entelekron.org" ${di("ecosystem.entelekronCta")}>EnteleKRON</a></div></section>
   </main>`,
 
+    networks: `<main>
+    ${pageHero("networks.eyebrow", "networks.title", "networks.subtitle")}
+    <section><div class="container warning"><strong>🔒</strong> <span ${di("networks.securityRule")}>${T("networks.securityRule")}</span></div></section>
+    ${networkSectionsHtml}
+    <section><div class="container prose-box"><p ${di("networks.registryNote")}>${T("networks.registryNote")}</p><a class="btn secondary" href="/data/chain-registry.json" ${di("networks.downloadRegistry")}>${T("networks.downloadRegistry")}</a></div></section>
+  </main>`,
+
     roadmap: `<main>
     ${pageHero("roadmap.eyebrow", "roadmap.title", "roadmap.subtitle")}
     <section><div class="container"><div class="roadmap-grid">${roadmapPhases}</div></div></section>
@@ -531,11 +602,11 @@ function pageHero(eyebrowKey, titleKey, subtitleKey) {
   };
 }
 
-function renderPage({ pageId, path, languages, messages }) {
+function renderPage({ pageId, path, languages, messages, networkSectionsHtml = "" }) {
   const enMeta = messages.en?.meta?.[pageId] || messages.en?.meta?.home || {};
   const enFlat = flatten(messages.en);
   const t = (key) => enFlat[key];
-  const layout = pageTemplates(t);
+  const layout = pageTemplates(t, networkSectionsHtml);
   const main = layout.pages[pageId];
   if (!main) throw new Error(`Missing template for page: ${pageId}`);
 
@@ -588,12 +659,20 @@ async function main() {
     loadMessages(),
   ]);
 
+  const enFlat = flatten(messages.en);
+  const networkSectionsHtml = await buildNetworkSectionsHtml((key) => enFlat[key]);
+  const registry = await loadRegistry();
+
   await rm(OUT, { recursive: true, force: true });
   await mkdir(join(OUT, "assets"), { recursive: true });
   await mkdir(join(OUT, "og"), { recursive: true });
+  await mkdir(join(OUT, "data"), { recursive: true });
+  await mkdir(join(OUT, "icons/chains"), { recursive: true });
 
   await writeFile(join(OUT, "assets/site.css"), css);
   await writeFile(join(OUT, "assets/site.js"), js);
+  await writeFile(join(OUT, "data/chain-registry.json"), JSON.stringify(registry, null, 2) + "\n");
+  await cp(join(ROOT, "public/icons/chains"), join(OUT, "icons/chains"), { recursive: true });
 
   for (const page of PAGES) {
     const html = renderPage({
@@ -601,12 +680,13 @@ async function main() {
       path: page.path,
       languages,
       messages,
+      networkSectionsHtml,
     });
     await writeFile(join(OUT, page.file), html);
     await writeFile(join(OUT, "og", `${page.id}.png`), MINI_PNG);
   }
 
-  console.log(`Built ${PAGES.length} pages to dist/, ${languages.length} locales.`);
+  console.log(`Built ${PAGES.length} pages to dist/, ${languages.length} locales, chain registry exported.`);
 }
 
 main().catch((err) => {

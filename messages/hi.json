@@ -54,7 +54,9 @@
     "emailSecurity": "security@entelewallet.com",
     "emailPartners": "partners@entelewallet.com",
     "emailSecurityTvk": "security@tvk.group",
-    "emailSupport": "support@tvk.group"
+    "emailSupport": "support@tvk.group",
+    "navNetworks": "नेटवर्क",
+    "footerNetworks": "समर्थित नेटवर्क"
   },
   "home": {
     "eyebrow": "EnteleKRON नेटिव वॉलेट एक्सेस लेयर",
@@ -674,6 +676,40 @@
       "description": "EnteleWALLET Lite, वॉलेट कनेक्शन, कस्टडी, हस्ताक्षर, वेस्टिंग, आधिकारिक डोमेन और सुरक्षा रिपोर्टिंग के बारे में अक्सर पूछे जाने वाले प्रश्न।",
       "ogTitle": "__संरक्षण_1__ अक्सर पूछे जाने वाले प्रश्न",
       "ogDescription": "EnteleWALLET Lite और इकोसिस्टम वॉलेट सुरक्षा के बारे में सामान्य प्रश्नों के उत्तर।"
+    },
+    "networks": {
+      "title": "EnteleWALLET नेटवर्क | मॉड्यूलर रजिस्ट्री और TVK इकोसिस्टम",
+      "description": "Ethereum, Base, Polygon, BNB Chain, Arbitrum, Optimism, Avalanche, टेस्टनेट, TVK मॉड्यूल और BlockDAG के लिए आधिकारिक चेन रजिस्ट्री।",
+      "ogTitle": "EnteleWALLET समर्थित नेटवर्क",
+      "ogDescription": "सत्यापन गेट के साथ मॉड्यूलर रजिस्ट्री — सक्रिय EVM नेटवर्क, टेस्टनेट, TVK मॉड्यूल और आगामी एकीकरण।"
     }
+  },
+  "networks": {
+    "eyebrow": "मॉड्यूलर चेन रजिस्ट्री",
+    "title": "समर्थित नेटवर्क और TVK इकोसिस्टम मॉड्यूल",
+    "subtitle": "EnteleWALLET मॉड्यूलर चेन रजिस्ट्री का उपयोग करता है। नेटवर्क केवल RPC सत्यापन, हस्ताक्षर परीक्षण, एक्सप्लोरर जांच और बैलेंस/टोकन पहचान के बाद सक्रिय होते हैं।",
+    "sectionActive": "सक्रिय नेटवर्क",
+    "sectionTestnet": "टेस्ट नेटवर्क",
+    "sectionTvk": "TVK इकोसिस्टम",
+    "sectionComingSoon": "जल्द आने वाले नेटवर्क",
+    "sectionExperimental": "प्रयोगात्मक नेटवर्क",
+    "securityRule": "कोई भी नेटवर्क वास्तविक लेनदेन के लिए तब तक सक्षम नहीं होता जब तक RPC सत्यापन, हस्ताक्षर परीक्षण, एक्सप्लोरर और बैलेंस/टोकन परीक्षण पास न हो जाएं।",
+    "registryNote": "यह रजिस्ट्री EnteleWALLET के लिए आधिकारिक चरण 1 नेटवर्क सूची है। वॉलेट ऐप इस डेटा का उपयोग करता है और लेनदेन सक्षम करने से पहले सत्यापन गेट लागू करता है।",
+    "downloadRegistry": "chain-registry.json डाउनलोड करें",
+    "statusActive": "सक्रिय",
+    "statusTestnet": "टेस्टनेट",
+    "statusPlanned": "नियोजित",
+    "statusExperimental": "प्रयोगात्मक",
+    "riskLabel": "जोखिम",
+    "riskLow": "कम",
+    "riskMedium": "मध्यम",
+    "riskHigh": "उच्च",
+    "riskUnverified": "असत्यापित",
+    "chainId": "चेन ID",
+    "tokenStandards": "टोकन मानक",
+    "watchOnly": "केवल देखें",
+    "walletConnect": "WalletConnect",
+    "transactionsEnabled": "लेनदेन सक्षम",
+    "transactionsGated": "लेनदेन प्रतिबंधित"
   }
 }

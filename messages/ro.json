@@ -54,7 +54,9 @@
     "emailSecurity": "security@entelewallet.com",
     "emailPartners": "partners@entelewallet.com",
     "emailSecurityTvk": "security@tvk.group",
-    "emailSupport": "support@tvk.group"
+    "emailSupport": "support@tvk.group",
+    "navNetworks": "Rețele",
+    "footerNetworks": "Rețele suportate"
   },
   "home": {
     "eyebrow": "Strat nativ de acces la portofel EnteleKRON",
@@ -674,6 +676,40 @@
       "description": "Întrebări frecvente despre EnteleWALLET Lite, conexiunea portofel, custodie, semnături, atribuire, domenii oficiale și raportare de securitate.",
       "ogTitle": "Întrebări frecvente EnteleWALLET",
       "ogDescription": "Răspunsuri la întrebări frecvente despre EnteleWALLET Lite și siguranța portofelului din ecosistem."
+    },
+    "networks": {
+      "title": "Rețele EnteleWALLET | Registru modular și ecosistem TVK",
+      "description": "Registru oficial pentru Ethereum, Base, Polygon, BNB Chain, Arbitrum, Optimism, Avalanche, testnet-uri, module TVK și BlockDAG.",
+      "ogTitle": "Rețele suportate EnteleWALLET",
+      "ogDescription": "Registru modular cu verificare — rețele EVM active, testnet-uri, module TVK și integrări viitoare."
     }
+  },
+  "networks": {
+    "eyebrow": "Registru modular de lanțuri",
+    "title": "Rețele suportate și module ecosistem TVK",
+    "subtitle": "EnteleWALLET folosește un registru modular de lanțuri. Rețelele se activează doar după verificare RPC, teste de semnătură, explorer și detectare sold/token.",
+    "sectionActive": "Rețele active",
+    "sectionTestnet": "Rețele de test",
+    "sectionTvk": "Ecosistem TVK",
+    "sectionComingSoon": "Rețele viitoare",
+    "sectionExperimental": "Rețele experimentale",
+    "securityRule": "Nicio rețea nu este activată pentru tranzacții reale până nu trece verificarea RPC, testele de semnătură, explorerul și detectarea sold/token.",
+    "registryNote": "Acest registru este lista canonică Faza 1 pentru EnteleWALLET. Aplicația portofel folosește aceste date și aplică porți de verificare înainte de a activa tranzacțiile.",
+    "downloadRegistry": "Descarcă chain-registry.json",
+    "statusActive": "Activă",
+    "statusTestnet": "Sınaq şəbəkəsi",
+    "statusPlanned": "Planificată",
+    "statusExperimental": "Experimentală",
+    "riskLabel": "Risc",
+    "riskLow": "Scăzut",
+    "riskMedium": "Mediu",
+    "riskHigh": "Ridicat",
+    "riskUnverified": "Neverificat",
+    "chainId": "ID lanț",
+    "tokenStandards": "Standarde token",
+    "watchOnly": "Doar vizualizare",
+    "walletConnect": "WalletConnect",
+    "transactionsEnabled": "Tranzacții activate",
+    "transactionsGated": "Tranzacții restricționate"
   }
 }

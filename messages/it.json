@@ -54,7 +54,9 @@
     "emailSecurity": "security@entelewallet.com",
     "emailPartners": "partners@entelewallet.com",
     "emailSecurityTvk": "security@tvk.group",
-    "emailSupport": "support@tvk.group"
+    "emailSupport": "support@tvk.group",
+    "navNetworks": "Reti",
+    "footerNetworks": "Reti supportate"
   },
   "home": {
     "eyebrow": "EnteleKRON Livello di accesso al portafoglio nativo",
@@ -674,6 +676,40 @@
       "description": "Domande frequenti su EnteleWALLET Lite, connessione al portafoglio, custodia, firme, maturazione, domini ufficiali e rapporti sulla sicurezza.",
       "ogTitle": "EnteleWALLET Domande frequenti",
       "ogDescription": "Risposte alle domande comuni su EnteleWALLET Lite e sulla sicurezza del portafoglio dell'ecosistema."
+    },
+    "networks": {
+      "title": "Reti EnteleWALLET | Registro modulare ed ecosistema TVK",
+      "description": "Registro ufficiale per Ethereum, Base, Polygon, BNB Chain, Arbitrum, Optimism, Avalanche, testnet, moduli TVK e BlockDAG.",
+      "ogTitle": "Reti supportate EnteleWALLET",
+      "ogDescription": "Registro modulare con verifica — reti EVM attive, testnet, moduli TVK e integrazioni future."
     }
+  },
+  "networks": {
+    "eyebrow": "Registro catene modulare",
+    "title": "Reti supportate e moduli ecosistema TVK",
+    "subtitle": "EnteleWALLET usa un registro catene modulare. Le reti si attivano solo dopo verifica RPC, test firma, explorer e rilevamento saldo/token — mai aggiunte alla cieca.",
+    "sectionActive": "Reti attive",
+    "sectionTestnet": "Reti di test",
+    "sectionTvk": "Ecosistema TVK",
+    "sectionComingSoon": "Reti in arrivo",
+    "sectionExperimental": "Reti sperimentali",
+    "securityRule": "Nessuna rete è abilitata per transazioni reali finché non supera verifica RPC, test firma, explorer e rilevamento saldo/token.",
+    "registryNote": "Questo registro è l'elenco canonico Fase 1 per EnteleWALLET. L'app wallet consuma questi dati e applica gate di verifica prima di abilitare le transazioni.",
+    "downloadRegistry": "Scarica chain-registry.json",
+    "statusActive": "Attiva",
+    "statusTestnet": "Sınaq şəbəkəsi",
+    "statusPlanned": "Pianificata",
+    "statusExperimental": "Sperimentale",
+    "riskLabel": "Rischio",
+    "riskLow": "Basso",
+    "riskMedium": "Medio",
+    "riskHigh": "Alto",
+    "riskUnverified": "Non verificato",
+    "chainId": "ID catena",
+    "tokenStandards": "Standard token",
+    "watchOnly": "Sola lettura",
+    "walletConnect": "WalletConnect",
+    "transactionsEnabled": "Transazioni abilitate",
+    "transactionsGated": "Transazioni limitate"
   }
 }

@@ -54,7 +54,9 @@
     "emailSecurity": "security@entelewallet.com",
     "emailPartners": "partners@entelewallet.com",
     "emailSecurityTvk": "security@tvk.group",
-    "emailSupport": "support@tvk.group"
+    "emailSupport": "support@tvk.group",
+    "navNetworks": "Réseaux",
+    "footerNetworks": "Réseaux pris en charge"
   },
   "home": {
     "eyebrow": "EnteleKRON Couche d'accès au portefeuille natif",
@@ -674,6 +676,40 @@
       "description": "Questions fréquemment posées sur EnteleWALLET Lite, la connexion au portefeuille, la garde, les signatures, l'acquisition, les domaines officiels et les rapports de sécurité.",
       "ogTitle": "FAQ EnteleWALLET",
       "ogDescription": "Réponses aux questions courantes sur EnteleWALLET Lite et la sécurité du portefeuille de l'écosystème."
+    },
+    "networks": {
+      "title": "Réseaux EnteleWALLET | Registre modulaire et écosystème TVK",
+      "description": "Registre officiel pour Ethereum, Base, Polygon, BNB Chain, Arbitrum, Optimism, Avalanche, testnets, modules TVK et BlockDAG.",
+      "ogTitle": "Réseaux pris en charge EnteleWALLET",
+      "ogDescription": "Registre modulaire avec vérification — réseaux EVM actifs, testnets, modules TVK et intégrations à venir."
     }
+  },
+  "networks": {
+    "eyebrow": "Registre de chaînes modulaire",
+    "title": "Réseaux pris en charge et modules écosystème TVK",
+    "subtitle": "EnteleWALLET utilise un registre de chaînes modulaire. Les réseaux ne sont activés qu'après vérification RPC, tests de signature, explorateur et détection solde/token — jamais ajoutés à l'aveugle.",
+    "sectionActive": "Réseaux actifs",
+    "sectionTestnet": "Réseaux de test",
+    "sectionTvk": "Écosystème TVK",
+    "sectionComingSoon": "Réseaux à venir",
+    "sectionExperimental": "Réseaux expérimentaux",
+    "securityRule": "Aucun réseau n'est activé pour de vraies transactions tant que la vérification RPC, les tests de signature, l'explorateur et la détection solde/token ne sont pas réussis.",
+    "registryNote": "Ce registre est la liste canonique Phase 1 pour EnteleWALLET. L'application portefeuille consomme ces données et applique des portes de vérification avant d'activer les transactions.",
+    "downloadRegistry": "Télécharger chain-registry.json",
+    "statusActive": "Actif",
+    "statusTestnet": "Sınaq şəbəkəsi",
+    "statusPlanned": "Planifié",
+    "statusExperimental": "Expérimental",
+    "riskLabel": "Risque",
+    "riskLow": "Faible",
+    "riskMedium": "Moyen",
+    "riskHigh": "Élevé",
+    "riskUnverified": "Non vérifié",
+    "chainId": "ID de chaîne",
+    "tokenStandards": "Standards de jetons",
+    "watchOnly": "Lecture seule",
+    "walletConnect": "WalletConnect",
+    "transactionsEnabled": "Transactions activées",
+    "transactionsGated": "Transactions restreintes"
   }
 }

@@ -54,7 +54,9 @@
     "emailSecurity": "security@entelewallet.com",
     "emailPartners": "partners@entelewallet.com",
     "emailSecurityTvk": "security@tvk.group",
-    "emailSupport": "support@tvk.group"
+    "emailSupport": "support@tvk.group",
+    "navNetworks": "Rangkaian",
+    "footerNetworks": "Rangkaian disokong"
   },
   "home": {
     "eyebrow": "Lapisan Akses Dompet Native EnteleKRON",
@@ -674,6 +676,40 @@
       "description": "Soalan lazim tentang EnteleWALLET Lite, koneksi dompet, penjagaan, tanda tangan, pemegangan berperingkat, domain resmi, dan pelaporan keamanan.",
       "ogTitle": "FAQ EnteleWALLET",
       "ogDescription": "Jawaban atas soalan umum tentang EnteleWALLET Lite dan keselamatan dompet ekosistem."
+    },
+    "networks": {
+      "title": "Rangkaian EnteleWALLET | Daftar modular dan ekosistem TVK",
+      "description": "Daftar rantai rasmi untuk Ethereum, Base, Polygon, BNB Chain, Arbitrum, Optimism, Avalanche, testnet, modul TVK, dan BlockDAG.",
+      "ogTitle": "Rangkaian disokong EnteleWALLET",
+      "ogDescription": "Daftar modular dengan pengesahan — rangkaian EVM aktif, testnet, modul TVK, dan integrasi akan datang."
     }
+  },
+  "networks": {
+    "eyebrow": "Daftar rantai modular",
+    "title": "Rangkaian disokong dan modul ekosistem TVK",
+    "subtitle": "EnteleWALLET menggunakan daftar rantai modular. Rangkaian hanya diaktifkan selepas pengesahan RPC, ujian tandatangan, penyemak explorer, dan pengesanan baki/token.",
+    "sectionActive": "Rangkaian aktif",
+    "sectionTestnet": "Rangkaian ujian",
+    "sectionTvk": "Ekosistem TVK",
+    "sectionComingSoon": "Rangkaian akan datang",
+    "sectionExperimental": "Rangkaian eksperimen",
+    "securityRule": "Tiada rangkaian didayakan untuk transaksi sebenar sehingga lulus pengesahan RPC, ujian tandatangan, explorer, dan pengesanan baki/token.",
+    "registryNote": "Daftar ini ialah senarai rangkaian Fasa 1 rasmi untuk EnteleWALLET. Apl dompet menggunakan data ini dan menggunakan pintu pengesahan sebelum mendayakan transaksi.",
+    "downloadRegistry": "Muat turun chain-registry.json",
+    "statusActive": "Aktif",
+    "statusTestnet": "Sınaq şəbəkəsi",
+    "statusPlanned": "Dirancang",
+    "statusExperimental": "Eksperimen",
+    "riskLabel": "Risiko",
+    "riskLow": "Rendah",
+    "riskMedium": "Sederhana",
+    "riskHigh": "Tinggi",
+    "riskUnverified": "Belum disahkan",
+    "chainId": "ID Rantai",
+    "tokenStandards": "Piawaian token",
+    "watchOnly": "Pantau sahaja",
+    "walletConnect": "WalletConnect",
+    "transactionsEnabled": "Transaksi didayakan",
+    "transactionsGated": "Transaksi dihadkan"
   }
 }

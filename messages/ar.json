@@ -54,7 +54,9 @@
     "emailSecurity": "security@entelewallet.com",
     "emailPartners": "partners@entelewallet.com",
     "emailSecurityTvk": "security@tvk.group",
-    "emailSupport": "support@tvk.group"
+    "emailSupport": "support@tvk.group",
+    "navNetworks": "الشبكات",
+    "footerNetworks": "الشبكات المدعومة"
   },
   "home": {
     "eyebrow": "طبقة الوصول الأصلية لمحفظة EnteleKRON",
@@ -674,6 +676,40 @@
       "description": "أسئلة شائعة حول EnteleWALLET Lite وربط المحفظة والاحتجاز والتوقيعات والاستحقاق والنطاقات الرسمية والإبلاغ الأمني.",
       "ogTitle": "أسئلة EnteleWALLET الشائعة",
       "ogDescription": "إجابات على أسئلة شائعة حول EnteleWALLET Lite وأمان المحفظة في النظام البيئي."
+    },
+    "networks": {
+      "title": "شبكات EnteleWALLET | سجل السلاسل المعياري ونظام TVK",
+      "description": "سجل السلاسل الرسمي لـ EnteleWALLET لشبكات EVM الرئيسية وشبكات الاختبار ووحدات TVK والشبكات المخططة مثل BlockDAG.",
+      "ogTitle": "شبكات EnteleWALLET المدعومة",
+      "ogDescription": "سجل سلاسل معياري مع بوابات تحقق — شبكات EVM نشطة وشبكات اختبار ووحدات TVK وتكاملات قادمة."
     }
+  },
+  "networks": {
+    "eyebrow": "سجل السلاسل المعياري",
+    "title": "الشبكات المدعومة ووحدات نظام TVK البيئي",
+    "subtitle": "يستخدم EnteleWALLET سجل سلاسل معياري. لا يتم تفعيل الشبكات إلا بعد التحقق من RPC واختبارات التوقيع وفحص المستكشف واكتشاف الرصيد/الرمز — وليس بشكل عشوائي.",
+    "sectionActive": "الشبكات النشطة",
+    "sectionTestnet": "شبكات الاختبار",
+    "sectionTvk": "نظام TVK البيئي",
+    "sectionComingSoon": "شبكات قادمة",
+    "sectionExperimental": "شبكات تجريبية",
+    "securityRule": "لا يتم تفعيل أي شبكة للمعاملات الحقيقية حتى تجتاز التحقق من RPC واختبارات التوقيع والمستكشف واكتشاف الرصيد/الرمز.",
+    "registryNote": "هذا السجل هو قائمة الشبكات الرسمية للمرحلة 1 لـ EnteleWALLET. يستهلك تطبيق المحفظة هذه البيانات ويطبق بوابات التحقق قبل تفعيل المعاملات.",
+    "downloadRegistry": "تنزيل chain-registry.json",
+    "statusActive": "نشط",
+    "statusTestnet": "اختبار",
+    "statusPlanned": "مخطط",
+    "statusExperimental": "تجريبي",
+    "riskLabel": "المخاطر",
+    "riskLow": "منخفض",
+    "riskMedium": "متوسط",
+    "riskHigh": "مرتفع",
+    "riskUnverified": "غير موثق",
+    "chainId": "معرف السلسلة",
+    "tokenStandards": "معايير الرموز",
+    "watchOnly": "قراءة فقط",
+    "walletConnect": "WalletConnect",
+    "transactionsEnabled": "المعاملات مفعلة",
+    "transactionsGated": "المعاملات مقيدة"
   }
 }

@@ -6,6 +6,8 @@
   "scripts": {
     "build": "node scripts/build.mjs",
     "i18n:check": "node scripts/check-i18n.mjs",
+    "chains:check": "node scripts/check-chain-registry.mjs",
+    "chains:verify": "node scripts/verify-chains.mjs",
     "typecheck": "tsc --noEmit",
     "lint": "echo 'No linter configured'"
   },

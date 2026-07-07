@@ -54,7 +54,9 @@
     "emailSecurity": "security@entelewallet.com",
     "emailPartners": "partners@entelewallet.com",
     "emailSecurityTvk": "security@tvk.group",
-    "emailSupport": "support@tvk.group"
+    "emailSupport": "support@tvk.group",
+    "navNetworks": "Sieci",
+    "footerNetworks": "Obsługiwane sieci"
   },
   "home": {
     "eyebrow": "Natywna warstwa dostępu do portfela EnteleKRON",
@@ -674,6 +676,40 @@
       "description": "Często zadawane pytania dotyczące EnteleWALLET Lite, połączenia z portfelem, opieki, podpisów, nabywania uprawnień, oficjalnych domen i raportowania bezpieczeństwa.",
       "ogTitle": "Często zadawane pytania dotyczące EnteleWALLET",
       "ogDescription": "Odpowiedzi na często zadawane pytania dotyczące EnteleWALLET Lite i bezpieczeństwa portfela ekosystemowego."
+    },
+    "networks": {
+      "title": "Sieci EnteleWALLET | Modułowy rejestr i ekosystem TVK",
+      "description": "Oficjalny rejestr łańcuchów dla Ethereum, Base, Polygon, BNB Chain, Arbitrum, Optimism, Avalanche, testnetów, modułów TVK i BlockDAG.",
+      "ogTitle": "Obsługiwane sieci EnteleWALLET",
+      "ogDescription": "Modułowy rejestr z weryfikacją — aktywne sieci EVM, testnety, moduły TVK i nadchodzące integracje."
     }
+  },
+  "networks": {
+    "eyebrow": "Modułowy rejestr łańcuchów",
+    "title": "Obsługiwane sieci i moduły ekosystemu TVK",
+    "subtitle": "EnteleWALLET używa modułowego rejestru łańcuchów. Sieci są aktywowane dopiero po weryfikacji RPC, testach podpisu, explorerze i wykrywaniu salda/tokena.",
+    "sectionActive": "Aktywne sieci",
+    "sectionTestnet": "Sieci testowe",
+    "sectionTvk": "Ekosystem TVK",
+    "sectionComingSoon": "Nadchodzące sieci",
+    "sectionExperimental": "Sieci eksperymentalne",
+    "securityRule": "Żadna sieć nie jest włączana do rzeczywistych transakcji, dopóki nie przejdzie weryfikacji RPC, testów podpisu, explorera i wykrywania salda/tokena.",
+    "registryNote": "Ten rejestr to kanoniczna lista sieci Fazy 1 dla EnteleWALLET. Aplikacja portfela korzysta z tych danych i stosuje bramki weryfikacji przed włączeniem transakcji.",
+    "downloadRegistry": "Pobierz chain-registry.json",
+    "statusActive": "Aktywna",
+    "statusTestnet": "Sınaq şəbəkəsi",
+    "statusPlanned": "Planowana",
+    "statusExperimental": "Eksperymentalna",
+    "riskLabel": "Ryzyko",
+    "riskLow": "Niskie",
+    "riskMedium": "Średnie",
+    "riskHigh": "Wysokie",
+    "riskUnverified": "Niezweryfikowane",
+    "chainId": "ID łańcucha",
+    "tokenStandards": "Standardy tokenów",
+    "watchOnly": "Tylko podgląd",
+    "walletConnect": "WalletConnect",
+    "transactionsEnabled": "Transakcje włączone",
+    "transactionsGated": "Transakcje ograniczone"
   }
 }

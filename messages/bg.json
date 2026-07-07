@@ -54,7 +54,9 @@
     "emailSecurity": "security@entelewallet.com",
     "emailPartners": "partners@entelewallet.com",
     "emailSecurityTvk": "security@tvk.group",
-    "emailSupport": "support@tvk.group"
+    "emailSupport": "support@tvk.group",
+    "navNetworks": "Мрежи",
+    "footerNetworks": "Поддържани мрежи"
   },
   "home": {
     "eyebrow": "Нативен слой за достъп до портфейл EnteleKRON",
@@ -674,6 +676,40 @@
       "description": "Често задавани въпроси относно EnteleWALLET Lite, връзка с портфейла, попечителство, подписи, придобиване, официални домейни и отчитане на сигурността.",
       "ogTitle": "ЧЗВ за EnteleWALLET",
       "ogDescription": "Отговори на често срещани въпроси относно EnteleWALLET Lite и безопасността на екосистемния портфейл."
+    },
+    "networks": {
+      "title": "EnteleWALLET мрежи | Модулен регистър и TVK екосистема",
+      "description": "Официален регистър на вериги за Ethereum, Base, Polygon, BNB Chain, Arbitrum, Optimism, Avalanche, тестнети, TVK модули и BlockDAG.",
+      "ogTitle": "Поддържани мрежи на EnteleWALLET",
+      "ogDescription": "Модулен регистър с проверки — активни EVM мрежи, тестнети, TVK модули и предстоящи интеграции."
     }
+  },
+  "networks": {
+    "eyebrow": "Модулен регистър на вериги",
+    "title": "Поддържани мрежи и TVK екосистемни модули",
+    "subtitle": "EnteleWALLET използва модулен регистър на вериги. Мрежите се активират само след RPC проверка, тестове за подпис, проверка на explorer и откриване на баланс/токен.",
+    "sectionActive": "Активни мрежи",
+    "sectionTestnet": "Тестови мрежи",
+    "sectionTvk": "TVK екосистема",
+    "sectionComingSoon": "Предстоящи мрежи",
+    "sectionExperimental": "Експериментални мрежи",
+    "securityRule": "Никоя мрежа не се активира за реални транзакции, докато не премине RPC проверка, тестове за подпис, explorer и откриване на баланс/токен.",
+    "registryNote": "Този регистър е каноничният списък за Фаза 1 на EnteleWALLET. Приложението използва тези данни и прилага проверки преди активиране на транзакции.",
+    "downloadRegistry": "Изтегли chain-registry.json",
+    "statusActive": "Активна",
+    "statusTestnet": "Тестнет",
+    "statusPlanned": "Планирана",
+    "statusExperimental": "Експериментална",
+    "riskLabel": "Риск",
+    "riskLow": "Нисък",
+    "riskMedium": "Среден",
+    "riskHigh": "Висок",
+    "riskUnverified": "Непроверен",
+    "chainId": "Идентификатор на верига",
+    "tokenStandards": "Стандарти за токени",
+    "watchOnly": "Само наблюдение",
+    "walletConnect": "WalletConnect",
+    "transactionsEnabled": "Транзакции активни",
+    "transactionsGated": "Транзакции ограничени"
   }
 }

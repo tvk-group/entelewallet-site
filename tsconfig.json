@@ -11,5 +11,5 @@
     "allowImportingTsExtensions": true,
     "isolatedModules": true
   },
-  "include": ["config/languages.ts"]
+  "include": ["config/languages.ts", "config/chain-registry/**/*.ts"]
 }

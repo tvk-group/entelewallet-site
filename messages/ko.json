@@ -54,7 +54,9 @@
     "emailSecurity": "security@entelewallet.com",
     "emailPartners": "partners@entelewallet.com",
     "emailSecurityTvk": "security@tvk.group",
-    "emailSupport": "support@tvk.group"
+    "emailSupport": "support@tvk.group",
+    "navNetworks": "네트워크",
+    "footerNetworks": "지원 네트워크"
   },
   "home": {
     "eyebrow": "EnteleKRON 네이티브 지갑 액세스 레이어",
@@ -674,6 +676,40 @@
       "description": "EnteleWALLET Lite, 지갑 연결, 보관, 서명, 베스팅, 공식 도메인 및 보안 보고에 대해 자주 묻는 질문입니다.",
       "ogTitle": "__PRESERVE_1__ FAQ",
       "ogDescription": "EnteleWALLET Lite 및 생태계 지갑 안전에 관한 일반적인 질문에 대한 답변입니다."
+    },
+    "networks": {
+      "title": "EnteleWALLET 네트워크 | 모듈형 레지스트리 및 TVK 생태계",
+      "description": "Ethereum, Base, Polygon, BNB Chain, Arbitrum, Optimism, Avalanche, 테스트넷, TVK 모듈, BlockDAG용 공식 체인 레지스트리.",
+      "ogTitle": "EnteleWALLET 지원 네트워크",
+      "ogDescription": "검증 게이트가 있는 모듈형 레지스트리 — 활성 EVM 네트워크, 테스트넷, TVK 모듈 및 향후 통합."
     }
+  },
+  "networks": {
+    "eyebrow": "모듈형 체인 레지스트리",
+    "title": "지원 네트워크 및 TVK 생태계 모듈",
+    "subtitle": "EnteleWALLET은 모듈형 체인 레지스트리를 사용합니다. RPC 검증, 서명 테스트, 익스플로러 확인, 잔액/토큰 감지 후에만 네트워크가 활성화됩니다.",
+    "sectionActive": "활성 네트워크",
+    "sectionTestnet": "테스트 네트워크",
+    "sectionTvk": "TVK 생태계",
+    "sectionComingSoon": "출시 예정 네트워크",
+    "sectionExperimental": "실험적 네트워크",
+    "securityRule": "RPC 검증, 서명 테스트, 익스플로러 검증, 잔액/토큰 감지 테스트를 통과하기 전까지 실제 거래는 활성화되지 않습니다.",
+    "registryNote": "이 레지스트리는 EnteleWALLET의 공식 1단계 네트워크 목록입니다. 지갑 앱은 이 데이터를 사용하고 거래 활성화 전 검증 게이트를 적용합니다.",
+    "downloadRegistry": "chain-registry.json 다운로드",
+    "statusActive": "활성",
+    "statusTestnet": "테스트넷",
+    "statusPlanned": "예정",
+    "statusExperimental": "실험적",
+    "riskLabel": "위험",
+    "riskLow": "낮음",
+    "riskMedium": "중간",
+    "riskHigh": "높음",
+    "riskUnverified": "미검증",
+    "chainId": "체인 ID",
+    "tokenStandards": "토큰 표준",
+    "watchOnly": "조회 전용",
+    "walletConnect": "WalletConnect",
+    "transactionsEnabled": "거래 활성화",
+    "transactionsGated": "거래 제한"
   }
 }

@@ -54,7 +54,9 @@
     "emailSecurity": "security@entelewallet.com",
     "emailPartners": "partners@entelewallet.com",
     "emailSecurityTvk": "security@tvk.group",
-    "emailSupport": "support@tvk.group"
+    "emailSupport": "support@tvk.group",
+    "navNetworks": "نیٹ ورکس",
+    "footerNetworks": "معاون نیٹ ورکس"
   },
   "home": {
     "eyebrow": "EnteleKRON مقامی والیٹ تک رسائی کی تہہ",
@@ -674,6 +676,40 @@
       "description": "EnteleWALLET Lite، والٹ کنکشن، تحویل، دستخط، بنیان، آفیشل ڈومینز، اور سیکورٹی رپورٹنگ کے بارے میں اکثر پوچھے جانے والے سوالات۔",
       "ogTitle": "EnteleWALLET FAQ",
       "ogDescription": "EnteleWALLET Lite اور ایکو سسٹم والیٹ سیفٹی کے بارے میں عام سوالات کے جوابات۔"
+    },
+    "networks": {
+      "title": "EnteleWALLET نیٹ ورکس | ماڈیولر رجسٹری اور TVK ایکو سسٹم",
+      "description": "Ethereum، Base، Polygon، BNB Chain، Arbitrum، Optimism، Avalanche، ٹیسٹ نیٹس، TVK ماڈیولز اور BlockDAG کے لیے سرکاری چین رجسٹری۔",
+      "ogTitle": "EnteleWALLET معاون نیٹ ورکس",
+      "ogDescription": "تصدیق کے دروازوں کے ساتھ ماڈیولر رجسٹری — فعال EVM نیٹ ورکس، ٹیسٹ نیٹس، TVK ماڈیولز اور آئندہ انضمام۔"
     }
+  },
+  "networks": {
+    "eyebrow": "ماڈیولر چین رجسٹری",
+    "title": "معاون نیٹ ورکس اور TVK ایکو سسٹم ماڈیولز",
+    "subtitle": "EnteleWALLET ماڈیولر چین رجسٹری استعمال کرتا ہے۔ نیٹ ورکس صرف RPC تصدیق، دستخط ٹیسٹ، ایکسپلورر چیک اور بیلنس/ٹوکن کی شناخت کے بعد فعال ہوتے ہیں۔",
+    "sectionActive": "فعال نیٹ ورکس",
+    "sectionTestnet": "ٹیسٹ نیٹ ورکس",
+    "sectionTvk": "TVK ایکو سسٹم",
+    "sectionComingSoon": "جلد آنے والے نیٹ ورکس",
+    "sectionExperimental": "تجرباتی نیٹ ورکس",
+    "securityRule": "کوئی بھی نیٹ ورک حقیقی لین دین کے لیے فعال نہیں ہوتا جب تک RPC تصدیق، دستخط ٹیسٹ، ایکسپلورر اور بیلنس/ٹوکن ٹیسٹ پاس نہ کر لے۔",
+    "registryNote": "یہ رجسٹری EnteleWALLET کے لیے سرکاری فیز 1 نیٹ ورک فہرست ہے۔ والیٹ ایپ یہ ڈیٹا استعمال کرتی ہے اور لین دین فعال کرنے سے پہلے تصدیق کے دروازے لگاتی ہے۔",
+    "downloadRegistry": "chain-registry.json ڈاؤن لوڈ کریں",
+    "statusActive": "فعال",
+    "statusTestnet": "ٹیسٹ نیٹ",
+    "statusPlanned": "منصوبہ بند",
+    "statusExperimental": "تجرباتی",
+    "riskLabel": "خطرہ",
+    "riskLow": "کم",
+    "riskMedium": "درمیانہ",
+    "riskHigh": "زیادہ",
+    "riskUnverified": "غیر تصدیق شدہ",
+    "chainId": "چین ID",
+    "tokenStandards": "ٹوکن معیارات",
+    "watchOnly": "صرف دیکھیں",
+    "walletConnect": "WalletConnect",
+    "transactionsEnabled": "لین دین فعال",
+    "transactionsGated": "لین دین محدود"
   }
 }
