@@ -193,6 +193,15 @@ async function buildNetworkSectionsHtml(t) {
     .join("\n    ");
 }
 
+function renderHreflangLinks(path, languages) {
+  const pageUrl = `${SITE_URL}${path === "/" ? "" : path}`;
+  const defaultLink = `<link rel="alternate" hreflang="x-default" href="${pageUrl}?lang=en" />`;
+  const links = languages.map(
+    (l) => `<link rel="alternate" hreflang="${esc(l.code)}" href="${pageUrl}?lang=${esc(l.code)}" />`,
+  );
+  return [defaultLink, ...links].join("\n  ");
+}
+
 function pageTemplates(t, networkSectionsHtml = "", networkNavHtml = "") {
   const T = (key) => esc(t(key) || key);
   const di = (key) => `data-i18n="${key}"`;
@@ -696,6 +705,7 @@ function renderPage({ pageId, path, languages, messages, networkSectionsHtml = "
 
   const i18nJson = JSON.stringify(messages).replace(/</g, "\\u003c");
   const langJson = JSON.stringify(languages).replace(/</g, "\\u003c");
+  const canonicalUrl = `${SITE_URL}${path === "/" ? "" : path}`;
 
   return `<!DOCTYPE html>
 <html lang="en">
@@ -704,6 +714,8 @@ function renderPage({ pageId, path, languages, messages, networkSectionsHtml = "
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>${esc(enMeta.title || "EnteleWALLET")}</title>
   <meta name="description" content="${esc(enMeta.description || "")}" />
+  <link rel="canonical" href="${canonicalUrl}" />
+  ${renderHreflangLinks(path, languages)}
   <meta property="og:title" content="${esc(enMeta.ogTitle || enMeta.title || "EnteleWALLET")}" />
   <meta property="og:description" content="${esc(enMeta.ogDescription || enMeta.description || "")}" />
   <meta property="og:type" content="website" />
