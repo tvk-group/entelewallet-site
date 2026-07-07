@@ -3,9 +3,9 @@
 Official public website for **EnteleWALLET** — marketing, trust, security, roadmap, documentation, and domain verification.
 
 - **Website:** https://entelewallet.com
-- **Wallet app (separate repo):** https://app.entelewallet.com
+- **Wallet app:** https://app.entelewallet.com — repo: [tvk-group/entelewallet](https://github.com/tvk-group/entelewallet)
 
-This repository is **not** the wallet application. The current public product positioning is **EnteleWALLET Lite** — a secure wallet-connected dashboard for verification and read-only monitoring.
+This repository is the **marketing and trust website**. The wallet application lives in the separate `entelewallet` monorepo.
 
 ## Development
 
