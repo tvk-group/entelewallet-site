@@ -1,0 +1,1435 @@
+From 837806b3f8b410d8686d2d4f432d7cb636f4d506 Mon Sep 17 00:00:00 2001
+From: Cursor Agent <cursoragent@cursor.com>
+Date: Tue, 7 Jul 2026 09:19:06 +0000
+Subject: [PATCH] Fix wallet persistence and integrate modular chain registry
+
+- Enable Wagmi reconnectOnMount so wallet stays connected after refresh
+- Add Phase 1 chain registry (8 mainnets + BlockDAG experimental; testnets in dev)
+- Wire wagmi/viem chains from registry instead of Ethereum + Base only
+- Add network picker on Assets page with chain switch controls
+- Show loading state while wagmi reconnects on Assets and Overview
+- Copy chain icons and add networks i18n keys across all locales
+---
+ apps/web/public/icons/chains/arbitrum.svg     |   1 +
+ apps/web/public/icons/chains/avalanche.svg    |   1 +
+ apps/web/public/icons/chains/base.svg         |   1 +
+ apps/web/public/icons/chains/blockdag.svg     |   1 +
+ apps/web/public/icons/chains/bnb.svg          |   1 +
+ apps/web/public/icons/chains/energiemind.svg  |   1 +
+ apps/web/public/icons/chains/entelekron.svg   |   1 +
+ apps/web/public/icons/chains/enteleledger.svg |   1 +
+ apps/web/public/icons/chains/entelescan.svg   |   1 +
+ apps/web/public/icons/chains/ethereum.svg     |   1 +
+ apps/web/public/icons/chains/optimism.svg     |   1 +
+ apps/web/public/icons/chains/polygon.svg      |   1 +
+ apps/web/public/icons/chains/sovra.svg        |   1 +
+ apps/web/public/icons/chains/tvk.svg          |   1 +
+ apps/web/src/app/assets/page.tsx              |  16 +-
+ apps/web/src/app/overview/page.tsx            |  14 +-
+ .../src/components/network-chain-picker.tsx   |  66 +++++
+ apps/web/src/lib/entele-chains.ts             |  53 +++++
+ apps/web/src/lib/wagmi.ts                     |   8 +-
+ apps/web/src/lib/web3-provider.tsx            |   2 +-
+ docs/WALLETCONNECT_SETUP.md                   |   2 +-
+ .../config/src/chain-registry/chains.json     | 225 ++++++++++++++++++
+ packages/config/src/chain-registry/index.ts   |   3 +
+ .../config/src/chain-registry/registry.ts     |  62 +++++
+ .../src/chain-registry/tvk-modules.json       |  77 ++++++
+ packages/config/src/chain-registry/types.ts   |  62 +++++
+ .../config/src/chain-registry/verification.ts |  30 +++
+ packages/config/src/chains.ts                 |  79 +++---
+ packages/i18n/messages/ar.json                |   6 +
+ packages/i18n/messages/az.json                |   6 +
+ packages/i18n/messages/bg.json                |   6 +
+ packages/i18n/messages/de.json                |   6 +
+ packages/i18n/messages/el.json                |   6 +
+ packages/i18n/messages/en.json                |   6 +
+ packages/i18n/messages/es.json                |   6 +
+ packages/i18n/messages/fa.json                |   6 +
+ packages/i18n/messages/fr.json                |   6 +
+ packages/i18n/messages/hi.json                |   6 +
+ packages/i18n/messages/id.json                |   6 +
+ packages/i18n/messages/it.json                |   6 +
+ packages/i18n/messages/ja.json                |   6 +
+ packages/i18n/messages/ka.json                |   6 +
+ packages/i18n/messages/ko.json                |   6 +
+ packages/i18n/messages/ms.json                |   6 +
+ packages/i18n/messages/nl.json                |   6 +
+ packages/i18n/messages/pl.json                |   6 +
+ packages/i18n/messages/pt.json                |   6 +
+ packages/i18n/messages/ro.json                |   6 +
+ packages/i18n/messages/ru.json                |   6 +
+ packages/i18n/messages/tr.json                |   6 +
+ packages/i18n/messages/uk.json                |   6 +
+ packages/i18n/messages/ur.json                |   6 +
+ packages/i18n/messages/zh.json                |   6 +
+ 53 files changed, 818 insertions(+), 45 deletions(-)
+ create mode 100644 apps/web/public/icons/chains/arbitrum.svg
+ create mode 100644 apps/web/public/icons/chains/avalanche.svg
+ create mode 100644 apps/web/public/icons/chains/base.svg
+ create mode 100644 apps/web/public/icons/chains/blockdag.svg
+ create mode 100644 apps/web/public/icons/chains/bnb.svg
+ create mode 100644 apps/web/public/icons/chains/energiemind.svg
+ create mode 100644 apps/web/public/icons/chains/entelekron.svg
+ create mode 100644 apps/web/public/icons/chains/enteleledger.svg
+ create mode 100644 apps/web/public/icons/chains/entelescan.svg
+ create mode 100644 apps/web/public/icons/chains/ethereum.svg
+ create mode 100644 apps/web/public/icons/chains/optimism.svg
+ create mode 100644 apps/web/public/icons/chains/polygon.svg
+ create mode 100644 apps/web/public/icons/chains/sovra.svg
+ create mode 100644 apps/web/public/icons/chains/tvk.svg
+ create mode 100644 apps/web/src/components/network-chain-picker.tsx
+ create mode 100644 apps/web/src/lib/entele-chains.ts
+ create mode 100644 packages/config/src/chain-registry/chains.json
+ create mode 100644 packages/config/src/chain-registry/index.ts
+ create mode 100644 packages/config/src/chain-registry/registry.ts
+ create mode 100644 packages/config/src/chain-registry/tvk-modules.json
+ create mode 100644 packages/config/src/chain-registry/types.ts
+ create mode 100644 packages/config/src/chain-registry/verification.ts
+
+diff --git a/apps/web/public/icons/chains/arbitrum.svg b/apps/web/public/icons/chains/arbitrum.svg
+new file mode 100644
+index 0000000..2b18e5e
+--- /dev/null
++++ b/apps/web/public/icons/chains/arbitrum.svg
+@@ -0,0 +1 @@
++<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" fill="none"><circle cx="16" cy="16" r="16" fill="#213147"/><path d="M16 8l2.5 2.5-5 5 5 5L16 23l-7.5-7.5L16 8zm5.5 0L24 10.5l-2.5 2.5L19 10.5 21.5 8zM24 16l-2.5 2.5L19 16l2.5-2.5L24 16z" fill="#28A0F0"/></svg>
+diff --git a/apps/web/public/icons/chains/avalanche.svg b/apps/web/public/icons/chains/avalanche.svg
+new file mode 100644
+index 0000000..361d817
+--- /dev/null
++++ b/apps/web/public/icons/chains/avalanche.svg
+@@ -0,0 +1 @@
++<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" fill="none"><circle cx="16" cy="16" r="16" fill="#E84142"/><path d="M10 20c2.5 2 6.5 2 9 0l-1.5-1.8c-1.8 1.4-4.2 1.4-6 0L10 20zm2-4c1.5 1.2 3.5 1.2 5 0l-1.5-1.8c-.8.6-1.7.6-2.5 0L12 16z" fill="#fff"/></svg>
+diff --git a/apps/web/public/icons/chains/base.svg b/apps/web/public/icons/chains/base.svg
+new file mode 100644
+index 0000000..e13b921
+--- /dev/null
++++ b/apps/web/public/icons/chains/base.svg
+@@ -0,0 +1 @@
++<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" fill="none"><circle cx="16" cy="16" r="16" fill="#0052FF"/><path d="M16 6l-6 10.5L16 28l6-11.5L16 6z" fill="#fff"/></svg>
+diff --git a/apps/web/public/icons/chains/blockdag.svg b/apps/web/public/icons/chains/blockdag.svg
+new file mode 100644
+index 0000000..4077b24
+--- /dev/null
++++ b/apps/web/public/icons/chains/blockdag.svg
+@@ -0,0 +1 @@
++<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" fill="none"><circle cx="16" cy="16" r="16" fill="#1a1a2e"/><path d="M8 20h4l2-8 2 8h4l-4-14h-4L8 20z" fill="#6b4cff" opacity=".6"/><circle cx="16" cy="16" r="3" fill="#12c8ff"/></svg>
+diff --git a/apps/web/public/icons/chains/bnb.svg b/apps/web/public/icons/chains/bnb.svg
+new file mode 100644
+index 0000000..159bc0e
+--- /dev/null
++++ b/apps/web/public/icons/chains/bnb.svg
+@@ -0,0 +1 @@
++<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" fill="none"><circle cx="16" cy="16" r="16" fill="#F0B90B"/><path d="M12.2 10.5h3.1l5.5 3.2v6.4l-2.7 1.6-2.8-1.6v-3.2l-2.8-1.6V10.5zm7.4 9.6l2.8 1.6V14.3l-5.5-3.2h-3.1v6.4l2.8 1.6 2.8-1.6v-3.2z" fill="#1E1E1E"/></svg>
+diff --git a/apps/web/public/icons/chains/energiemind.svg b/apps/web/public/icons/chains/energiemind.svg
+new file mode 100644
+index 0000000..f839c89
+--- /dev/null
++++ b/apps/web/public/icons/chains/energiemind.svg
+@@ -0,0 +1 @@
++<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" fill="none"><circle cx="16" cy="16" r="16" fill="#12b886"/><text x="16" y="20" text-anchor="middle" fill="#fff" font-size="8" font-weight="700" font-family="system-ui">ENM</text></svg>
+diff --git a/apps/web/public/icons/chains/entelekron.svg b/apps/web/public/icons/chains/entelekron.svg
+new file mode 100644
+index 0000000..4979ba6
+--- /dev/null
++++ b/apps/web/public/icons/chains/entelekron.svg
+@@ -0,0 +1 @@
++<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" fill="none"><circle cx="16" cy="16" r="16" fill="#0b6fff"/><text x="16" y="20" text-anchor="middle" fill="#fff" font-size="11" font-weight="700" font-family="system-ui">�K</text></svg>
+diff --git a/apps/web/public/icons/chains/enteleledger.svg b/apps/web/public/icons/chains/enteleledger.svg
+new file mode 100644
+index 0000000..d037f81
+--- /dev/null
++++ b/apps/web/public/icons/chains/enteleledger.svg
+@@ -0,0 +1 @@
++<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" fill="none"><circle cx="16" cy="16" r="16" fill="#07152d"/><text x="16" y="20" text-anchor="middle" fill="#12c8ff" font-size="7" font-weight="700" font-family="system-ui">LEDGER</text></svg>
+diff --git a/apps/web/public/icons/chains/entelescan.svg b/apps/web/public/icons/chains/entelescan.svg
+new file mode 100644
+index 0000000..174ee58
+--- /dev/null
++++ b/apps/web/public/icons/chains/entelescan.svg
+@@ -0,0 +1 @@
++<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" fill="none"><circle cx="16" cy="16" r="16" fill="#0b6fff"/><text x="16" y="20" text-anchor="middle" fill="#fff" font-size="8" font-weight="700" font-family="system-ui">SCAN</text></svg>
+diff --git a/apps/web/public/icons/chains/ethereum.svg b/apps/web/public/icons/chains/ethereum.svg
+new file mode 100644
+index 0000000..92ae122
+--- /dev/null
++++ b/apps/web/public/icons/chains/ethereum.svg
+@@ -0,0 +1 @@
++<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" fill="none"><circle cx="16" cy="16" r="16" fill="#627EEA"/><path d="M16.5 4v8.87l7.27 3.43L16.5 4zm0 17.73V28l7.37-10.2L16.5 21.73zM8.23 16.3l8.27 3.87V12.87L8.23 16.3zm8.27 5.43l8.27-3.87-8.27-4.6v8.47z" fill="#fff" fill-opacity=".9"/></svg>
+diff --git a/apps/web/public/icons/chains/optimism.svg b/apps/web/public/icons/chains/optimism.svg
+new file mode 100644
+index 0000000..d70d5e8
+--- /dev/null
++++ b/apps/web/public/icons/chains/optimism.svg
+@@ -0,0 +1 @@
++<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" fill="none"><circle cx="16" cy="16" r="16" fill="#FF0420"/><circle cx="16" cy="16" r="6" fill="#fff"/></svg>
+diff --git a/apps/web/public/icons/chains/polygon.svg b/apps/web/public/icons/chains/polygon.svg
+new file mode 100644
+index 0000000..7251bb3
+--- /dev/null
++++ b/apps/web/public/icons/chains/polygon.svg
+@@ -0,0 +1 @@
++<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" fill="none"><circle cx="16" cy="16" r="16" fill="#8247E5"/><path d="M19.5 12.2c-.4-2.3-2.4-3.8-4.6-3.4-1.5.3-2.7 1.4-3.1 2.8-.5 1.8.2 3.6 1.6 4.6-1.9 1-3.1 3-2.9 5.3.3 2.5 2.3 4.4 4.8 4.5 2.8.1 5.1-2.1 5.2-4.9.1-1.8-.7-3.4-2-4.4 1.3-.9 2.1-2.4 2-4.5z" fill="#fff"/></svg>
+diff --git a/apps/web/public/icons/chains/sovra.svg b/apps/web/public/icons/chains/sovra.svg
+new file mode 100644
+index 0000000..315ec50
+--- /dev/null
++++ b/apps/web/public/icons/chains/sovra.svg
+@@ -0,0 +1 @@
++<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" fill="none"><circle cx="16" cy="16" r="16" fill="#6b4cff"/><text x="16" y="20" text-anchor="middle" fill="#fff" font-size="9" font-weight="700" font-family="system-ui">SOV</text></svg>
+diff --git a/apps/web/public/icons/chains/tvk.svg b/apps/web/public/icons/chains/tvk.svg
+new file mode 100644
+index 0000000..53f43b4
+--- /dev/null
++++ b/apps/web/public/icons/chains/tvk.svg
+@@ -0,0 +1 @@
++<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" fill="none"><circle cx="16" cy="16" r="16" fill="#07152d"/><text x="16" y="20" text-anchor="middle" fill="#fff" font-size="9" font-weight="700" font-family="system-ui">TVK</text></svg>
+diff --git a/apps/web/src/app/assets/page.tsx b/apps/web/src/app/assets/page.tsx
+index 4fac693..975307c 100644
+--- a/apps/web/src/app/assets/page.tsx
++++ b/apps/web/src/app/assets/page.tsx
+@@ -3,6 +3,7 @@
+ import Link from 'next/link';
+ import { PageLayout } from '@/components/page-layout';
+ import { AssetGrid } from '@/components/asset-grid';
++import { NetworkChainPicker } from '@/components/network-chain-picker';
+ import { useT } from '@/lib/i18n-context';
+ import { ROUTES } from '@entelewallet/config';
+ import { Card, CardContent, Button } from '@entelewallet/ui';
+@@ -10,11 +11,17 @@ import { useAccount } from 'wagmi';
+ 
+ export default function AssetsPage() {
+   const t = useT();
+-  const { isConnected } = useAccount();
++  const { isConnected, status } = useAccount();
+ 
+   return (
+     <PageLayout title={t('assets.title')} description={t('assets.description')}>
+-      {!isConnected ? (
++      {status === 'reconnecting' ? (
++        <Card>
++          <CardContent className="p-8 text-center">
++            <p className="text-slate-500">{t('common.loading')}</p>
++          </CardContent>
++        </Card>
++      ) : !isConnected ? (
+         <Card>
+           <CardContent className="p-8 text-center">
+             <p className="text-slate-500">{t('common.connectToView')}</p>
+@@ -24,7 +31,10 @@ export default function AssetsPage() {
+           </CardContent>
+         </Card>
+       ) : (
+-        <AssetGrid />
++        <div className="space-y-6">
++          <NetworkChainPicker />
++          <AssetGrid />
++        </div>
+       )}
+     </PageLayout>
+   );
+diff --git a/apps/web/src/app/overview/page.tsx b/apps/web/src/app/overview/page.tsx
+index c865898..9ae877d 100644
+--- a/apps/web/src/app/overview/page.tsx
++++ b/apps/web/src/app/overview/page.tsx
+@@ -15,11 +15,23 @@ import { truncateAddress } from '@entelewallet/utils';
+ 
+ export default function OverviewPage() {
+   const t = useT();
+-  const { address, isConnected } = useAccount();
++  const { address, isConnected, status } = useAccount();
+   const chainId = useChainId();
+   const { verificationStatus, isVerified } = useWalletStatus();
+   const chain = getChainConfig(chainId);
+ 
++  if (status === 'reconnecting') {
++    return (
++      <PageLayout title={t('overview.title')} description={t('overview.description')}>
++        <Card>
++          <CardContent className="p-8 text-center">
++            <p className="text-slate-500">{t('common.loading')}</p>
++          </CardContent>
++        </Card>
++      </PageLayout>
++    );
++  }
++
+   if (!isConnected) {
+     return (
+       <PageLayout title={t('overview.title')} description={t('overview.description')}>
+diff --git a/apps/web/src/components/network-chain-picker.tsx b/apps/web/src/components/network-chain-picker.tsx
+new file mode 100644
+index 0000000..70fb120
+--- /dev/null
++++ b/apps/web/src/components/network-chain-picker.tsx
+@@ -0,0 +1,66 @@
++'use client';
++
++import Image from 'next/image';
++import { getWalletConnectChains } from '@entelewallet/config';
++import { cn } from '@entelewallet/utils';
++import { useT } from '@/lib/i18n-context';
++import { useAccount, useChainId, useSwitchChain } from 'wagmi';
++
++export function NetworkChainPicker({ className }: { className?: string }) {
++  const t = useT();
++  const chainId = useChainId();
++  const { isConnected } = useAccount();
++  const { switchChain, isPending } = useSwitchChain();
++  const chains = getWalletConnectChains();
++
++  if (!isConnected) return null;
++
++  return (
++    <div className={cn('space-y-3', className)}>
++      <div className="flex items-center justify-between gap-3">
++        <h2 className="text-sm font-semibold text-slate-800">{t('networks.title')}</h2>
++        <span className="text-xs text-slate-500">{t('networks.switchHint')}</span>
++      </div>
++      <div className="flex flex-wrap gap-2">
++        {chains.map((chain) => {
++          const active = chain.chainId === chainId;
++          return (
++            <button
++              key={chain.id}
++              type="button"
++              disabled={isPending || active}
++              onClick={() => switchChain({ chainId: chain.chainId })}
++              className={cn(
++                'inline-flex items-center gap-2 rounded-xl border px-3 py-2 text-sm font-medium transition',
++                active
++                  ? 'border-cyan-300 bg-gradient-to-r from-cyan-50 to-violet-50 text-blue-900 shadow-sm'
++                  : 'border-slate-200 bg-white text-slate-700 hover:border-cyan-200 hover:bg-cyan-50/50',
++                isPending && !active && 'opacity-60',
++              )}
++              aria-pressed={active}
++            >
++              <Image
++                src={chain.icon}
++                alt=""
++                width={20}
++                height={20}
++                className="h-5 w-5 rounded-full"
++              />
++              <span>{chain.name}</span>
++              {chain.status === 'experimental' && (
++                <span className="rounded bg-amber-100 px-1.5 py-0.5 text-[10px] font-semibold uppercase tracking-wide text-amber-800">
++                  {t('networks.experimental')}
++                </span>
++              )}
++              {chain.status === 'testnet' && (
++                <span className="rounded bg-slate-100 px-1.5 py-0.5 text-[10px] font-semibold uppercase tracking-wide text-slate-600">
++                  {t('networks.testnet')}
++                </span>
++              )}
++            </button>
++          );
++        })}
++      </div>
++    </div>
++  );
++}
+diff --git a/apps/web/src/lib/entele-chains.ts b/apps/web/src/lib/entele-chains.ts
+new file mode 100644
+index 0000000..fe69eea
+--- /dev/null
++++ b/apps/web/src/lib/entele-chains.ts
+@@ -0,0 +1,53 @@
++import { defineChain, type Chain } from 'viem';
++import {
++  arbitrum,
++  avalanche,
++  base,
++  baseSepolia,
++  bsc,
++  mainnet,
++  optimism,
++  polygon,
++  sepolia,
++} from 'viem/chains';
++import { getWalletConnectChains } from '@entelewallet/config';
++
++const KNOWN_CHAINS: Record<number, Chain> = {
++  [mainnet.id]: mainnet,
++  [base.id]: base,
++  [polygon.id]: polygon,
++  [bsc.id]: bsc,
++  [arbitrum.id]: arbitrum,
++  [optimism.id]: optimism,
++  [avalanche.id]: avalanche,
++  [sepolia.id]: sepolia,
++  [baseSepolia.id]: baseSepolia,
++};
++
++function registryChainToViem(chain: ReturnType<typeof getWalletConnectChains>[number]): Chain {
++  const known = KNOWN_CHAINS[chain.chainId];
++  if (known) return known;
++
++  return defineChain({
++    id: chain.chainId,
++    name: chain.name,
++    nativeCurrency: chain.nativeCurrency,
++    rpcUrls: {
++      default: { http: chain.rpcUrls },
++    },
++    blockExplorers: {
++      default: {
++        name: chain.name,
++        url: chain.blockExplorerUrls[0] ?? '',
++      },
++    },
++    testnet: chain.status === 'testnet',
++  });
++}
++
++/** Wagmi/viem chain list derived from the modular chain registry. */
++export function getEnteleViemChains(): readonly [Chain, ...Chain[]] {
++  const chains = getWalletConnectChains().map(registryChainToViem);
++  if (chains.length === 0) return [mainnet];
++  return chains as [Chain, ...Chain[]];
++}
+diff --git a/apps/web/src/lib/wagmi.ts b/apps/web/src/lib/wagmi.ts
+index 8a2d319..509c145 100644
+--- a/apps/web/src/lib/wagmi.ts
++++ b/apps/web/src/lib/wagmi.ts
+@@ -8,9 +8,10 @@ import {
+   rabbyWallet,
+   walletConnectWallet,
+ } from '@rainbow-me/rainbowkit/wallets';
+-import { mainnet, base, sepolia } from 'wagmi/chains';
++import { mainnet } from 'wagmi/chains';
+ import { createConfig, http, type Config } from 'wagmi';
+ import { CANONICAL_APP_URL } from '@entelewallet/config';
++import { getEnteleViemChains } from '@/lib/entele-chains';
+ 
+ /**
+  * RainbowKit requires a projectId string even when WalletConnect is disabled in the UI.
+@@ -28,10 +29,7 @@ export function isValidWalletConnectProjectId(projectId: string): boolean {
+ 
+ export const isWalletConnectConfigured = isValidWalletConnectProjectId(walletConnectProjectId);
+ 
+-export const enteleChains =
+-  process.env.NODE_ENV === 'development'
+-    ? ([mainnet, base, sepolia] as const)
+-    : ([mainnet, base] as const);
++export const enteleChains = getEnteleViemChains();
+ 
+ function walletConnectMetadata() {
+   // Use canonical URL for SSR-safe config; both production domains must be Reown-allowlisted.
+diff --git a/apps/web/src/lib/web3-provider.tsx b/apps/web/src/lib/web3-provider.tsx
+index 36f86a9..6cfdf50 100644
+--- a/apps/web/src/lib/web3-provider.tsx
++++ b/apps/web/src/lib/web3-provider.tsx
+@@ -113,7 +113,7 @@ export function WalletProviders({ children }: { children: ReactNode }) {
+   const config = useMemo(() => createEnteleWagmiConfig(), []);
+ 
+   return (
+-    <WagmiProvider config={config} reconnectOnMount={false}>
++    <WagmiProvider config={config} reconnectOnMount>
+       <QueryClientProvider client={queryClient}>
+         <RainbowKitInner>{children}</RainbowKitInner>
+       </QueryClientProvider>
+diff --git a/docs/WALLETCONNECT_SETUP.md b/docs/WALLETCONNECT_SETUP.md
+index 1484bf8..b155023 100644
+--- a/docs/WALLETCONNECT_SETUP.md
++++ b/docs/WALLETCONNECT_SETUP.md
+@@ -74,7 +74,7 @@ If the test button fails, check:
+ - ✅ `@tanstack/react-query`
+ - ❌ Do not add Reown AppKit alongside RainbowKit for the same connect flow
+ - ❌ Do not call `openConnectModal()` in `useEffect` on page load
+-- ✅ `reconnectOnMount={false}` on `WagmiProvider`
++- ✅ `reconnectOnMount` on `WagmiProvider` (default) — wallet stays connected across page refresh until disconnect
+ 
+ ## 6. Honest wallet list
+ 
+diff --git a/packages/config/src/chain-registry/chains.json b/packages/config/src/chain-registry/chains.json
+new file mode 100644
+index 0000000..a9d0ede
+--- /dev/null
++++ b/packages/config/src/chain-registry/chains.json
+@@ -0,0 +1,225 @@
++[
++  {
++    "id": "ethereum",
++    "chainId": 1,
++    "name": "Ethereum",
++    "shortName": "ETH",
++    "nativeCurrency": { "name": "Ether", "symbol": "ETH", "decimals": 18 },
++    "rpcUrls": ["https://ethereum.publicnode.com", "https://rpc.ankr.com/eth"],
++    "blockExplorerUrls": ["https://etherscan.io"],
++    "icon": "/icons/chains/ethereum.svg",
++    "status": "active",
++    "uiCategory": "active",
++    "tokenStandards": ["native", "ERC-20", "ERC-721", "ERC-1155"],
++    "riskFlag": "low",
++    "capabilities": { "watchOnly": true, "walletConnect": true, "transactions": false },
++    "verification": {
++      "rpcVerified": false,
++      "explorerVerified": false,
++      "signingTested": false,
++      "balanceDetectionTested": false,
++      "tokenDetectionTested": false
++    }
++  },
++  {
++    "id": "base",
++    "chainId": 8453,
++    "name": "Base",
++    "shortName": "BASE",
++    "nativeCurrency": { "name": "Ether", "symbol": "ETH", "decimals": 18 },
++    "rpcUrls": ["https://mainnet.base.org", "https://base.publicnode.com"],
++    "blockExplorerUrls": ["https://basescan.org"],
++    "icon": "/icons/chains/base.svg",
++    "status": "active",
++    "uiCategory": "active",
++    "tokenStandards": ["native", "ERC-20", "ERC-721", "ERC-1155"],
++    "riskFlag": "low",
++    "capabilities": { "watchOnly": true, "walletConnect": true, "transactions": false },
++    "verification": {
++      "rpcVerified": false,
++      "explorerVerified": false,
++      "signingTested": false,
++      "balanceDetectionTested": false,
++      "tokenDetectionTested": false
++    }
++  },
++  {
++    "id": "polygon",
++    "chainId": 137,
++    "name": "Polygon",
++    "shortName": "POL",
++    "nativeCurrency": { "name": "POL", "symbol": "POL", "decimals": 18 },
++    "rpcUrls": ["https://polygon-rpc.com", "https://polygon.publicnode.com"],
++    "blockExplorerUrls": ["https://polygonscan.com"],
++    "icon": "/icons/chains/polygon.svg",
++    "status": "active",
++    "uiCategory": "active",
++    "tokenStandards": ["native", "ERC-20", "ERC-721", "ERC-1155"],
++    "riskFlag": "low",
++    "capabilities": { "watchOnly": true, "walletConnect": true, "transactions": false },
++    "verification": {
++      "rpcVerified": false,
++      "explorerVerified": false,
++      "signingTested": false,
++      "balanceDetectionTested": false,
++      "tokenDetectionTested": false
++    }
++  },
++  {
++    "id": "bnb",
++    "chainId": 56,
++    "name": "BNB Chain",
++    "shortName": "BNB",
++    "nativeCurrency": { "name": "BNB", "symbol": "BNB", "decimals": 18 },
++    "rpcUrls": ["https://bsc-dataseed.binance.org", "https://bsc.publicnode.com"],
++    "blockExplorerUrls": ["https://bscscan.com"],
++    "icon": "/icons/chains/bnb.svg",
++    "status": "active",
++    "uiCategory": "active",
++    "tokenStandards": ["native", "ERC-20", "ERC-721", "ERC-1155"],
++    "riskFlag": "medium",
++    "capabilities": { "watchOnly": true, "walletConnect": true, "transactions": false },
++    "verification": {
++      "rpcVerified": false,
++      "explorerVerified": false,
++      "signingTested": false,
++      "balanceDetectionTested": false,
++      "tokenDetectionTested": false
++    }
++  },
++  {
++    "id": "arbitrum",
++    "chainId": 42161,
++    "name": "Arbitrum",
++    "shortName": "ARB",
++    "nativeCurrency": { "name": "Ether", "symbol": "ETH", "decimals": 18 },
++    "rpcUrls": ["https://arb1.arbitrum.io/rpc", "https://arbitrum.publicnode.com"],
++    "blockExplorerUrls": ["https://arbiscan.io"],
++    "icon": "/icons/chains/arbitrum.svg",
++    "status": "active",
++    "uiCategory": "active",
++    "tokenStandards": ["native", "ERC-20", "ERC-721", "ERC-1155"],
++    "riskFlag": "low",
++    "capabilities": { "watchOnly": true, "walletConnect": true, "transactions": false },
++    "verification": {
++      "rpcVerified": false,
++      "explorerVerified": false,
++      "signingTested": false,
++      "balanceDetectionTested": false,
++      "tokenDetectionTested": false
++    }
++  },
++  {
++    "id": "optimism",
++    "chainId": 10,
++    "name": "Optimism",
++    "shortName": "OP",
++    "nativeCurrency": { "name": "Ether", "symbol": "ETH", "decimals": 18 },
++    "rpcUrls": ["https://mainnet.optimism.io", "https://optimism.publicnode.com"],
++    "blockExplorerUrls": ["https://optimistic.etherscan.io"],
++    "icon": "/icons/chains/optimism.svg",
++    "status": "active",
++    "uiCategory": "active",
++    "tokenStandards": ["native", "ERC-20", "ERC-721", "ERC-1155"],
++    "riskFlag": "low",
++    "capabilities": { "watchOnly": true, "walletConnect": true, "transactions": false },
++    "verification": {
++      "rpcVerified": false,
++      "explorerVerified": false,
++      "signingTested": false,
++      "balanceDetectionTested": false,
++      "tokenDetectionTested": false
++    }
++  },
++  {
++    "id": "avalanche",
++    "chainId": 43114,
++    "name": "Avalanche",
++    "shortName": "AVAX",
++    "nativeCurrency": { "name": "Avalanche", "symbol": "AVAX", "decimals": 18 },
++    "rpcUrls": ["https://api.avax.network/ext/bc/C/rpc", "https://avalanche.publicnode.com"],
++    "blockExplorerUrls": ["https://snowtrace.io"],
++    "icon": "/icons/chains/avalanche.svg",
++    "status": "active",
++    "uiCategory": "active",
++    "tokenStandards": ["native", "ERC-20", "ERC-721", "ERC-1155"],
++    "riskFlag": "low",
++    "capabilities": { "watchOnly": true, "walletConnect": true, "transactions": false },
++    "verification": {
++      "rpcVerified": false,
++      "explorerVerified": false,
++      "signingTested": false,
++      "balanceDetectionTested": false,
++      "tokenDetectionTested": false
++    }
++  },
++  {
++    "id": "sepolia",
++    "chainId": 11155111,
++    "name": "Sepolia",
++    "shortName": "SEP",
++    "nativeCurrency": { "name": "Sepolia Ether", "symbol": "ETH", "decimals": 18 },
++    "rpcUrls": ["https://ethereum-sepolia.publicnode.com", "https://rpc.sepolia.org"],
++    "blockExplorerUrls": ["https://sepolia.etherscan.io"],
++    "icon": "/icons/chains/ethereum.svg",
++    "status": "testnet",
++    "uiCategory": "testnet",
++    "tokenStandards": ["native", "ERC-20", "ERC-721", "ERC-1155"],
++    "riskFlag": "medium",
++    "capabilities": { "watchOnly": true, "walletConnect": true, "transactions": false },
++    "verification": {
++      "rpcVerified": false,
++      "explorerVerified": false,
++      "signingTested": false,
++      "balanceDetectionTested": false,
++      "tokenDetectionTested": false
++    },
++    "notes": "Test network — no real funds."
++  },
++  {
++    "id": "base-sepolia",
++    "chainId": 84532,
++    "name": "Base Sepolia",
++    "shortName": "BASE-SEP",
++    "nativeCurrency": { "name": "Sepolia Ether", "symbol": "ETH", "decimals": 18 },
++    "rpcUrls": ["https://sepolia.base.org", "https://base-sepolia.publicnode.com"],
++    "blockExplorerUrls": ["https://sepolia.basescan.org"],
++    "icon": "/icons/chains/base.svg",
++    "status": "testnet",
++    "uiCategory": "testnet",
++    "tokenStandards": ["native", "ERC-20", "ERC-721", "ERC-1155"],
++    "riskFlag": "medium",
++    "capabilities": { "watchOnly": true, "walletConnect": true, "transactions": false },
++    "verification": {
++      "rpcVerified": false,
++      "explorerVerified": false,
++      "signingTested": false,
++      "balanceDetectionTested": false,
++      "tokenDetectionTested": false
++    },
++    "notes": "Test network — no real funds."
++  },
++  {
++    "id": "blockdag",
++    "chainId": 1404,
++    "name": "BlockDAG Mainnet",
++    "shortName": "BDAG",
++    "nativeCurrency": { "name": "BlockDAG", "symbol": "BDAG", "decimals": 18 },
++    "rpcUrls": ["https://rpc.bdagscan.com/"],
++    "blockExplorerUrls": ["https://bdagscan.com/"],
++    "icon": "/icons/chains/blockdag.svg",
++    "status": "experimental",
++    "uiCategory": "experimental",
++    "tokenStandards": ["native", "ERC-20", "ERC-721", "ERC-1155"],
++    "riskFlag": "medium",
++    "capabilities": { "watchOnly": true, "walletConnect": true, "transactions": false },
++    "verification": {
++      "rpcVerified": false,
++      "explorerVerified": false,
++      "signingTested": false,
++      "balanceDetectionTested": false,
++      "tokenDetectionTested": false
++    },
++    "notes": "Official BlockDAG Mainnet (EVM-compatible, chain ID 1404). Watch-only and portfolio tracking until RPC, explorer, signing, and balance/token detection tests pass. Use only https://rpc.bdagscan.com/ and https://bdagscan.com/ when adding manually."
++  }
++]
+diff --git a/packages/config/src/chain-registry/index.ts b/packages/config/src/chain-registry/index.ts
+new file mode 100644
+index 0000000..a7fd35d
+--- /dev/null
++++ b/packages/config/src/chain-registry/index.ts
+@@ -0,0 +1,3 @@
++export * from './types';
++export * from './verification';
++export * from './registry';
+diff --git a/packages/config/src/chain-registry/registry.ts b/packages/config/src/chain-registry/registry.ts
+new file mode 100644
+index 0000000..d6fefd0
+--- /dev/null
++++ b/packages/config/src/chain-registry/registry.ts
+@@ -0,0 +1,62 @@
++import chainsData from './chains.json';
++import tvkModulesData from './tvk-modules.json';
++import type { ChainDefinition, ChainStatus, TvkModule, UiCategory } from './types';
++import { withTransactionGate } from './verification';
++
++const UI_SECTION_ORDER: UiCategory[] = [
++  'active',
++  'testnet',
++  'tvk-ecosystem',
++  'coming-soon',
++  'experimental',
++];
++
++export function loadChains(): ChainDefinition[] {
++  return (chainsData as ChainDefinition[]).map(withTransactionGate);
++}
++
++export function loadTvkModules(): TvkModule[] {
++  return tvkModulesData as TvkModule[];
++}
++
++export function getChainById(id: string): ChainDefinition | undefined {
++  return loadChains().find((chain) => chain.id === id);
++}
++
++export function getChainByChainId(chainId: number): ChainDefinition | undefined {
++  return loadChains().find((chain) => chain.chainId === chainId);
++}
++
++export function getChainsByUiCategory(category: UiCategory): ChainDefinition[] {
++  return loadChains().filter((chain) => chain.uiCategory === category);
++}
++
++export function getRegistrySections(): Array<{
++  id: UiCategory;
++  chains: ChainDefinition[];
++  modules: TvkModule[];
++}> {
++  const chains = loadChains();
++  const modules = loadTvkModules();
++
++  return UI_SECTION_ORDER.map((id) => ({
++    id,
++    chains: chains.filter((chain) => chain.uiCategory === id),
++    modules: modules.filter((module) => module.uiCategory === id),
++  })).filter((section) => section.chains.length > 0 || section.modules.length > 0);
++}
++
++export function getWalletConnectChains(options?: { includeTestnets?: boolean }): ChainDefinition[] {
++  const includeTestnets = options?.includeTestnets ?? process.env.NODE_ENV === 'development';
++
++  return loadChains().filter((chain) => {
++    if (!chain.capabilities.walletConnect || !chain.rpcUrls.length) return false;
++    if (chain.status === 'testnet' && !includeTestnets) return false;
++    if (chain.status === 'planned') return false;
++    return true;
++  });
++}
++
++export function getSupportedChainIds(options?: { includeTestnets?: boolean }): number[] {
++  return getWalletConnectChains(options).map((chain) => chain.chainId);
++}
+diff --git a/packages/config/src/chain-registry/tvk-modules.json b/packages/config/src/chain-registry/tvk-modules.json
+new file mode 100644
+index 0000000..4b69867
+--- /dev/null
++++ b/packages/config/src/chain-registry/tvk-modules.json
+@@ -0,0 +1,77 @@
++[
++  {
++    "id": "entelekron",
++    "name": "ENTELΞKRON",
++    "type": "ecosystem-module",
++    "description": "Trust infrastructure platform organizing identity, verification, integrity, and interoperability across the TVK ecosystem.",
++    "status": "active",
++    "uiCategory": "tvk-ecosystem",
++    "icon": "/icons/chains/entelekron.svg",
++    "supportedChains": ["ethereum"],
++    "riskFlag": "low",
++    "capabilities": { "watchOnly": true, "walletConnect": true, "transactions": false },
++    "notes": "Featured TVK ecosystem module — ENK and transparency integrations on verified EVM networks."
++  },
++  {
++    "id": "sovra",
++    "name": "SOVRA",
++    "type": "ecosystem-module",
++    "description": "Intelligence layer coordinating modules, trust workflows, and future AI-assisted wallet guidance.",
++    "status": "active",
++    "uiCategory": "tvk-ecosystem",
++    "icon": "/icons/chains/sovra.svg",
++    "supportedChains": ["ethereum"],
++    "riskFlag": "low",
++    "capabilities": { "watchOnly": true, "walletConnect": true, "transactions": false }
++  },
++  {
++    "id": "energiemind",
++    "name": "EnergieMIND",
++    "type": "ecosystem-module",
++    "description": "Energy infrastructure module connected to the broader TVK and EnteleKRON ecosystem architecture.",
++    "status": "active",
++    "uiCategory": "tvk-ecosystem",
++    "icon": "/icons/chains/energiemind.svg",
++    "supportedChains": ["ethereum"],
++    "riskFlag": "medium",
++    "capabilities": { "watchOnly": true, "walletConnect": false, "transactions": false }
++  },
++  {
++    "id": "entelescan",
++    "name": "EnteleSCAN",
++    "type": "ecosystem-module",
++    "description": "Explorer and visibility layer for contracts, treasury wallets, and ecosystem address verification.",
++    "status": "active",
++    "uiCategory": "tvk-ecosystem",
++    "icon": "/icons/chains/entelescan.svg",
++    "supportedChains": ["ethereum", "base", "polygon", "arbitrum", "optimism"],
++    "riskFlag": "low",
++    "capabilities": { "watchOnly": true, "walletConnect": false, "transactions": false }
++  },
++  {
++    "id": "enteleledger",
++    "name": "EnteleLEDGER",
++    "type": "ecosystem-module",
++    "description": "Audit-ready ledger and integrity records for ecosystem verification events and compliance workflows.",
++    "status": "planned",
++    "uiCategory": "tvk-ecosystem",
++    "icon": "/icons/chains/enteleledger.svg",
++    "supportedChains": ["ethereum"],
++    "riskFlag": "medium",
++    "capabilities": { "watchOnly": true, "walletConnect": false, "transactions": false },
++    "notes": "In development — read-only portfolio and verification views first."
++  },
++  {
++    "id": "tvk-chain",
++    "name": "TVK Chain Integrations",
++    "type": "chain-integration",
++    "description": "Future native TVK chain integrations and cross-chain bridges — activated only after full verification.",
++    "status": "planned",
++    "uiCategory": "tvk-ecosystem",
++    "icon": "/icons/chains/tvk.svg",
++    "supportedChains": [],
++    "riskFlag": "unverified",
++    "capabilities": { "watchOnly": true, "walletConnect": false, "transactions": false },
++    "notes": "Coming soon — requires verified RPC, explorer, chain ID, and signing compatibility."
++  }
++]
+diff --git a/packages/config/src/chain-registry/types.ts b/packages/config/src/chain-registry/types.ts
+new file mode 100644
+index 0000000..e3a50df
+--- /dev/null
++++ b/packages/config/src/chain-registry/types.ts
+@@ -0,0 +1,62 @@
++export type ChainStatus = 'active' | 'testnet' | 'planned' | 'experimental';
++
++export type UiCategory =
++  | 'active'
++  | 'testnet'
++  | 'tvk-ecosystem'
++  | 'coming-soon'
++  | 'experimental';
++
++export type RiskFlag = 'low' | 'medium' | 'high' | 'unverified';
++
++export type TokenStandard = 'native' | 'ERC-20' | 'ERC-721' | 'ERC-1155';
++
++export type ChainVerification = {
++  rpcVerified: boolean;
++  explorerVerified: boolean;
++  signingTested: boolean;
++  balanceDetectionTested: boolean;
++  tokenDetectionTested: boolean;
++};
++
++export type ChainCapabilities = {
++  watchOnly: boolean;
++  walletConnect: boolean;
++  transactions: boolean;
++};
++
++export type ChainDefinition = {
++  id: string;
++  chainId: number;
++  name: string;
++  shortName: string;
++  nativeCurrency: {
++    name: string;
++    symbol: string;
++    decimals: number;
++  };
++  rpcUrls: string[];
++  blockExplorerUrls: string[];
++  icon: string;
++  status: ChainStatus;
++  uiCategory: UiCategory;
++  tokenStandards: TokenStandard[];
++  riskFlag: RiskFlag;
++  capabilities: ChainCapabilities;
++  verification: ChainVerification;
++  notes?: string;
++};
++
++export type TvkModule = {
++  id: string;
++  name: string;
++  type: 'ecosystem-module' | 'chain-integration';
++  description: string;
++  status: ChainStatus;
++  uiCategory: 'tvk-ecosystem';
++  icon: string;
++  supportedChains: string[];
++  riskFlag: RiskFlag;
++  capabilities: ChainCapabilities;
++  notes?: string;
++};
+diff --git a/packages/config/src/chain-registry/verification.ts b/packages/config/src/chain-registry/verification.ts
+new file mode 100644
+index 0000000..c687973
+--- /dev/null
++++ b/packages/config/src/chain-registry/verification.ts
+@@ -0,0 +1,30 @@
++import type { ChainDefinition, ChainVerification } from './types';
++
++const VERIFICATION_KEYS: (keyof ChainVerification)[] = [
++  'rpcVerified',
++  'explorerVerified',
++  'signingTested',
++  'balanceDetectionTested',
++  'tokenDetectionTested',
++];
++
++export function isFullyVerified(verification: ChainVerification): boolean {
++  return VERIFICATION_KEYS.every((key) => verification[key] === true);
++}
++
++export function canEnableTransactions(chain: ChainDefinition): boolean {
++  if (!chain.rpcUrls.length) return false;
++  if (!chain.blockExplorerUrls.length) return false;
++  if (chain.status === 'planned') return false;
++  return isFullyVerified(chain.verification);
++}
++
++export function withTransactionGate(chain: ChainDefinition): ChainDefinition {
++  return {
++    ...chain,
++    capabilities: {
++      ...chain.capabilities,
++      transactions: canEnableTransactions(chain),
++    },
++  };
++}
+diff --git a/packages/config/src/chains.ts b/packages/config/src/chains.ts
+index 73badc8..ae769f5 100644
+--- a/packages/config/src/chains.ts
++++ b/packages/config/src/chains.ts
+@@ -1,41 +1,52 @@
+ import type { ChainConfig } from '@entelewallet/types';
++import {
++  getChainByChainId,
++  getSupportedChainIds,
++  getWalletConnectChains,
++  loadChains,
++} from './chain-registry';
++
++export {
++  getChainByChainId,
++  getChainById,
++  getChainsByUiCategory,
++  getRegistrySections,
++  getSupportedChainIds,
++  getWalletConnectChains,
++  loadChains,
++  loadTvkModules,
++} from './chain-registry';
++
++export type { ChainDefinition, TvkModule, UiCategory } from './chain-registry';
++
++function toChainConfig(chain: ReturnType<typeof loadChains>[number]): ChainConfig {
++  const explorer = chain.blockExplorerUrls[0] ?? '';
++  const explorerName = explorer.includes('etherscan')
++    ? 'Etherscan'
++    : chain.name;
++
++  return {
++    id: chain.chainId,
++    name: chain.name,
++    nativeCurrency: chain.nativeCurrency,
++    rpcUrls: chain.rpcUrls,
++    blockExplorers: {
++      default: { name: explorerName, url: explorer },
++    },
++    testnet: chain.status === 'testnet',
++  };
++}
++
++export const SUPPORTED_CHAIN_IDS: number[] = getSupportedChainIds();
+ 
+-const isDev = process.env.NODE_ENV === 'development';
+-
+-const BASE_CHAINS: Record<number, ChainConfig> = {
+-  1: {
+-    id: 1,
+-    name: 'Ethereum',
+-    nativeCurrency: { name: 'Ether', symbol: 'ETH', decimals: 18 },
+-    rpcUrls: [process.env.NEXT_PUBLIC_ETHEREUM_RPC_URL || 'https://ethereum.publicnode.com'],
+-    blockExplorers: { default: { name: 'Etherscan', url: 'https://etherscan.io' } },
+-  },
+-  8453: {
+-    id: 8453,
+-    name: 'Base',
+-    nativeCurrency: { name: 'Ether', symbol: 'ETH', decimals: 18 },
+-    rpcUrls: [process.env.NEXT_PUBLIC_BASE_RPC_URL || 'https://mainnet.base.org'],
+-    blockExplorers: { default: { name: 'Basescan', url: 'https://basescan.org' } },
+-  },
+-};
+-
+-const SEPOLIA_CHAIN: ChainConfig = {
+-  id: 11155111,
+-  name: 'Sepolia',
+-  nativeCurrency: { name: 'Sepolia Ether', symbol: 'ETH', decimals: 18 },
+-  rpcUrls: ['https://rpc.sepolia.org'],
+-  blockExplorers: { default: { name: 'Etherscan', url: 'https://sepolia.etherscan.io' } },
+-  testnet: true,
+-};
+-
+-export const SUPPORTED_CHAIN_IDS: number[] = isDev ? [1, 8453, 11155111] : [1, 8453];
+-
+-export const CHAINS: Record<number, ChainConfig> = isDev
+-  ? { ...BASE_CHAINS, 11155111: SEPOLIA_CHAIN }
+-  : BASE_CHAINS;
++export const CHAINS: Record<number, ChainConfig> = Object.fromEntries(
++  getWalletConnectChains().map((chain) => [chain.chainId, toChainConfig(chain)]),
++);
+ 
+ export function getChainConfig(chainId: number): ChainConfig | undefined {
+-  return CHAINS[chainId];
++  const fromRegistry = getChainByChainId(chainId);
++  if (!fromRegistry) return CHAINS[chainId];
++  return toChainConfig(fromRegistry);
+ }
+ 
+ export function isSupportedChain(chainId: number): boolean {
+diff --git a/packages/i18n/messages/ar.json b/packages/i18n/messages/ar.json
+index 3fc5f7f..c53b640 100644
+--- a/packages/i18n/messages/ar.json
++++ b/packages/i18n/messages/ar.json
+@@ -549,5 +549,11 @@
+     "riskBody": "Digital assets involve significant risk including total loss. Wallet connection does not equal investment approval. Token claims are not open unless officially announced.",
+     "disclaimerTitle": "Disclaimer",
+     "disclaimerBody": "EnteleWALLET Lite provides no financial, legal or tax advice. All payments must follow approved EnteleKRON investor dashboard instructions only."
++  },
++  "networks": {
++    "title": "Networks",
++    "switchHint": "Select a network to view balances",
++    "experimental": "Experimental",
++    "testnet": "Testnet"
+   }
+ }
+diff --git a/packages/i18n/messages/az.json b/packages/i18n/messages/az.json
+index a8e0f96..38fcea4 100644
+--- a/packages/i18n/messages/az.json
++++ b/packages/i18n/messages/az.json
+@@ -549,5 +549,11 @@
+     "riskBody": "Digital assets involve significant risk including total loss. Wallet connection does not equal investment approval. Token claims are not open unless officially announced.",
+     "disclaimerTitle": "Disclaimer",
+     "disclaimerBody": "EnteleWALLET Lite provides no financial, legal or tax advice. All payments must follow approved EnteleKRON investor dashboard instructions only."
++  },
++  "networks": {
++    "title": "Networks",
++    "switchHint": "Select a network to view balances",
++    "experimental": "Experimental",
++    "testnet": "Testnet"
+   }
+ }
+diff --git a/packages/i18n/messages/bg.json b/packages/i18n/messages/bg.json
+index a8e0f96..38fcea4 100644
+--- a/packages/i18n/messages/bg.json
++++ b/packages/i18n/messages/bg.json
+@@ -549,5 +549,11 @@
+     "riskBody": "Digital assets involve significant risk including total loss. Wallet connection does not equal investment approval. Token claims are not open unless officially announced.",
+     "disclaimerTitle": "Disclaimer",
+     "disclaimerBody": "EnteleWALLET Lite provides no financial, legal or tax advice. All payments must follow approved EnteleKRON investor dashboard instructions only."
++  },
++  "networks": {
++    "title": "Networks",
++    "switchHint": "Select a network to view balances",
++    "experimental": "Experimental",
++    "testnet": "Testnet"
+   }
+ }
+diff --git a/packages/i18n/messages/de.json b/packages/i18n/messages/de.json
+index 12c78d1..f92736b 100644
+--- a/packages/i18n/messages/de.json
++++ b/packages/i18n/messages/de.json
+@@ -549,5 +549,11 @@
+     "riskBody": "Digital assets involve significant risk including total loss. Wallet connection does not equal investment approval. Token claims are not open unless officially announced.",
+     "disclaimerTitle": "Disclaimer",
+     "disclaimerBody": "EnteleWALLET Lite provides no financial, legal or tax advice. All payments must follow approved EnteleKRON investor dashboard instructions only."
++  },
++  "networks": {
++    "title": "Networks",
++    "switchHint": "Select a network to view balances",
++    "experimental": "Experimental",
++    "testnet": "Testnet"
+   }
+ }
+diff --git a/packages/i18n/messages/el.json b/packages/i18n/messages/el.json
+index a8e0f96..38fcea4 100644
+--- a/packages/i18n/messages/el.json
++++ b/packages/i18n/messages/el.json
+@@ -549,5 +549,11 @@
+     "riskBody": "Digital assets involve significant risk including total loss. Wallet connection does not equal investment approval. Token claims are not open unless officially announced.",
+     "disclaimerTitle": "Disclaimer",
+     "disclaimerBody": "EnteleWALLET Lite provides no financial, legal or tax advice. All payments must follow approved EnteleKRON investor dashboard instructions only."
++  },
++  "networks": {
++    "title": "Networks",
++    "switchHint": "Select a network to view balances",
++    "experimental": "Experimental",
++    "testnet": "Testnet"
+   }
+ }
+diff --git a/packages/i18n/messages/en.json b/packages/i18n/messages/en.json
+index a8e0f96..aaf9bcb 100644
+--- a/packages/i18n/messages/en.json
++++ b/packages/i18n/messages/en.json
+@@ -249,6 +249,12 @@
+     "nativeAsset": "Native asset",
+     "futureAsset": "Future TVK ecosystem asset"
+   },
++  "networks": {
++    "title": "Networks",
++    "switchHint": "Select a network to view balances",
++    "experimental": "Experimental",
++    "testnet": "Testnet"
++  },
+   "transactions": {
+     "title": "Transactions",
+     "description": "Transaction history and explorer links.",
+diff --git a/packages/i18n/messages/es.json b/packages/i18n/messages/es.json
+index 9e6c058..af56afc 100644
+--- a/packages/i18n/messages/es.json
++++ b/packages/i18n/messages/es.json
+@@ -549,5 +549,11 @@
+     "riskBody": "Digital assets involve significant risk including total loss. Wallet connection does not equal investment approval. Token claims are not open unless officially announced.",
+     "disclaimerTitle": "Disclaimer",
+     "disclaimerBody": "EnteleWALLET Lite provides no financial, legal or tax advice. All payments must follow approved EnteleKRON investor dashboard instructions only."
++  },
++  "networks": {
++    "title": "Networks",
++    "switchHint": "Select a network to view balances",
++    "experimental": "Experimental",
++    "testnet": "Testnet"
+   }
+ }
+diff --git a/packages/i18n/messages/fa.json b/packages/i18n/messages/fa.json
+index a8e0f96..38fcea4 100644
+--- a/packages/i18n/messages/fa.json
++++ b/packages/i18n/messages/fa.json
+@@ -549,5 +549,11 @@
+     "riskBody": "Digital assets involve significant risk including total loss. Wallet connection does not equal investment approval. Token claims are not open unless officially announced.",
+     "disclaimerTitle": "Disclaimer",
+     "disclaimerBody": "EnteleWALLET Lite provides no financial, legal or tax advice. All payments must follow approved EnteleKRON investor dashboard instructions only."
++  },
++  "networks": {
++    "title": "Networks",
++    "switchHint": "Select a network to view balances",
++    "experimental": "Experimental",
++    "testnet": "Testnet"
+   }
+ }
+diff --git a/packages/i18n/messages/fr.json b/packages/i18n/messages/fr.json
+index f5ea232..779d587 100644
+--- a/packages/i18n/messages/fr.json
++++ b/packages/i18n/messages/fr.json
+@@ -549,5 +549,11 @@
+     "riskBody": "Digital assets involve significant risk including total loss. Wallet connection does not equal investment approval. Token claims are not open unless officially announced.",
+     "disclaimerTitle": "Disclaimer",
+     "disclaimerBody": "EnteleWALLET Lite provides no financial, legal or tax advice. All payments must follow approved EnteleKRON investor dashboard instructions only."
++  },
++  "networks": {
++    "title": "Networks",
++    "switchHint": "Select a network to view balances",
++    "experimental": "Experimental",
++    "testnet": "Testnet"
+   }
+ }
+diff --git a/packages/i18n/messages/hi.json b/packages/i18n/messages/hi.json
+index a8e0f96..38fcea4 100644
+--- a/packages/i18n/messages/hi.json
++++ b/packages/i18n/messages/hi.json
+@@ -549,5 +549,11 @@
+     "riskBody": "Digital assets involve significant risk including total loss. Wallet connection does not equal investment approval. Token claims are not open unless officially announced.",
+     "disclaimerTitle": "Disclaimer",
+     "disclaimerBody": "EnteleWALLET Lite provides no financial, legal or tax advice. All payments must follow approved EnteleKRON investor dashboard instructions only."
++  },
++  "networks": {
++    "title": "Networks",
++    "switchHint": "Select a network to view balances",
++    "experimental": "Experimental",
++    "testnet": "Testnet"
+   }
+ }
+diff --git a/packages/i18n/messages/id.json b/packages/i18n/messages/id.json
+index a8e0f96..38fcea4 100644
+--- a/packages/i18n/messages/id.json
++++ b/packages/i18n/messages/id.json
+@@ -549,5 +549,11 @@
+     "riskBody": "Digital assets involve significant risk including total loss. Wallet connection does not equal investment approval. Token claims are not open unless officially announced.",
+     "disclaimerTitle": "Disclaimer",
+     "disclaimerBody": "EnteleWALLET Lite provides no financial, legal or tax advice. All payments must follow approved EnteleKRON investor dashboard instructions only."
++  },
++  "networks": {
++    "title": "Networks",
++    "switchHint": "Select a network to view balances",
++    "experimental": "Experimental",
++    "testnet": "Testnet"
+   }
+ }
+diff --git a/packages/i18n/messages/it.json b/packages/i18n/messages/it.json
+index a8e0f96..38fcea4 100644
+--- a/packages/i18n/messages/it.json
++++ b/packages/i18n/messages/it.json
+@@ -549,5 +549,11 @@
+     "riskBody": "Digital assets involve significant risk including total loss. Wallet connection does not equal investment approval. Token claims are not open unless officially announced.",
+     "disclaimerTitle": "Disclaimer",
+     "disclaimerBody": "EnteleWALLET Lite provides no financial, legal or tax advice. All payments must follow approved EnteleKRON investor dashboard instructions only."
++  },
++  "networks": {
++    "title": "Networks",
++    "switchHint": "Select a network to view balances",
++    "experimental": "Experimental",
++    "testnet": "Testnet"
+   }
+ }
+diff --git a/packages/i18n/messages/ja.json b/packages/i18n/messages/ja.json
+index a8e0f96..38fcea4 100644
+--- a/packages/i18n/messages/ja.json
++++ b/packages/i18n/messages/ja.json
+@@ -549,5 +549,11 @@
+     "riskBody": "Digital assets involve significant risk including total loss. Wallet connection does not equal investment approval. Token claims are not open unless officially announced.",
+     "disclaimerTitle": "Disclaimer",
+     "disclaimerBody": "EnteleWALLET Lite provides no financial, legal or tax advice. All payments must follow approved EnteleKRON investor dashboard instructions only."
++  },
++  "networks": {
++    "title": "Networks",
++    "switchHint": "Select a network to view balances",
++    "experimental": "Experimental",
++    "testnet": "Testnet"
+   }
+ }
+diff --git a/packages/i18n/messages/ka.json b/packages/i18n/messages/ka.json
+index a8e0f96..38fcea4 100644
+--- a/packages/i18n/messages/ka.json
++++ b/packages/i18n/messages/ka.json
+@@ -549,5 +549,11 @@
+     "riskBody": "Digital assets involve significant risk including total loss. Wallet connection does not equal investment approval. Token claims are not open unless officially announced.",
+     "disclaimerTitle": "Disclaimer",
+     "disclaimerBody": "EnteleWALLET Lite provides no financial, legal or tax advice. All payments must follow approved EnteleKRON investor dashboard instructions only."
++  },
++  "networks": {
++    "title": "Networks",
++    "switchHint": "Select a network to view balances",
++    "experimental": "Experimental",
++    "testnet": "Testnet"
+   }
+ }
+diff --git a/packages/i18n/messages/ko.json b/packages/i18n/messages/ko.json
+index a8e0f96..38fcea4 100644
+--- a/packages/i18n/messages/ko.json
++++ b/packages/i18n/messages/ko.json
+@@ -549,5 +549,11 @@
+     "riskBody": "Digital assets involve significant risk including total loss. Wallet connection does not equal investment approval. Token claims are not open unless officially announced.",
+     "disclaimerTitle": "Disclaimer",
+     "disclaimerBody": "EnteleWALLET Lite provides no financial, legal or tax advice. All payments must follow approved EnteleKRON investor dashboard instructions only."
++  },
++  "networks": {
++    "title": "Networks",
++    "switchHint": "Select a network to view balances",
++    "experimental": "Experimental",
++    "testnet": "Testnet"
+   }
+ }
+diff --git a/packages/i18n/messages/ms.json b/packages/i18n/messages/ms.json
+index a8e0f96..38fcea4 100644
+--- a/packages/i18n/messages/ms.json
++++ b/packages/i18n/messages/ms.json
+@@ -549,5 +549,11 @@
+     "riskBody": "Digital assets involve significant risk including total loss. Wallet connection does not equal investment approval. Token claims are not open unless officially announced.",
+     "disclaimerTitle": "Disclaimer",
+     "disclaimerBody": "EnteleWALLET Lite provides no financial, legal or tax advice. All payments must follow approved EnteleKRON investor dashboard instructions only."
++  },
++  "networks": {
++    "title": "Networks",
++    "switchHint": "Select a network to view balances",
++    "experimental": "Experimental",
++    "testnet": "Testnet"
+   }
+ }
+diff --git a/packages/i18n/messages/nl.json b/packages/i18n/messages/nl.json
+index a8e0f96..38fcea4 100644
+--- a/packages/i18n/messages/nl.json
++++ b/packages/i18n/messages/nl.json
+@@ -549,5 +549,11 @@
+     "riskBody": "Digital assets involve significant risk including total loss. Wallet connection does not equal investment approval. Token claims are not open unless officially announced.",
+     "disclaimerTitle": "Disclaimer",
+     "disclaimerBody": "EnteleWALLET Lite provides no financial, legal or tax advice. All payments must follow approved EnteleKRON investor dashboard instructions only."
++  },
++  "networks": {
++    "title": "Networks",
++    "switchHint": "Select a network to view balances",
++    "experimental": "Experimental",
++    "testnet": "Testnet"
+   }
+ }
+diff --git a/packages/i18n/messages/pl.json b/packages/i18n/messages/pl.json
+index a8e0f96..38fcea4 100644
+--- a/packages/i18n/messages/pl.json
++++ b/packages/i18n/messages/pl.json
+@@ -549,5 +549,11 @@
+     "riskBody": "Digital assets involve significant risk including total loss. Wallet connection does not equal investment approval. Token claims are not open unless officially announced.",
+     "disclaimerTitle": "Disclaimer",
+     "disclaimerBody": "EnteleWALLET Lite provides no financial, legal or tax advice. All payments must follow approved EnteleKRON investor dashboard instructions only."
++  },
++  "networks": {
++    "title": "Networks",
++    "switchHint": "Select a network to view balances",
++    "experimental": "Experimental",
++    "testnet": "Testnet"
+   }
+ }
+diff --git a/packages/i18n/messages/pt.json b/packages/i18n/messages/pt.json
+index a8e0f96..38fcea4 100644
+--- a/packages/i18n/messages/pt.json
++++ b/packages/i18n/messages/pt.json
+@@ -549,5 +549,11 @@
+     "riskBody": "Digital assets involve significant risk including total loss. Wallet connection does not equal investment approval. Token claims are not open unless officially announced.",
+     "disclaimerTitle": "Disclaimer",
+     "disclaimerBody": "EnteleWALLET Lite provides no financial, legal or tax advice. All payments must follow approved EnteleKRON investor dashboard instructions only."
++  },
++  "networks": {
++    "title": "Networks",
++    "switchHint": "Select a network to view balances",
++    "experimental": "Experimental",
++    "testnet": "Testnet"
+   }
+ }
+diff --git a/packages/i18n/messages/ro.json b/packages/i18n/messages/ro.json
+index a8e0f96..38fcea4 100644
+--- a/packages/i18n/messages/ro.json
++++ b/packages/i18n/messages/ro.json
+@@ -549,5 +549,11 @@
+     "riskBody": "Digital assets involve significant risk including total loss. Wallet connection does not equal investment approval. Token claims are not open unless officially announced.",
+     "disclaimerTitle": "Disclaimer",
+     "disclaimerBody": "EnteleWALLET Lite provides no financial, legal or tax advice. All payments must follow approved EnteleKRON investor dashboard instructions only."
++  },
++  "networks": {
++    "title": "Networks",
++    "switchHint": "Select a network to view balances",
++    "experimental": "Experimental",
++    "testnet": "Testnet"
+   }
+ }
+diff --git a/packages/i18n/messages/ru.json b/packages/i18n/messages/ru.json
+index a8e0f96..38fcea4 100644
+--- a/packages/i18n/messages/ru.json
++++ b/packages/i18n/messages/ru.json
+@@ -549,5 +549,11 @@
+     "riskBody": "Digital assets involve significant risk including total loss. Wallet connection does not equal investment approval. Token claims are not open unless officially announced.",
+     "disclaimerTitle": "Disclaimer",
+     "disclaimerBody": "EnteleWALLET Lite provides no financial, legal or tax advice. All payments must follow approved EnteleKRON investor dashboard instructions only."
++  },
++  "networks": {
++    "title": "Networks",
++    "switchHint": "Select a network to view balances",
++    "experimental": "Experimental",
++    "testnet": "Testnet"
+   }
+ }
+diff --git a/packages/i18n/messages/tr.json b/packages/i18n/messages/tr.json
+index 91745f4..b315a69 100644
+--- a/packages/i18n/messages/tr.json
++++ b/packages/i18n/messages/tr.json
+@@ -549,5 +549,11 @@
+     "riskBody": "Digital assets involve significant risk including total loss. Wallet connection does not equal investment approval. Token claims are not open unless officially announced.",
+     "disclaimerTitle": "Disclaimer",
+     "disclaimerBody": "EnteleWALLET Lite provides no financial, legal or tax advice. All payments must follow approved EnteleKRON investor dashboard instructions only."
++  },
++  "networks": {
++    "title": "Networks",
++    "switchHint": "Select a network to view balances",
++    "experimental": "Experimental",
++    "testnet": "Testnet"
+   }
+ }
+diff --git a/packages/i18n/messages/uk.json b/packages/i18n/messages/uk.json
+index a8e0f96..38fcea4 100644
+--- a/packages/i18n/messages/uk.json
++++ b/packages/i18n/messages/uk.json
+@@ -549,5 +549,11 @@
+     "riskBody": "Digital assets involve significant risk including total loss. Wallet connection does not equal investment approval. Token claims are not open unless officially announced.",
+     "disclaimerTitle": "Disclaimer",
+     "disclaimerBody": "EnteleWALLET Lite provides no financial, legal or tax advice. All payments must follow approved EnteleKRON investor dashboard instructions only."
++  },
++  "networks": {
++    "title": "Networks",
++    "switchHint": "Select a network to view balances",
++    "experimental": "Experimental",
++    "testnet": "Testnet"
+   }
+ }
+diff --git a/packages/i18n/messages/ur.json b/packages/i18n/messages/ur.json
+index a8e0f96..38fcea4 100644
+--- a/packages/i18n/messages/ur.json
++++ b/packages/i18n/messages/ur.json
+@@ -549,5 +549,11 @@
+     "riskBody": "Digital assets involve significant risk including total loss. Wallet connection does not equal investment approval. Token claims are not open unless officially announced.",
+     "disclaimerTitle": "Disclaimer",
+     "disclaimerBody": "EnteleWALLET Lite provides no financial, legal or tax advice. All payments must follow approved EnteleKRON investor dashboard instructions only."
++  },
++  "networks": {
++    "title": "Networks",
++    "switchHint": "Select a network to view balances",
++    "experimental": "Experimental",
++    "testnet": "Testnet"
+   }
+ }
+diff --git a/packages/i18n/messages/zh.json b/packages/i18n/messages/zh.json
+index a8e0f96..38fcea4 100644
+--- a/packages/i18n/messages/zh.json
++++ b/packages/i18n/messages/zh.json
+@@ -549,5 +549,11 @@
+     "riskBody": "Digital assets involve significant risk including total loss. Wallet connection does not equal investment approval. Token claims are not open unless officially announced.",
+     "disclaimerTitle": "Disclaimer",
+     "disclaimerBody": "EnteleWALLET Lite provides no financial, legal or tax advice. All payments must follow approved EnteleKRON investor dashboard instructions only."
++  },
++  "networks": {
++    "title": "Networks",
++    "switchHint": "Select a network to view balances",
++    "experimental": "Experimental",
++    "testnet": "Testnet"
+   }
+ }
+-- 
+2.43.0
+
