@@ -1,0 +1,77 @@
+[
+  {
+    "id": "entelekron",
+    "name": "ENTELΞKRON",
+    "type": "ecosystem-module",
+    "description": "Trust infrastructure platform organizing identity, verification, integrity, and interoperability across the TVK ecosystem.",
+    "status": "active",
+    "uiCategory": "tvk-ecosystem",
+    "icon": "/icons/chains/entelekron.svg",
+    "supportedChains": ["ethereum"],
+    "riskFlag": "low",
+    "capabilities": { "watchOnly": true, "walletConnect": true, "transactions": false },
+    "notes": "Featured TVK ecosystem module — ENK and transparency integrations on verified EVM networks."
+  },
+  {
+    "id": "sovra",
+    "name": "SOVRA",
+    "type": "ecosystem-module",
+    "description": "Intelligence layer coordinating modules, trust workflows, and future AI-assisted wallet guidance.",
+    "status": "active",
+    "uiCategory": "tvk-ecosystem",
+    "icon": "/icons/chains/sovra.svg",
+    "supportedChains": ["ethereum"],
+    "riskFlag": "low",
+    "capabilities": { "watchOnly": true, "walletConnect": true, "transactions": false }
+  },
+  {
+    "id": "energiemind",
+    "name": "EnergieMIND",
+    "type": "ecosystem-module",
+    "description": "Energy infrastructure module connected to the broader TVK and EnteleKRON ecosystem architecture.",
+    "status": "active",
+    "uiCategory": "tvk-ecosystem",
+    "icon": "/icons/chains/energiemind.svg",
+    "supportedChains": ["ethereum"],
+    "riskFlag": "medium",
+    "capabilities": { "watchOnly": true, "walletConnect": false, "transactions": false }
+  },
+  {
+    "id": "entelescan",
+    "name": "EnteleSCAN",
+    "type": "ecosystem-module",
+    "description": "Explorer and visibility layer for contracts, treasury wallets, and ecosystem address verification.",
+    "status": "active",
+    "uiCategory": "tvk-ecosystem",
+    "icon": "/icons/chains/entelescan.svg",
+    "supportedChains": ["ethereum", "base", "polygon", "arbitrum", "optimism"],
+    "riskFlag": "low",
+    "capabilities": { "watchOnly": true, "walletConnect": false, "transactions": false }
+  },
+  {
+    "id": "enteleledger",
+    "name": "EnteleLEDGER",
+    "type": "ecosystem-module",
+    "description": "Audit-ready ledger and integrity records for ecosystem verification events and compliance workflows.",
+    "status": "planned",
+    "uiCategory": "tvk-ecosystem",
+    "icon": "/icons/chains/enteleledger.svg",
+    "supportedChains": ["ethereum"],
+    "riskFlag": "medium",
+    "capabilities": { "watchOnly": true, "walletConnect": false, "transactions": false },
+    "notes": "In development — read-only portfolio and verification views first."
+  },
+  {
+    "id": "tvk-chain",
+    "name": "TVK Chain Integrations",
+    "type": "chain-integration",
+    "description": "Future native TVK chain integrations and cross-chain bridges — activated only after full verification.",
+    "status": "planned",
+    "uiCategory": "tvk-ecosystem",
+    "icon": "/icons/chains/tvk.svg",
+    "supportedChains": [],
+    "riskFlag": "unverified",
+    "capabilities": { "watchOnly": true, "walletConnect": false, "transactions": false },
+    "notes": "Coming soon — requires verified RPC, explorer, chain ID, and signing compatibility."
+  }
+]

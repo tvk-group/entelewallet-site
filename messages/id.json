@@ -54,7 +54,9 @@
     "emailSecurity": "security@entelewallet.com",
     "emailPartners": "partners@entelewallet.com",
     "emailSecurityTvk": "security@tvk.group",
-    "emailSupport": "support@tvk.group"
+    "emailSupport": "support@tvk.group",
+    "navNetworks": "Jaringan",
+    "footerNetworks": "Jaringan yang didukung"
   },
   "home": {
     "eyebrow": "Lapisan Akses Dompet Native EnteleKRON",
@@ -674,6 +676,40 @@
       "description": "Pertanyaan yang sering diajukan tentang EnteleWALLET Lite, koneksi dompet, penitipan, tanda tangan, vesting, domain resmi, dan pelaporan keamanan.",
       "ogTitle": "FAQ EnteleWALLET",
       "ogDescription": "Jawaban atas pertanyaan umum tentang EnteleWALLET Lite dan keamanan dompet ekosistem."
+    },
+    "networks": {
+      "title": "Jaringan EnteleWALLET | Registri modular dan ekosistem TVK",
+      "description": "Registri rantai resmi untuk Ethereum, Base, Polygon, BNB Chain, Arbitrum, Optimism, Avalanche, testnet, modul TVK, dan BlockDAG.",
+      "ogTitle": "Jaringan didukung EnteleWALLET",
+      "ogDescription": "Registri modular dengan verifikasi — jaringan EVM aktif, testnet, modul TVK, dan integrasi mendatang."
     }
+  },
+  "networks": {
+    "eyebrow": "Registri rantai modular",
+    "title": "Jaringan yang didukung dan modul ekosistem TVK",
+    "subtitle": "EnteleWALLET menggunakan registri rantai modular. Jaringan hanya diaktifkan setelah verifikasi RPC, uji tanda tangan, pemeriksaan explorer, dan deteksi saldo/token.",
+    "sectionActive": "Jaringan aktif",
+    "sectionTestnet": "Jaringan uji",
+    "sectionTvk": "Ekosistem TVK",
+    "sectionComingSoon": "Jaringan segera hadir",
+    "sectionExperimental": "Jaringan eksperimental",
+    "securityRule": "Tidak ada jaringan yang diaktifkan untuk transaksi nyata hingga lulus verifikasi RPC, uji tanda tangan, explorer, dan deteksi saldo/token.",
+    "registryNote": "Registri ini adalah daftar jaringan Fase 1 resmi untuk EnteleWALLET. Aplikasi dompet menggunakan data ini dan menerapkan gerbang verifikasi sebelum mengaktifkan transaksi.",
+    "downloadRegistry": "Unduh chain-registry.json",
+    "statusActive": "Aktif",
+    "statusTestnet": "Sınaq şəbəkəsi",
+    "statusPlanned": "Direncanakan",
+    "statusExperimental": "Eksperimental",
+    "riskLabel": "Risiko",
+    "riskLow": "Rendah",
+    "riskMedium": "Sedang",
+    "riskHigh": "Tinggi",
+    "riskUnverified": "Belum diverifikasi",
+    "chainId": "ID Rantai",
+    "tokenStandards": "Standar token",
+    "watchOnly": "Hanya pantau",
+    "walletConnect": "WalletConnect",
+    "transactionsEnabled": "Transaksi diaktifkan",
+    "transactionsGated": "Transaksi dibatasi"
   }
 }

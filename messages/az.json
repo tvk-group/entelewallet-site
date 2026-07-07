@@ -54,7 +54,9 @@
     "emailSecurity": "security@entelewallet.com",
     "emailPartners": "partners@entelewallet.com",
     "emailSecurityTvk": "security@tvk.group",
-    "emailSupport": "support@tvk.group"
+    "emailSupport": "support@tvk.group",
+    "navNetworks": "Şəbəkələr",
+    "footerNetworks": "Dəstəklənən şəbəkələr"
   },
   "home": {
     "eyebrow": "EnteleKRON Doğma Pulqabı Giriş Qatına",
@@ -674,6 +676,40 @@
       "description": "EnteleWALLET Lite, pul kisəsi bağlantısı, saxlama, imzalar, mülkiyyət hüququ, rəsmi domenlər və təhlükəsizlik hesabatları haqqında tez-tez verilən suallar.",
       "ogTitle": "EnteleWALLET FAQ",
       "ogDescription": "EnteleWALLET Lite və ekosistem pul kisəsinin təhlükəsizliyi ilə bağlı ümumi suallara cavablar."
+    },
+    "networks": {
+      "title": "EnteleWALLET şəbəkələri | Modul zəncir reyestri və TVK ekosistemi",
+      "description": "Ethereum, Base, Polygon, BNB Chain, Arbitrum, Optimism, Avalanche, testnetlər, TVK modulları və BlockDAG üçün rəsmi EnteleWALLET zəncir reyestri.",
+      "ogTitle": "EnteleWALLET dəstəklənən şəbəkələr",
+      "ogDescription": "Yoxlama qapılı modul zəncir reyestri — aktiv EVM şəbəkələri, testnetlər, TVK modulları və gələcək inteqrasiyalar."
     }
+  },
+  "networks": {
+    "eyebrow": "Modul zəncir reyestri",
+    "title": "Dəstəklənən şəbəkələr və TVK ekosistem modulları",
+    "subtitle": "EnteleWALLET modul zəncir reyestri istifadə edir. Şəbəkələr yalnız RPC yoxlaması, imza testləri, eksplorer yoxlaması və balans/token aşkarlanmasından sonra aktivləşdirilir.",
+    "sectionActive": "Aktiv şəbəkələr",
+    "sectionTestnet": "Test şəbəkələri",
+    "sectionTvk": "TVK ekosistemi",
+    "sectionComingSoon": "Tezliklə gələcək şəbəkələr",
+    "sectionExperimental": "Eksperimental şəbəkələr",
+    "securityRule": "Heç bir şəbəkə RPC yoxlaması, imza testləri, eksplorer yoxlaması və balans/token testlərini keçmədən real əməliyyatlar üçün aktivləşdirilmir.",
+    "registryNote": "Bu reyestr EnteleWALLET üçün rəsmi Faza 1 şəbəkə siyahısıdır. Pul kisəsi tətbiqi bu məlumatı istifadə edir və əməliyyatları aktivləşdirməzdən əvvəl yoxlama qapılarını tətbiq edir.",
+    "downloadRegistry": "chain-registry.json yüklə",
+    "statusActive": "Aktiv",
+    "statusTestnet": "Sınaq şəbəkəsi",
+    "statusPlanned": "Planlaşdırılıb",
+    "statusExperimental": "Eksperimental",
+    "riskLabel": "Təhlükə",
+    "riskLow": "Aşağı",
+    "riskMedium": "Orta",
+    "riskHigh": "Yüksək",
+    "riskUnverified": "Yoxlanmamış",
+    "chainId": "Zəncir ID",
+    "tokenStandards": "Token standartları",
+    "watchOnly": "Yalnız izləmə",
+    "walletConnect": "WalletConnect",
+    "transactionsEnabled": "Əməliyyatlar aktiv",
+    "transactionsGated": "Əməliyyatlar məhdud"
   }
 }

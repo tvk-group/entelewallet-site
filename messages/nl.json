@@ -54,7 +54,9 @@
     "emailSecurity": "security@entelewallet.com",
     "emailPartners": "partners@entelewallet.com",
     "emailSecurityTvk": "security@tvk.group",
-    "emailSupport": "support@tvk.group"
+    "emailSupport": "support@tvk.group",
+    "navNetworks": "Netwerken",
+    "footerNetworks": "Ondersteunde netwerken"
   },
   "home": {
     "eyebrow": "EnteleKRON native wallet-toegangslaag",
@@ -674,6 +676,40 @@
       "description": "Veelgestelde vragen over EnteleWALLET Lite, walletverbinding, bewaring, handtekeningen, vesting, officiële domeinen en beveiligingsmeldingen.",
       "ogTitle": "Veelgestelde vragen EnteleWALLET",
       "ogDescription": "Antwoorden op veelvoorkomende vragen over EnteleWALLET Lite en ecosysteemwalletveiligheid."
+    },
+    "networks": {
+      "title": "EnteleWALLET Netwerken | Modulair register en TVK-ecosysteem",
+      "description": "Officieel chain-register voor Ethereum, Base, Polygon, BNB Chain, Arbitrum, Optimism, Avalanche, testnets, TVK-modules en BlockDAG.",
+      "ogTitle": "Ondersteunde EnteleWALLET-netwerken",
+      "ogDescription": "Modulair register met verificatie — actieve EVM-netwerken, testnets, TVK-modules en komende integraties."
     }
+  },
+  "networks": {
+    "eyebrow": "Modulair chain-register",
+    "title": "Ondersteunde netwerken en TVK-ecosysteemmodules",
+    "subtitle": "EnteleWALLET gebruikt een modulair chain-register. Netwerken worden pas geactiveerd na RPC-verificatie, handtekeningtests, explorer-controle en saldo/token-detectie.",
+    "sectionActive": "Actieve netwerken",
+    "sectionTestnet": "Testnetwerken",
+    "sectionTvk": "TVK-ecosysteem",
+    "sectionComingSoon": "Binnenkort beschikbare netwerken",
+    "sectionExperimental": "Experimentele netwerken",
+    "securityRule": "Geen netwerk wordt ingeschakeld voor echte transacties totdat RPC-verificatie, handtekeningtests, explorer en saldo/token-detectie zijn geslaagd.",
+    "registryNote": "Dit register is de canonieke Fase 1-netwerklijst voor EnteleWALLET. De wallet-app gebruikt deze gegevens en past verificatiepoorten toe voordat transacties worden ingeschakeld.",
+    "downloadRegistry": "chain-registry.json downloaden",
+    "statusActive": "Actief",
+    "statusTestnet": "Sınaq şəbəkəsi",
+    "statusPlanned": "Gepland",
+    "statusExperimental": "Experimenteel",
+    "riskLabel": "Risico",
+    "riskLow": "Laag",
+    "riskMedium": "Gemiddeld",
+    "riskHigh": "Hoog",
+    "riskUnverified": "Niet geverifieerd",
+    "chainId": "Chain-ID",
+    "tokenStandards": "Tokenstandaarden",
+    "watchOnly": "Alleen bekijken",
+    "walletConnect": "WalletConnect",
+    "transactionsEnabled": "Transacties ingeschakeld",
+    "transactionsGated": "Transacties beperkt"
   }
 }

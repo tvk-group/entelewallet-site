@@ -54,7 +54,9 @@
     "emailSecurity": "security@entelewallet.com",
     "emailPartners": "partners@entelewallet.com",
     "emailSecurityTvk": "security@tvk.group",
-    "emailSupport": "support@tvk.group"
+    "emailSupport": "support@tvk.group",
+    "navNetworks": "Redes",
+    "footerNetworks": "Redes compatibles"
   },
   "home": {
     "eyebrow": "EnteleKRON Capa de acceso a billetera nativa",
@@ -674,6 +676,40 @@
       "description": "Preguntas frecuentes sobre EnteleWALLET Lite, conexión de billetera, custodia, firmas, derechos adquiridos, dominios oficiales e informes de seguridad.",
       "ogTitle": "EnteleWALLET Preguntas frecuentes",
       "ogDescription": "Respuestas a preguntas comunes sobre EnteleWALLET Lite y la seguridad de la billetera del ecosistema."
+    },
+    "networks": {
+      "title": "Redes EnteleWALLET | Registro modular y ecosistema TVK",
+      "description": "Registro oficial de cadenas para Ethereum, Base, Polygon, BNB Chain, Arbitrum, Optimism, Avalanche, testnets, módulos TVK y BlockDAG.",
+      "ogTitle": "Redes compatibles de EnteleWALLET",
+      "ogDescription": "Registro modular con verificación — redes EVM activas, testnets, módulos TVK e integraciones futuras."
     }
+  },
+  "networks": {
+    "eyebrow": "Registro modular de cadenas",
+    "title": "Redes compatibles y módulos del ecosistema TVK",
+    "subtitle": "EnteleWALLET usa un registro modular de cadenas. Las redes solo se activan tras verificación RPC, pruebas de firma, comprobación del explorador y detección de saldo/token — nunca a ciegas.",
+    "sectionActive": "Redes activas",
+    "sectionTestnet": "Redes de prueba",
+    "sectionTvk": "Ecosistema TVK",
+    "sectionComingSoon": "Redes próximamente",
+    "sectionExperimental": "Redes experimentales",
+    "securityRule": "Ninguna red se habilita para transacciones reales hasta pasar verificación RPC, pruebas de firma, explorador y detección de saldo/token.",
+    "registryNote": "Este registro es la lista canónica de Fase 1 para EnteleWALLET. La app de billetera consume estos datos y aplica puertas de verificación antes de habilitar transacciones.",
+    "downloadRegistry": "Descargar chain-registry.json",
+    "statusActive": "Activa",
+    "statusTestnet": "Sınaq şəbəkəsi",
+    "statusPlanned": "Planificada",
+    "statusExperimental": "Red experimental",
+    "riskLabel": "Riesgo",
+    "riskLow": "Bajo",
+    "riskMedium": "Medio",
+    "riskHigh": "Alto",
+    "riskUnverified": "No verificado",
+    "chainId": "ID de cadena",
+    "tokenStandards": "Estándares de token",
+    "watchOnly": "Solo lectura",
+    "walletConnect": "WalletConnect",
+    "transactionsEnabled": "Transacciones habilitadas",
+    "transactionsGated": "Transacciones restringidas"
   }
 }

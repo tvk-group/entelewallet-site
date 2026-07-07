@@ -54,7 +54,9 @@
     "emailSecurity": "security@entelewallet.com",
     "emailPartners": "partners@entelewallet.com",
     "emailSecurityTvk": "security@tvk.group",
-    "emailSupport": "support@tvk.group"
+    "emailSupport": "support@tvk.group",
+    "navNetworks": "شبکه‌ها",
+    "footerNetworks": "شبکه‌های پشتیبانی‌شده"
   },
   "home": {
     "eyebrow": "EnteleKRON لایه دسترسی کیف پول بومی",
@@ -674,6 +676,40 @@
       "description": "سؤالات متداول درباره EnteleWALLET Lite، اتصال کیف پول، حضانت، امضا، واگذاری، دامنه های رسمی، و گزارش امنیتی.",
       "ogTitle": "EnteleWALLET FAQ",
       "ogDescription": "پاسخ به سوالات رایج در مورد EnteleWALLET Lite و ایمنی کیف پول اکوسیستم."
+    },
+    "networks": {
+      "title": "شبکه‌های EnteleWALLET | ثبت ماژولار و اکوسیستم TVK",
+      "description": "ثبت رسمی زنجیره برای Ethereum، Base، Polygon، BNB Chain، Arbitrum، Optimism، Avalanche، تست‌نت‌ها، ماژول‌های TVK و BlockDAG.",
+      "ogTitle": "شبکه‌های پشتیبانی‌شده EnteleWALLET",
+      "ogDescription": "ثبت ماژولار با دروازه‌های تأیید — شبکه‌های EVM فعال، تست‌نت‌ها، ماژول‌های TVK و یکپارچه‌سازی‌های آینده."
     }
+  },
+  "networks": {
+    "eyebrow": "ثبت زنجیره ماژولار",
+    "title": "شبکه‌های پشتیبانی‌شده و ماژول‌های اکوسیستم TVK",
+    "subtitle": "EnteleWALLET از ثبت زنجیره ماژولار استفاده می‌کند. شبکه‌ها فقط پس از تأیید RPC، آزمون امضا، بررسی اکسپلورر و تشخیص موجودی/توکن فعال می‌شوند.",
+    "sectionActive": "شبکه‌های فعال",
+    "sectionTestnet": "شبکه‌های تست",
+    "sectionTvk": "اکوسیستم TVK",
+    "sectionComingSoon": "شبکه‌های به‌زودی",
+    "sectionExperimental": "شبکه‌های آزمایشی",
+    "securityRule": "هیچ شبکه‌ای برای تراکنش‌های واقعی فعال نمی‌شود تا زمانی که تأیید RPC، آزمون امضا، اکسپلورر و تشخیص موجودی/توکن را بگذراند.",
+    "registryNote": "این ثبت فهرست رسمی فاز ۱ EnteleWALLET است. اپ کیف پول این داده را مصرف می‌کند و قبل از فعال‌سازی تراکنش‌ها دروازه‌های تأیید را اعمال می‌کند.",
+    "downloadRegistry": "دانلود chain-registry.json",
+    "statusActive": "فعال",
+    "statusTestnet": "تست‌نت",
+    "statusPlanned": "برنامه‌ریزی‌شده",
+    "statusExperimental": "آزمایشی",
+    "riskLabel": "ریسک",
+    "riskLow": "کم",
+    "riskMedium": "متوسط",
+    "riskHigh": "بالا",
+    "riskUnverified": "تأییدنشده",
+    "chainId": "شناسه زنجیره",
+    "tokenStandards": "استانداردهای توکن",
+    "watchOnly": "فقط مشاهده",
+    "walletConnect": "WalletConnect",
+    "transactionsEnabled": "تراکنش‌ها فعال",
+    "transactionsGated": "تراکنش‌ها محدود"
   }
 }

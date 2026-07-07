@@ -54,7 +54,9 @@
     "emailSecurity": "security@entelewallet.com",
     "emailPartners": "partners@entelewallet.com",
     "emailSecurityTvk": "security@tvk.group",
-    "emailSupport": "support@tvk.group"
+    "emailSupport": "support@tvk.group",
+    "navNetworks": "ქსელები",
+    "footerNetworks": "მხარდაჭერილი ქსელები"
   },
   "home": {
     "eyebrow": "EnteleKRON საფულის წვდომის ფენა",
@@ -674,6 +676,40 @@
       "description": "ხშირად დასმული კითხვები EnteleWALLET Lite-ის, საფულესთან დაკავშირების, პატიმრობის, ხელმოწერების, მფლობელობის, ოფიციალური დომენების და უსაფრთხოების ანგარიშების შესახებ.",
       "ogTitle": "EnteleWALLET FAQ",
       "ogDescription": "პასუხები საერთო კითხვებზე EnteleWALLET Lite და ეკოსისტემის საფულის უსაფრთხოების შესახებ."
+    },
+    "networks": {
+      "title": "EnteleWALLET ქსელები | მოდულური რეესტრი და TVK ეკოსისტემა",
+      "description": "ოფიციალური ჯაჭვის რეესტრი Ethereum, Base, Polygon, BNB Chain, Arbitrum, Optimism, Avalanche, ტესტნეტების, TVK მოდულებისა და BlockDAG-ისთვის.",
+      "ogTitle": "EnteleWALLET მხარდაჭერილი ქსელები",
+      "ogDescription": "მოდულური რეესტრი შემოწმების კარიბჭეებით — აქტიური EVM ქსელები, ტესტნეტები, TVK მოდულები და მომავალი ინტეგრაციები."
     }
+  },
+  "networks": {
+    "eyebrow": "მოდულური ჯაჭვის რეესტრი",
+    "title": "მხარდაჭერილი ქსელები და TVK ეკოსისტემის მოდულები",
+    "subtitle": "EnteleWALLET იყენებს მოდულურ ჯაჭვის რეესტრს. ქსელები აქტივირდება მხოლოდ RPC შემოწმების, ხელმოწერის ტესტების, ექსპლორერისა და ბალანსის/ტოკენის აღმოჩენის შემდეგ.",
+    "sectionActive": "აქტიური ქსელები",
+    "sectionTestnet": "ტესტ ქსელები",
+    "sectionTvk": "TVK ეკოსისტემა",
+    "sectionComingSoon": "მომავალი ქსელები",
+    "sectionExperimental": "ექსპერიმენტული ქსელები",
+    "securityRule": "არც ერთი ქსელი არ აქტივირდება რეალური ტრანზაქციებისთვის, სანამ RPC შემოწმებას, ხელმოწერის ტესტებს, ექსპლორერსა და ბალანსის/ტოკენის ტესტებს ვერ გაივლის.",
+    "registryNote": "ეს რეესტრი არის EnteleWALLET-ის ფაზა 1 ოფიციალური ქსელების სია. საფულის აპი იყენებს ამ მონაცემებს და ტრანზაქციების აქტივაციამდე გამოიყენებს შემოწმების კარიბჭეებს.",
+    "downloadRegistry": "ჩამოტვირთე chain-registry.json",
+    "statusActive": "აქტიური",
+    "statusTestnet": "ტესტნეტი",
+    "statusPlanned": "დაგეგმილი",
+    "statusExperimental": "ექსპერიმენტული",
+    "riskLabel": "რისკი",
+    "riskLow": "დაბალი",
+    "riskMedium": "საშუალო",
+    "riskHigh": "მაღალი",
+    "riskUnverified": "შეუმოწმებელი",
+    "chainId": "ჯაჭვის ID",
+    "tokenStandards": "ტოკენის სტანდარტები",
+    "watchOnly": "მხოლოდ ნახვა",
+    "walletConnect": "WalletConnect",
+    "transactionsEnabled": "ტრანზაქციები ჩართული",
+    "transactionsGated": "ტრანზაქციები შეზღუდული"
   }
 }

@@ -17,7 +17,7 @@ const EXEMPT_EXACT = new Set([
   "Security", "Home", "Contact", "Ecosystem", "Future", "Official",
   "EnteleCLOS", "GraphVAULT", "ChronoSEAL", "Q-Presence", "Sentient Signals",
   "EnteleLEDGER", "EnteleLINK", "WalletConnect wallets",
-  "Product", "Live", "Status",
+  "Product", "Live", "Status", "Networks",
 ]);
 
 function flatten(obj, prefix = "") {

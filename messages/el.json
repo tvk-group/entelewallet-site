@@ -54,7 +54,9 @@
     "emailSecurity": "security@entelewallet.com",
     "emailPartners": "partners@entelewallet.com",
     "emailSecurityTvk": "security@tvk.group",
-    "emailSupport": "support@tvk.group"
+    "emailSupport": "support@tvk.group",
+    "navNetworks": "Δίκτυα",
+    "footerNetworks": "Υποστηριζόμενα δίκτυα"
   },
   "home": {
     "eyebrow": "Εγγενές επίπεδο πρόσβασης πορτοφολιού EnteleKRON",
@@ -674,6 +676,40 @@
       "description": "Συχνές ερωτήσεις σχετικά με EnteleWALLET Lite, σύνδεση πορτοφολιού, φύλαξη, υπογραφές, κατοχύρωση, επίσημους τομείς και αναφορές ασφαλείας.",
       "ogTitle": "__PRESERVE_1__ FAQ",
       "ogDescription": "Απαντήσεις σε συνήθεις ερωτήσεις σχετικά με το EnteleWALLET Lite και την ασφάλεια του πορτοφολιού του οικοσυστήματος."
+    },
+    "networks": {
+      "title": "Δίκτυα EnteleWALLET | Αρθρωτό μητρώο και οικοσύστημα TVK",
+      "description": "Επίσημο μητρώο αλυσίδων για Ethereum, Base, Polygon, BNB Chain, Arbitrum, Optimism, Avalanche, testnets, μονάδες TVK και BlockDAG.",
+      "ogTitle": "Υποστηριζόμενα δίκτυα EnteleWALLET",
+      "ogDescription": "Αρθρωτό μητρώο με πύλες επαλήθευσης — ενεργά EVM δίκτυα, testnets, μονάδες TVK και επερχόμενες ενσωματώσεις."
     }
+  },
+  "networks": {
+    "eyebrow": "Αρθρωτό μητρώο αλυσίδων",
+    "title": "Υποστηριζόμενα δίκτυα και μονάδες οικοσυστήματος TVK",
+    "subtitle": "Το EnteleWALLET χρησιμοποιεί αρθρωτό μητρώο αλυσίδων. Τα δίκτυα ενεργοποιούνται μόνο μετά από επαλήθευση RPC, δοκιμές υπογραφής, έλεγχο explorer και ανίχνευση υπολοίπου/token.",
+    "sectionActive": "Ενεργά δίκτυα",
+    "sectionTestnet": "Δίκτυα δοκιμών",
+    "sectionTvk": "Οικοσύστημα TVK",
+    "sectionComingSoon": "Επερχόμενα δίκτυα",
+    "sectionExperimental": "Πειραματικά δίκτυα",
+    "securityRule": "Κανένα δίκτυο δεν ενεργοποιείται για πραγματικές συναλλαγές μέχρι να περάσει επαλήθευση RPC, δοκιμές υπογραφής, explorer και ανίχνευση υπολοίπου/token.",
+    "registryNote": "Αυτό το μητρώο είναι η κανονική λίστα Φάσης 1 για το EnteleWALLET. Η εφαρμογή πορτοφολιού χρησιμοποιεί αυτά τα δεδομένα και εφαρμόζει πύλες επαλήθευσης πριν ενεργοποιήσει συναλλαγές.",
+    "downloadRegistry": "Λήψη chain-registry.json",
+    "statusActive": "Ενεργό",
+    "statusTestnet": "Sınaq şəbəkəsi",
+    "statusPlanned": "Σχεδιασμένο",
+    "statusExperimental": "Πειραματικό",
+    "riskLabel": "Κίνδυνος",
+    "riskLow": "Χαμηλός",
+    "riskMedium": "Μέτριος",
+    "riskHigh": "Υψηλός",
+    "riskUnverified": "Μη επαληθευμένο",
+    "chainId": "Αναγνωριστικό αλυσίδας",
+    "tokenStandards": "Πρότυπα token",
+    "watchOnly": "Μόνο παρακολούθηση",
+    "walletConnect": "WalletConnect",
+    "transactionsEnabled": "Συναλλαγές ενεργές",
+    "transactionsGated": "Συναλλαγές περιορισμένες"
   }
 }

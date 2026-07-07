@@ -54,7 +54,9 @@
     "emailSecurity": "security@entelewallet.com",
     "emailPartners": "partners@entelewallet.com",
     "emailSecurityTvk": "security@tvk.group",
-    "emailSupport": "support@tvk.group"
+    "emailSupport": "support@tvk.group",
+    "navNetworks": "Мережі",
+    "footerNetworks": "Підтримувані мережі"
   },
   "home": {
     "eyebrow": "Нативний рівень доступу до гаманця EnteleKRON",
@@ -674,6 +676,40 @@
       "description": "Поширені запитання про EnteleWALLET Lite, підключення до гаманця, опіку, підписи, надання прав, офіційні домени та звіти про безпеку.",
       "ogTitle": "Поширені запитання щодо EnteleWALLET",
       "ogDescription": "Відповіді на поширені запитання про EnteleWALLET Lite і безпеку гаманця екосистеми."
+    },
+    "networks": {
+      "title": "Мережі EnteleWALLET | Модульний реєстр і екосистема TVK",
+      "description": "Офіційний реєстр для Ethereum, Base, Polygon, BNB Chain, Arbitrum, Optimism, Avalanche, тестнетів, модулів TVK і BlockDAG.",
+      "ogTitle": "Підтримувані мережі EnteleWALLET",
+      "ogDescription": "Модульний реєстр із перевірками — активні EVM-мережі, тестнети, модулі TVK і майбутні інтеграції."
     }
+  },
+  "networks": {
+    "eyebrow": "Модульний реєстр мереж",
+    "title": "Підтримувані мережі та модулі екосистеми TVK",
+    "subtitle": "EnteleWALLET використовує модульний реєстр мереж. Мережі активуються лише після перевірки RPC, тестів підпису, explorer і виявлення балансу/токена.",
+    "sectionActive": "Активні мережі",
+    "sectionTestnet": "Тестові мережі",
+    "sectionTvk": "Екосистема TVK",
+    "sectionComingSoon": "Незабаром",
+    "sectionExperimental": "Експериментальні мережі",
+    "securityRule": "Жодна мережа не вмикається для реальних транзакцій, доки не пройде перевірку RPC, тести підпису, explorer і виявлення балансу/токена.",
+    "registryNote": "Цей реєстр — канонічний список мереж Фази 1 для EnteleWALLET. Додаток гаманця використовує ці дані та застосовує перевірки перед увімкненням транзакцій.",
+    "downloadRegistry": "Завантажити chain-registry.json",
+    "statusActive": "Активна",
+    "statusTestnet": "Тестнет",
+    "statusPlanned": "Запланована",
+    "statusExperimental": "Експериментальна",
+    "riskLabel": "Ризик",
+    "riskLow": "Низький",
+    "riskMedium": "Середній",
+    "riskHigh": "Високий",
+    "riskUnverified": "Не перевірено",
+    "chainId": "ID мережі",
+    "tokenStandards": "Стандарти токенів",
+    "watchOnly": "Лише перегляд",
+    "walletConnect": "WalletConnect",
+    "transactionsEnabled": "Транзакції увімкнено",
+    "transactionsGated": "Транзакції обмежено"
   }
 }

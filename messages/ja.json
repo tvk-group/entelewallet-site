@@ -54,7 +54,9 @@
     "emailSecurity": "security@entelewallet.com",
     "emailPartners": "partners@entelewallet.com",
     "emailSecurityTvk": "security@tvk.group",
-    "emailSupport": "support@tvk.group"
+    "emailSupport": "support@tvk.group",
+    "navNetworks": "ネットワーク",
+    "footerNetworks": "対応ネットワーク"
   },
   "home": {
     "eyebrow": "EnteleKRON ネイティブウォレットアクセスレイヤー",
@@ -674,6 +676,40 @@
       "description": "EnteleWALLET Lite、ウォレット接続、保管、署名、権利確定、公式ドメイン、セキュリティ レポートに関するよくある質問。",
       "ogTitle": "__PRESERVE_1__ よくある質問",
       "ogDescription": "EnteleWALLET Lite とエコシステム ウォレットの安全性に関するよくある質問への回答。"
+    },
+    "networks": {
+      "title": "EnteleWALLETネットワーク | モジュラーレジストリとTVKエコシステム",
+      "description": "Ethereum、Base、Polygon、BNB Chain、Arbitrum、Optimism、Avalanche、テストネット、TVKモジュール、BlockDAGの公式チェーンレジストリ。",
+      "ogTitle": "EnteleWALLET対応ネットワーク",
+      "ogDescription": "検証ゲート付きモジュラーレジストリ — アクティブEVMネットワーク、テストネット、TVKモジュール、今後の統合。"
     }
+  },
+  "networks": {
+    "eyebrow": "モジュラー・チェーンレジストリ",
+    "title": "対応ネットワークとTVKエコシステムモジュール",
+    "subtitle": "EnteleWALLETはモジュラー・チェーンレジストリを使用します。RPC検証、署名テスト、エクスプローラー確認、残高/トークン検出の後にのみネットワークが有効化されます。",
+    "sectionActive": "アクティブネットワーク",
+    "sectionTestnet": "テストネットワーク",
+    "sectionTvk": "TVKエコシステム",
+    "sectionComingSoon": "近日対応ネットワーク",
+    "sectionExperimental": "実験的ネットワーク",
+    "securityRule": "RPC検証、署名テスト、エクスプローラー検証、残高/トークン検出テストに合格するまで、実際のトランザクションは有効化されません。",
+    "registryNote": "このレジストリはEnteleWALLETのフェーズ1公式ネットワーク一覧です。ウォレットアプリはこのデータを使用し、トランザクション有効化前に検証ゲートを適用します。",
+    "downloadRegistry": "chain-registry.jsonをダウンロード",
+    "statusActive": "アクティブ",
+    "statusTestnet": "テストネット",
+    "statusPlanned": "予定",
+    "statusExperimental": "実験的",
+    "riskLabel": "リスク",
+    "riskLow": "低",
+    "riskMedium": "中",
+    "riskHigh": "高",
+    "riskUnverified": "未検証",
+    "chainId": "チェーンID",
+    "tokenStandards": "トークン規格",
+    "watchOnly": "閲覧のみ",
+    "walletConnect": "WalletConnect",
+    "transactionsEnabled": "トランザクション有効",
+    "transactionsGated": "トランザクション制限"
   }
 }

@@ -54,7 +54,9 @@
     "emailSecurity": "security@entelewallet.com",
     "emailPartners": "partners@entelewallet.com",
     "emailSecurityTvk": "security@tvk.group",
-    "emailSupport": "support@tvk.group"
+    "emailSupport": "support@tvk.group",
+    "navNetworks": "Сети",
+    "footerNetworks": "Поддерживаемые сети"
   },
   "home": {
     "eyebrow": "Нативный уровень доступа к кошельку EnteleKRON",
@@ -674,6 +676,40 @@
       "description": "Частые вопросы об EnteleWALLET Lite, подключении кошелька, хранении, подписях, вестинге, официальных доменах и сообщениях о безопасности.",
       "ogTitle": "FAQ EnteleWALLET",
       "ogDescription": "Ответы на распространённые вопросы об EnteleWALLET Lite и безопасности кошелька в экосистеме."
+    },
+    "networks": {
+      "title": "Сети EnteleWALLET | Модульный реестр и экосистема TVK",
+      "description": "Официальный реестр для Ethereum, Base, Polygon, BNB Chain, Arbitrum, Optimism, Avalanche, тестнетов, модулей TVK и BlockDAG.",
+      "ogTitle": "Поддерживаемые сети EnteleWALLET",
+      "ogDescription": "Модульный реестр с проверками — активные EVM-сети, тестнеты, модули TVK и будущие интеграции."
     }
+  },
+  "networks": {
+    "eyebrow": "Модульный реестр сетей",
+    "title": "Поддерживаемые сети и модули экосистемы TVK",
+    "subtitle": "EnteleWALLET использует модульный реестр сетей. Сети активируются только после проверки RPC, тестов подписи, explorer и обнаружения баланса/токена.",
+    "sectionActive": "Активные сети",
+    "sectionTestnet": "Тестовые сети",
+    "sectionTvk": "Экосистема TVK",
+    "sectionComingSoon": "Скоро",
+    "sectionExperimental": "Экспериментальные сети",
+    "securityRule": "Ни одна сеть не включается для реальных транзакций, пока не пройдёт проверку RPC, тесты подписи, explorer и обнаружение баланса/токена.",
+    "registryNote": "Этот реестр — канонический список сетей Фазы 1 для EnteleWALLET. Приложение кошелька использует эти данные и применяет проверки перед включением транзакций.",
+    "downloadRegistry": "Скачать chain-registry.json",
+    "statusActive": "Активна",
+    "statusTestnet": "Тестнет",
+    "statusPlanned": "Запланирована",
+    "statusExperimental": "Экспериментальная",
+    "riskLabel": "Риск",
+    "riskLow": "Низкий",
+    "riskMedium": "Средний",
+    "riskHigh": "Высокий",
+    "riskUnverified": "Не проверено",
+    "chainId": "ID сети",
+    "tokenStandards": "Стандарты токенов",
+    "watchOnly": "Только просмотр",
+    "walletConnect": "WalletConnect",
+    "transactionsEnabled": "Транзакции включены",
+    "transactionsGated": "Транзакции ограничены"
   }
 }

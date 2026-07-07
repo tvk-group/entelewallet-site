@@ -54,7 +54,9 @@
     "emailSecurity": "security@entelewallet.com",
     "emailPartners": "partners@entelewallet.com",
     "emailSecurityTvk": "security@tvk.group",
-    "emailSupport": "support@tvk.group"
+    "emailSupport": "support@tvk.group",
+    "navNetworks": "Ağlar",
+    "footerNetworks": "Desteklenen Ağlar"
   },
   "home": {
     "eyebrow": "EnteleKRON Yerel Cüzdan Erişim Katmanı",
@@ -674,6 +676,40 @@
       "description": "EnteleWALLET Lite, cüzdan bağlantısı, saklama, imzalar, vesting, resmi alan adları ve güvenlik bildirimi hakkında sıkça sorulan sorular.",
       "ogTitle": "EnteleWALLET SSS",
       "ogDescription": "EnteleWALLET Lite ve ekosistem cüzdan güvenliği hakkında yaygın soruların yanıtları."
+    },
+    "networks": {
+      "title": "EnteleWALLET Ağları | Modüler Zincir Kaydı ve TVK Ekosistemi",
+      "description": "Ethereum, Base, Polygon, BNB Chain, Arbitrum, Optimism, Avalanche, testnetler, TVK ekosistem modülleri ve BlockDAG gibi planlanan ağlar için resmi EnteleWALLET zincir kaydı.",
+      "ogTitle": "EnteleWALLET Desteklenen Ağlar",
+      "ogDescription": "Doğrulama kapılı modüler zincir kaydı — aktif EVM ağları, testnetler, TVK ekosistem modülleri ve yakında gelecek entegrasyonlar."
     }
+  },
+  "networks": {
+    "eyebrow": "Modüler Zincir Kaydı",
+    "title": "Desteklenen ağlar ve TVK ekosistem modülleri",
+    "subtitle": "EnteleWALLET modüler bir zincir kaydı kullanır. Ağlar yalnızca RPC doğrulaması, imza testleri, gezgin kontrolleri ve bakiye/token algılama sonrası etkinleştirilir — körü körüne eklenmez.",
+    "sectionActive": "Aktif Ağlar",
+    "sectionTestnet": "Test Ağları",
+    "sectionTvk": "TVK Ekosistemi",
+    "sectionComingSoon": "Yakında Gelecek Ağlar",
+    "sectionExperimental": "Deneysel Ağlar",
+    "securityRule": "Hiçbir ağ, RPC doğrulaması, işlem imza testleri, gezgin doğrulaması ve bakiye/token algılama testlerini geçmeden gerçek işlemler için etkinleştirilmez.",
+    "registryNote": "Bu kayıt EnteleWALLET için kanonik Faz 1 ağ listesidir. Cüzdan uygulaması bu veriyi tüketir ve işlemleri etkinleştirmeden önce doğrulama kapılarını uygular.",
+    "downloadRegistry": "chain-registry.json indir",
+    "statusActive": "Aktif",
+    "statusTestnet": "Sınaq şəbəkəsi",
+    "statusPlanned": "Planlandı",
+    "statusExperimental": "Deneysel",
+    "riskLabel": "Tehlike",
+    "riskLow": "Düşük",
+    "riskMedium": "Orta",
+    "riskHigh": "Yüksek",
+    "riskUnverified": "Doğrulanmamış",
+    "chainId": "Zincir Kimliği",
+    "tokenStandards": "Token standartları",
+    "watchOnly": "Salt okunur",
+    "walletConnect": "WalletConnect",
+    "transactionsEnabled": "İşlemler etkin",
+    "transactionsGated": "İşlemler kısıtlı"
   }
 }

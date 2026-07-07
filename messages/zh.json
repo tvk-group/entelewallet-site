@@ -54,7 +54,9 @@
     "emailSecurity": "security@entelewallet.com",
     "emailPartners": "partners@entelewallet.com",
     "emailSecurityTvk": "security@tvk.group",
-    "emailSupport": "support@tvk.group"
+    "emailSupport": "support@tvk.group",
+    "navNetworks": "网络",
+    "footerNetworks": "支持的网络"
   },
   "home": {
     "eyebrow": "EnteleKRON 原生钱包访问层",
@@ -674,6 +676,40 @@
       "description": "关于 EnteleWALLET Lite、钱包连接、托管、签名、归属、官方域名和安全报告的常见问题。",
       "ogTitle": "EnteleWALLET 常见问题",
       "ogDescription": "关于 EnteleWALLET Lite 和生态系统钱包安全的常见问题解答。"
+    },
+    "networks": {
+      "title": "EnteleWALLET 网络 | 模块化注册表与 TVK 生态系统",
+      "description": "Ethereum、Base、Polygon、BNB Chain、Arbitrum、Optimism、Avalanche、测试网、TVK 模块及 BlockDAG 的官方链注册表。",
+      "ogTitle": "EnteleWALLET 支持的网络",
+      "ogDescription": "带验证门槛的模块化注册表 — 活跃 EVM 网络、测试网、TVK 模块及未来集成。"
     }
+  },
+  "networks": {
+    "eyebrow": "模块化链注册表",
+    "title": "支持的网络与 TVK 生态系统模块",
+    "subtitle": "EnteleWALLET 使用模块化链注册表。网络仅在 RPC 验证、签名测试、区块浏览器检查和余额/代币检测通过后才会启用，绝不会盲目添加。",
+    "sectionActive": "活跃网络",
+    "sectionTestnet": "测试网络",
+    "sectionTvk": "TVK 生态系统",
+    "sectionComingSoon": "即将推出的网络",
+    "sectionExperimental": "实验性网络",
+    "securityRule": "任何网络在通过 RPC 验证、交易签名测试、浏览器验证以及余额/代币检测测试之前，都不会启用真实交易。",
+    "registryNote": "此注册表是 EnteleWALLET 的第一阶段官方网络列表。钱包应用使用这些数据，并在启用交易前应用验证门槛。",
+    "downloadRegistry": "下载 chain-registry.json",
+    "statusActive": "活跃",
+    "statusTestnet": "测试网",
+    "statusPlanned": "计划中",
+    "statusExperimental": "实验性",
+    "riskLabel": "风险",
+    "riskLow": "低",
+    "riskMedium": "中",
+    "riskHigh": "高",
+    "riskUnverified": "未验证",
+    "chainId": "链 ID",
+    "tokenStandards": "代币标准",
+    "watchOnly": "仅查看",
+    "walletConnect": "WalletConnect",
+    "transactionsEnabled": "交易已启用",
+    "transactionsGated": "交易受限"
   }
 }

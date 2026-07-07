@@ -54,7 +54,9 @@
     "emailSecurity": "security@entelewallet.com",
     "emailPartners": "partners@entelewallet.com",
     "emailSecurityTvk": "security@tvk.group",
-    "emailSupport": "support@tvk.group"
+    "emailSupport": "support@tvk.group",
+    "navNetworks": "Netzwerke",
+    "footerNetworks": "Unterstützte Netzwerke"
   },
   "home": {
     "eyebrow": "EnteleKRON Native Wallet-Zugangsschicht",
@@ -674,6 +676,40 @@
       "description": "Häufig gestellte Fragen zu EnteleWALLET Lite, Wallet-Verbindung, Verwahrung, Signaturen, Vesting, offiziellen Domains und Sicherheitsmeldungen.",
       "ogTitle": "EnteleWALLET FAQ",
       "ogDescription": "Antworten auf häufige Fragen zu EnteleWALLET Lite und Ökosystem-Wallet-Sicherheit."
+    },
+    "networks": {
+      "title": "EnteleWALLET Netzwerke | Modulares Chain-Register & TVK-Ökosystem",
+      "description": "Offizielles EnteleWALLET Chain-Register für Ethereum, Base, Polygon, BNB Chain, Arbitrum, Optimism, Avalanche, Testnets, TVK-Module und geplante Netzwerke wie BlockDAG.",
+      "ogTitle": "EnteleWALLET Unterstützte Netzwerke",
+      "ogDescription": "Modulares Chain-Register mit Verifizierungsgates — aktive EVM-Netzwerke, Testnets, TVK-Module und kommende Integrationen."
     }
+  },
+  "networks": {
+    "eyebrow": "Modulares Chain-Register",
+    "title": "Unterstützte Netzwerke & TVK-Ökosystem-Module",
+    "subtitle": "EnteleWALLET nutzt ein modulares Chain-Register. Netzwerke werden erst nach RPC-Verifizierung, Signaturtests, Explorer-Prüfungen und Saldo-/Token-Erkennung aktiviert — nie blind hinzugefügt.",
+    "sectionActive": "Aktive Netzwerke",
+    "sectionTestnet": "Testnetzwerke",
+    "sectionTvk": "TVK-Ökosystem",
+    "sectionComingSoon": "Demnächst verfügbare Netzwerke",
+    "sectionExperimental": "Experimentelle Netzwerke",
+    "securityRule": "Kein Netzwerk wird für echte Transaktionen aktiviert, bis RPC-Verifizierung, Signaturtests, Explorer-Verifizierung und Saldo-/Token-Erkennung bestanden sind.",
+    "registryNote": "Dieses Register ist die kanonische Phase-1-Netzwerkliste für EnteleWALLET. Die Wallet-App nutzt diese Daten und wendet Verifizierungsgates an, bevor Transaktionen aktiviert werden.",
+    "downloadRegistry": "chain-registry.json herunterladen",
+    "statusActive": "Aktiv",
+    "statusTestnet": "Sınaq şəbəkəsi",
+    "statusPlanned": "Geplant",
+    "statusExperimental": "Experimentell",
+    "riskLabel": "Risiko",
+    "riskLow": "Niedrig",
+    "riskMedium": "Mittel",
+    "riskHigh": "Hoch",
+    "riskUnverified": "Unverifiziert",
+    "chainId": "Chain-ID",
+    "tokenStandards": "Token-Standards",
+    "watchOnly": "Nur Beobachtung",
+    "walletConnect": "WalletConnect",
+    "transactionsEnabled": "Transaktionen aktiv",
+    "transactionsGated": "Transaktionen gesperrt"
   }
 }

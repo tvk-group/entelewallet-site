@@ -903,3 +903,161 @@ section {
     right: -120px;
   }
 }
+
+/* Chain registry / networks page */
+.network-section {
+  padding: 48px 0;
+}
+
+.network-section + .network-section {
+  border-top: 1px solid var(--line);
+}
+
+.network-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 20px;
+}
+
+.network-card {
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 22px;
+  box-shadow: var(--shadow);
+  transition: border-color 0.2s, transform 0.2s;
+}
+
+.network-card:hover {
+  border-color: #b8d4ff;
+  transform: translateY(-2px);
+}
+
+.network-card-head {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  margin-bottom: 16px;
+}
+
+.network-icon {
+  flex: 0 0 44px;
+  border-radius: 12px;
+}
+
+.network-card-title h3 {
+  font-size: 18px;
+  font-weight: 800;
+  margin-bottom: 4px;
+}
+
+.network-meta {
+  font-size: 13px;
+  color: var(--muted);
+  font-weight: 600;
+}
+
+.network-badge {
+  margin-left: auto;
+  flex-shrink: 0;
+  padding: 6px 10px;
+  border-radius: 999px;
+  font-size: 11px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.6px;
+}
+
+.network-badge.active {
+  background: #e6f9f0;
+  color: #0d7a4e;
+}
+
+.network-badge.testnet {
+  background: #eef6ff;
+  color: #0b6fff;
+}
+
+.network-badge.planned {
+  background: #f3f0ff;
+  color: #6b4cff;
+}
+
+.network-badge.experimental {
+  background: #fff8e6;
+  color: #9a6b00;
+}
+
+.network-card-body {
+  display: grid;
+  gap: 10px;
+}
+
+.network-row {
+  font-size: 14px;
+  color: var(--muted);
+}
+
+.network-row strong {
+  color: var(--ink);
+  margin-right: 6px;
+}
+
+.risk-flag {
+  font-weight: 800;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.risk-flag.low { color: #0d7a4e; }
+.risk-flag.medium { color: #9a6b00; }
+.risk-flag.high { color: #c0392b; }
+.risk-flag.unverified { color: #6b7280; }
+
+.network-caps {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 4px;
+}
+
+.cap-chip {
+  padding: 6px 10px;
+  border-radius: 10px;
+  background: var(--soft);
+  border: 1px solid var(--line);
+  font-size: 11px;
+  font-weight: 800;
+  color: #334155;
+}
+
+.cap-chip.enabled {
+  background: #e6f9f0;
+  border-color: #a7e8c9;
+  color: #0d7a4e;
+}
+
+.cap-chip.gated {
+  background: #fff8e6;
+  border-color: #f5d78e;
+  color: #9a6b00;
+}
+
+.network-note {
+  font-size: 13px;
+  color: var(--muted);
+  line-height: 1.5;
+  padding-top: 8px;
+  border-top: 1px dashed var(--line);
+}
+
+.module-card .network-card-title h3 {
+  color: var(--blue);
+}
+
+@media (max-width: 720px) {
+  .network-grid {
+    grid-template-columns: 1fr;
+  }
+}

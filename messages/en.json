@@ -5,6 +5,7 @@
     "navFeatures": "Features",
     "navSecurity": "Security",
     "navEcosystem": "Ecosystem",
+    "navNetworks": "Networks",
     "navRoadmap": "Roadmap",
     "navDocs": "Docs",
     "navDomains": "Domains",
@@ -22,6 +23,7 @@
     "footerRoadmap": "Roadmap",
     "footerDocs": "Docs",
     "footerDomains": "Official Domains",
+    "footerNetworks": "Supported Networks",
     "footerFaq": "FAQ",
     "footerEntelekron": "EnteleKRON",
     "footerSovra": "SOVRA",
@@ -596,6 +598,34 @@
     "q14": "Does EnteleWALLET provide investment advice?",
     "a14": "No. EnteleWALLET does not provide investment, tax, legal, or financial advice and does not guarantee token value, liquidity, listing, or returns."
   },
+  "networks": {
+    "eyebrow": "Modular Chain Registry",
+    "title": "Supported networks & TVK ecosystem modules",
+    "subtitle": "EnteleWALLET uses a modular chain registry. Networks are enabled only after RPC verification, signing tests, explorer checks, and balance/token detection — never added blindly.",
+    "sectionActive": "Active Networks",
+    "sectionTestnet": "Test Networks",
+    "sectionTvk": "TVK Ecosystem",
+    "sectionComingSoon": "Coming Soon Networks",
+    "sectionExperimental": "Experimental Networks",
+    "securityRule": "No network is enabled for real transactions until it passes RPC verification, transaction signing tests, explorer verification, and balance/token detection tests.",
+    "registryNote": "This registry is the canonical Phase 1 network list for EnteleWALLET. The wallet app consumes this data and applies verification gates before enabling transactions.",
+    "downloadRegistry": "Download chain-registry.json",
+    "statusActive": "Active",
+    "statusTestnet": "Testnet",
+    "statusPlanned": "Planned",
+    "statusExperimental": "Experimental",
+    "riskLabel": "Risk",
+    "riskLow": "Low",
+    "riskMedium": "Medium",
+    "riskHigh": "High",
+    "riskUnverified": "Unverified",
+    "chainId": "Chain ID",
+    "tokenStandards": "Token standards",
+    "watchOnly": "Watch-only",
+    "walletConnect": "WalletConnect",
+    "transactionsEnabled": "Transactions enabled",
+    "transactionsGated": "Transactions gated"
+  },
   "meta": {
     "home": {
       "title": "EnteleWALLET | Secure Wallet Access Layer for the EnteleKRON Ecosystem",
@@ -674,6 +704,12 @@
       "description": "Frequently asked questions about EnteleWALLET Lite, wallet connection, custody, signatures, vesting, official domains, and security reporting.",
       "ogTitle": "EnteleWALLET FAQ",
       "ogDescription": "Answers to common questions about EnteleWALLET Lite and ecosystem wallet safety."
+    },
+    "networks": {
+      "title": "EnteleWALLET Networks | Modular Chain Registry & TVK Ecosystem",
+      "description": "Official EnteleWALLET chain registry for Ethereum, Base, Polygon, BNB Chain, Arbitrum, Optimism, Avalanche, testnets, TVK ecosystem modules, and BlockDAG Mainnet.",
+      "ogTitle": "EnteleWALLET Supported Networks",
+      "ogDescription": "Modular chain registry with verification gates — active EVM networks, testnets, TVK ecosystem modules, and coming-soon integrations."
     }
   }
 }
