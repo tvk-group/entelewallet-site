@@ -1,41 +1,26 @@
 (() => {
-  const RTL_LANGS = new Set(["ar", "fa", "ur"]);
-  const ALIASES = { "zh-cn": "zh", "zh-hans": "zh" };
-  const STORAGE_KEY = "entelewallet-language";
+  const RTL_LANGS = new Set(["ar"]);
+  const LANG_PREFIX_RE = /^\/([a-z]{2})(\/|$)/;
 
-  const translations = window.__ENTELE_I18N__ || {};
   const pageMeta = window.__ENTELE_PAGE_META__ || "home";
-
-  function get(obj, path) {
-    return path.split(".").reduce((acc, part) => (acc == null ? undefined : acc[part]), obj);
-  }
-
-  function flatten(obj, prefix = "") {
-    const out = {};
-    for (const [key, value] of Object.entries(obj || {})) {
-      const path = prefix ? `${prefix}.${key}` : key;
-      if (value !== null && typeof value === "object" && !Array.isArray(value)) {
-        Object.assign(out, flatten(value, path));
-      } else {
-        out[path] = value;
-      }
-    }
-    return out;
-  }
-
-  const flatByLang = Object.fromEntries(
-    Object.entries(translations).map(([code, tree]) => [code, flatten(tree)]),
-  );
+  const languages = window.__ENTELE_LANGUAGES__ || [];
 
   const picker = document.querySelector("[data-language-picker]");
   const toggle = picker?.querySelector(".lang-toggle");
-  const currentLanguage = document.querySelector("#current-language");
-  const links = [...document.querySelectorAll("[data-lang]")];
+  const langMenu = picker?.querySelector(".lang-menu");
 
-  function getRequestedLanguage() {
-    const params = new URLSearchParams(window.location.search);
-    const requested = (params.get("lang") || localStorage.getItem(STORAGE_KEY) || "en").toLowerCase();
-    return ALIASES[requested] || (flatByLang[requested] ? requested : "en");
+  function detectLangFromPath() {
+    const match = window.location.pathname.match(LANG_PREFIX_RE);
+    if (!match) return "en";
+    const code = match[1];
+    return languages.some((l) => l.code === code) ? code : "en";
+  }
+
+  function detectPagePath() {
+    const pathname = window.location.pathname.replace(/\/$/, "") || "/";
+    const match = pathname.match(LANG_PREFIX_RE);
+    const stripped = match ? pathname.replace(LANG_PREFIX_RE, "/").replace(/^\/\//, "/") : pathname;
+    return stripped === "" ? "/" : stripped;
   }
 
   function closeMenu() {
@@ -43,54 +28,18 @@
     toggle?.setAttribute("aria-expanded", "false");
   }
 
-  function setMeta(tree) {
-    const meta = get(tree, `meta.${pageMeta}`) || {};
-    const title = meta.title || document.title;
-    const description = meta.description || "";
-    const ogTitle = meta.ogTitle || title;
-    const ogDescription = meta.ogDescription || description;
-
-    document.title = title;
-    document.querySelector('meta[name="description"]')?.setAttribute("content", description);
-    document.querySelector('meta[property="og:title"]')?.setAttribute("content", ogTitle);
-    document.querySelector('meta[property="og:description"]')?.setAttribute("content", ogDescription);
-    document.querySelector('meta[name="twitter:title"]')?.setAttribute("content", ogTitle);
-    document.querySelector('meta[name="twitter:description"]')?.setAttribute("content", ogDescription);
-  }
-
-  function applyLanguage(code, updateUrl = true) {
-    const lang = flatByLang[code] ? code : "en";
-    const copy = flatByLang[lang];
-    const tree = translations[lang] || translations.en || {};
-
-    document.documentElement.lang = lang;
-    document.documentElement.dir = RTL_LANGS.has(lang) ? "rtl" : "ltr";
-
-    setMeta(tree);
-
-    document.querySelectorAll("[data-i18n]").forEach((node) => {
-      const key = node.dataset.i18n;
-      const value = copy[key];
-      if (value != null && value !== "") {
-        node.textContent = value;
-      }
-    });
-
-    const langName = copy["common.languageLabel"];
-    const languages = window.__ENTELE_LANGUAGES__ || [];
-    const match = languages.find((l) => l.code === lang);
-    if (currentLanguage) {
-      currentLanguage.textContent = match?.name || lang.toUpperCase();
-    }
-
-    links.forEach((link) => link.setAttribute("aria-current", String(link.dataset.lang === lang)));
-    localStorage.setItem(STORAGE_KEY, lang);
-
-    if (updateUrl) {
-      const url = new URL(window.location.href);
-      url.searchParams.set("lang", lang);
-      window.history.pushState({ lang }, "", url);
-    }
+  function redirectLegacyQueryLang() {
+    const params = new URLSearchParams(window.location.search);
+    const requested = params.get("lang");
+    if (!requested) return;
+    const code = requested.toLowerCase();
+    if (!languages.some((l) => l.code === code)) return;
+    const pagePath = detectPagePath();
+    const targetPath = code === "en" ? pagePath : pagePath === "/" ? `/${code}` : `/${code}${pagePath}`;
+    const url = new URL(window.location.href);
+    url.searchParams.delete("lang");
+    url.pathname = targetPath;
+    window.location.replace(url.toString());
   }
 
   toggle?.addEventListener("click", () => {
@@ -103,17 +52,26 @@
       event.preventDefault();
       picker.classList.add("is-open");
       toggle.setAttribute("aria-expanded", "true");
+      langMenu?.querySelector("a")?.focus();
     }
     if (event.key === "Escape") closeMenu();
   });
 
-  links.forEach((link) => {
-    link.addEventListener("click", (event) => {
+  langMenu?.addEventListener("keydown", (event) => {
+    const items = [...langMenu.querySelectorAll("a")];
+    const index = items.indexOf(document.activeElement);
+    if (event.key === "ArrowDown") {
       event.preventDefault();
-      applyLanguage(link.dataset.lang);
+      items[(index + 1) % items.length]?.focus();
+    }
+    if (event.key === "ArrowUp") {
+      event.preventDefault();
+      items[(index - 1 + items.length) % items.length]?.focus();
+    }
+    if (event.key === "Escape") {
       closeMenu();
       toggle?.focus();
-    });
+    }
   });
 
   document.addEventListener("click", (event) => {
@@ -127,8 +85,11 @@
     }
   });
 
-  window.addEventListener("popstate", () => applyLanguage(getRequestedLanguage(), false));
-  applyLanguage(getRequestedLanguage(), false);
+  const lang = detectLangFromPath();
+  document.documentElement.lang = lang;
+  document.documentElement.dir = RTL_LANGS.has(lang) ? "rtl" : "ltr";
+
+  redirectLegacyQueryLang();
 
   async function initNetworkNav() {
     const nav = document.querySelector("[data-network-nav]");

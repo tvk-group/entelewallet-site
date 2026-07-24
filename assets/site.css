@@ -664,15 +664,44 @@ section {
   letter-spacing: 0.8px;
 }
 
-.domain-card .badge,
+.domain-card .badge.active,
 .phase-badge.current {
-  background: linear-gradient(135deg, var(--blue), var(--cyan));
+  background: linear-gradient(135deg, var(--green), #0e9e70);
   color: white;
+}
+
+.domain-card .badge.reserved {
+  background: #f0f4ff;
+  color: #1a3a8f;
+  border: 1px solid #c7d7ff;
 }
 
 .phase-badge.future {
   background: #f0ecff;
   color: var(--violet);
+}
+
+.wallet-section-label {
+  font-size: 17px;
+  font-weight: 800;
+  margin-top: 24px;
+  margin-bottom: 4px;
+}
+
+.wallet-section-label.future {
+  color: var(--violet);
+}
+
+.wallet-item.planned {
+  opacity: 0.82;
+  border-style: dashed;
+}
+
+.translation-qa {
+  margin-top: 12px;
+  font-size: 12px;
+  color: #90a2b8;
+  max-width: 36ch;
 }
 
 .domain-card code,

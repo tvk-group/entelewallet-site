@@ -4,7 +4,7 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "build": "node scripts/build.mjs",
+    "build": "npm run i18n:check && node scripts/build.mjs",
     "i18n:check": "node scripts/check-i18n.mjs",
     "chains:check": "node scripts/check-chain-registry.mjs",
     "chains:verify": "node scripts/verify-chains.mjs",

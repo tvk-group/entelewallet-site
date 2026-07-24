@@ -14,6 +14,32 @@ const ROOT = join(dirname(fileURLToPath(import.meta.url)), "..");
 const OUT = join(ROOT, "dist");
 const SITE_URL = "https://entelewallet.com";
 const APP_URL = "https://app.entelewallet.com";
+const TRANSPARENCY_LANGS = new Set([
+  "en", "tr", "de", "fr", "it", "es", "nl", "pl", "pt", "ro", "sv", "da", "fi",
+  "cs", "sk", "hu", "el", "bg", "ru", "uk", "ar", "zh", "ja", "ko", "hi",
+]);
+
+const OG_LOCALE = {
+  en: "en_US", tr: "tr_TR", de: "de_DE", fr: "fr_FR", it: "it_IT", es: "es_ES",
+  nl: "nl_NL", pl: "pl_PL", pt: "pt_BR", ro: "ro_RO", sv: "sv_SE", da: "da_DK",
+  fi: "fi_FI", cs: "cs_CZ", sk: "sk_SK", hu: "hu_HU", el: "el_GR", bg: "bg_BG",
+  ru: "ru_RU", uk: "uk_UA", ar: "ar_SA", zh: "zh_CN", ja: "ja_JP", ko: "ko_KR", hi: "hi_IN",
+};
+
+function localePath(langCode, pagePath) {
+  if (langCode === "en") return pagePath === "/" ? "/" : pagePath;
+  return pagePath === "/" ? `/${langCode}` : `/${langCode}${pagePath}`;
+}
+
+function localeOutFile(langCode, file) {
+  if (langCode === "en") return file;
+  return join(langCode, file);
+}
+
+function transparencyHref(langCode) {
+  const lang = TRANSPARENCY_LANGS.has(langCode) ? langCode : "en";
+  return `https://entelekron.io/presale/${lang}/transparency`;
+}
 
 const BRAND = {
   appIcon: "/brand/entelewallet-app-icon.png",
@@ -60,21 +86,24 @@ const NAV = [
   { key: "common.navContact", href: "/contact" },
 ];
 
-const DOMAIN_KEYS = [
-  "security.domainEntelewalletCom",
-  "security.domainAppEntelewalletCom",
-  "security.domainEntelewalletApp",
-  "security.domainEntelewalletOrg",
-  "security.domainWalletEntelekronIo",
-  "security.domainEntelekronIo",
-  "security.domainEntelekronApp",
-  "security.domainTvkGroup",
+const DOMAIN_ENTRIES = [
+  { key: "security.domainEntelewalletCom", status: "active" },
+  { key: "security.domainAppEntelewalletCom", status: "active" },
+  { key: "security.domainEntelewalletApp", status: "reserved" },
+  { key: "security.domainEntelewalletOrg", status: "reserved" },
+  { key: "security.domainWalletEntelekronIo", status: "reserved" },
+  { key: "security.domainEntelekronIo", status: "active" },
+  { key: "security.domainEntelekronApp", status: "reserved" },
+  { key: "security.domainTvkGroup", status: "active" },
 ];
 
-const WALLET_KEYS = [
+const WALLET_ACTIVE_KEYS = [
   "security.walletMetamask",
   "security.walletRabby",
   "security.walletWalletConnect",
+];
+
+const WALLET_PLANNED_KEYS = [
   "security.walletCoinbase",
   "security.walletTrust",
   "security.walletRainbow",
@@ -193,18 +222,20 @@ async function buildNetworkSectionsHtml(t) {
     .join("\n    ");
 }
 
-function renderHreflangLinks(path, languages) {
-  const pageUrl = `${SITE_URL}${path === "/" ? "" : path}`;
-  const defaultLink = `<link rel="alternate" hreflang="x-default" href="${pageUrl}?lang=en" />`;
-  const links = languages.map(
-    (l) => `<link rel="alternate" hreflang="${esc(l.code)}" href="${pageUrl}?lang=${esc(l.code)}" />`,
-  );
+function renderHreflangLinks(pagePath, languages) {
+  const defaultHref = `${SITE_URL}${localePath("en", pagePath)}`;
+  const defaultLink = `<link rel="alternate" hreflang="x-default" href="${defaultHref}" />`;
+  const links = languages.map((l) => {
+    const href = `${SITE_URL}${localePath(l.code, pagePath)}`;
+    return `<link rel="alternate" hreflang="${esc(l.code)}" href="${href}" />`;
+  });
   return [defaultLink, ...links].join("\n  ");
 }
 
-function pageTemplates(t, networkSectionsHtml = "", networkNavHtml = "") {
+function pageTemplates(t, langCode, pagePath, languages, networkSectionsHtml = "", networkNavHtml = "") {
   const T = (key) => esc(t(key) || key);
   const di = (key) => `data-i18n="${key}"`;
+  const transparencyUrl = transparencyHref(langCode);
 
 function statusRow(labelKey, statusKey) {
   return `<div class="status-row"><div class="status-dot"></div><div><p ${di(labelKey)}>${T(labelKey)}</p><p class="preview-status-value" ${di(statusKey)}>${T(statusKey)}</p></div></div>`;
@@ -214,30 +245,40 @@ function checkRow(key, ok = true) {
   return `<div class="row"><div class="check${ok ? "" : " bad"}">${ok ? "✓" : "✗"}</div><div><h3 ${di(key)}>${T(key)}</h3></div></div>`;
 }
 
+function bulletRow(key) {
+  return `<div class="row"><div class="check">✓</div><div><p ${di(key)}>${T(key)}</p></div></div>`;
+}
+
 function domainCards() {
-  return DOMAIN_KEYS.map(
-    (k) =>
-      `<div class="domain-card"><span class="badge" ${di("common.officialLabel")}>${T("common.officialLabel")}</span><br><code class="ltr" ${di(k)}>${T(k)}</code></div>`,
-  ).join("\n          ");
+  return DOMAIN_ENTRIES.map(({ key, status }) => {
+    const statusKey = status === "active" ? "common.domainStatusActive" : "common.domainStatusReserved";
+    const badgeClass = status === "active" ? "badge active" : "badge reserved";
+    return `<div class="domain-card"><span class="${badgeClass}" ${di(statusKey)}>${T(statusKey)}</span><br><code class="ltr" ${di(key)}>${T(key)}</code></div>`;
+  }).join("\n          ");
 }
 
 function renderNav(activePath) {
   return NAV.map(({ key, href }) => {
     const active = href === activePath ? ' class="active nav-link"' : ' class="nav-link"';
-    return `<a href="${href}"${active} ${di(key)}>${T(key)}</a>`;
+    const navHref = localePath(langCode, href);
+    return `<a href="${navHref}"${active} ${di(key)}>${T(key)}</a>`;
   }).join("\n        ");
 }
 
-function renderLangMenu(languages) {
+function renderLangMenu() {
   return languages
-    .map((l) => `<a href="?lang=${l.code}" hreflang="${l.code}" data-lang="${l.code}">${esc(l.name)}</a>`)
+    .map((l) => {
+      const href = localePath(l.code, pagePath);
+      const current = l.code === langCode ? ' aria-current="true"' : "";
+      return `<a href="${href}" hreflang="${l.code}" data-lang="${l.code}"${current}>${esc(l.name)}</a>`;
+    })
     .join("");
 }
 
-function renderHeader({ languages, activePath }) {
+function renderHeader({ activePath }) {
   return `<header class="topbar">
     <div class="container nav">
-      <a class="brand" href="/" aria-label="EnteleWALLET home">
+      <a class="brand" href="${localePath(langCode, "/")}" aria-label="EnteleWALLET home">
         <img src="${BRAND.appIcon}" alt="" class="brand-icon" width="44" height="44" />
         <img src="${BRAND.wordmark}" alt="EnteleWALLET" class="brand-wordmark" width="200" height="40" />
       </a>
@@ -246,9 +287,9 @@ function renderHeader({ languages, activePath }) {
         <span class="nav-cta"><a class="btn primary" href="${APP_URL}" rel="noopener noreferrer" ${di("common.openApp")}>${T("common.openApp")}</a></span>
         <div class="lang" data-language-picker>
           <button class="lang-toggle" type="button" aria-haspopup="true" aria-expanded="false" aria-controls="language-menu" aria-label="Choose language">
-            🌐 <span id="current-language" ${di("common.languageLabel")}>${T("common.languageLabel")}</span>
+            🌐 <span id="current-language">${esc(languages.find((l) => l.code === langCode)?.name || "English")}</span>
           </button>
-          <div class="lang-menu" id="language-menu" aria-label="Language menu">${renderLangMenu(languages)}</div>
+          <div class="lang-menu" id="language-menu" aria-label="Language menu">${renderLangMenu()}</div>
         </div>
       </nav>
     </div>
@@ -256,6 +297,7 @@ function renderHeader({ languages, activePath }) {
 }
 
 function renderFooter() {
+  const home = localePath(langCode, "/");
   return `<footer class="footer">
     <div class="container">
       <div class="footer-grid">
@@ -267,32 +309,33 @@ function renderFooter() {
           <p class="brand-tagline" ${di("common.brandTagline")}>${T("common.brandTagline")}</p>
           <p ${di("common.brandSubtitle")}>${T("common.brandSubtitle")}</p>
           <p ${di("common.footerNotice")}>${T("common.footerNotice")}</p>
+          <p class="translation-qa" ${di("common.translationQaNotice")}>${T("common.translationQaNotice")}</p>
         </div>
         <div>
           <h4 ${di("common.footerProduct")}>${T("common.footerProduct")}</h4>
-          <a href="/features" ${di("common.footerFeatures")}>${T("common.footerFeatures")}</a>
-          <a href="/security" ${di("common.footerSecurity")}>${T("common.footerSecurity")}</a>
-          <a href="/roadmap" ${di("common.footerRoadmap")}>${T("common.footerRoadmap")}</a>
-          <a href="/docs" ${di("common.footerDocs")}>${T("common.footerDocs")}</a>
-          <a href="/domains" ${di("common.footerDomains")}>${T("common.footerDomains")}</a>
-          <a href="/networks" ${di("common.footerNetworks")}>${T("common.footerNetworks")}</a>
-          <a href="/faq" ${di("common.footerFaq")}>${T("common.footerFaq")}</a>
+          <a href="${localePath(langCode, "/features")}" ${di("common.footerFeatures")}>${T("common.footerFeatures")}</a>
+          <a href="${localePath(langCode, "/security")}" ${di("common.footerSecurity")}>${T("common.footerSecurity")}</a>
+          <a href="${localePath(langCode, "/roadmap")}" ${di("common.footerRoadmap")}>${T("common.footerRoadmap")}</a>
+          <a href="${localePath(langCode, "/docs")}" ${di("common.footerDocs")}>${T("common.footerDocs")}</a>
+          <a href="${localePath(langCode, "/domains")}" ${di("common.footerDomains")}>${T("common.footerDomains")}</a>
+          <a href="${localePath(langCode, "/networks")}" ${di("common.footerNetworks")}>${T("common.footerNetworks")}</a>
+          <a href="${localePath(langCode, "/faq")}" ${di("common.footerFaq")}>${T("common.footerFaq")}</a>
         </div>
         <div>
           <h4 ${di("common.footerEcosystem")}>${T("common.footerEcosystem")}</h4>
           <a href="https://tvk.group" target="_blank" rel="noopener noreferrer" ${di("common.footerTvkGroup")}>${T("common.footerTvkGroup")}</a>
-          <a href="/ecosystem" ${di("common.footerEntelekron")}>${T("common.footerEntelekron")}</a>
-          <a href="/ecosystem" ${di("common.footerSovra")}>${T("common.footerSovra")}</a>
-          <a href="/ecosystem" ${di("common.footerEnergiemind")}>${T("common.footerEnergiemind")}</a>
-          <a href="/ecosystem" ${di("common.footerEntelescan")}>${T("common.footerEntelescan")}</a>
-          <a href="/ecosystem" ${di("common.footerEntelevault")}>${T("common.footerEntelevault")}</a>
+          <a href="${localePath(langCode, "/ecosystem")}" ${di("common.footerEntelekron")}>${T("common.footerEntelekron")}</a>
+          <a href="${localePath(langCode, "/ecosystem")}" ${di("common.footerSovra")}>${T("common.footerSovra")}</a>
+          <a href="${localePath(langCode, "/ecosystem")}" ${di("common.footerEnergiemind")}>${T("common.footerEnergiemind")}</a>
+          <a href="${localePath(langCode, "/ecosystem")}" ${di("common.footerEntelescan")}>${T("common.footerEntelescan")}</a>
+          <a href="${localePath(langCode, "/ecosystem")}" ${di("common.footerEntelevault")}>${T("common.footerEntelevault")}</a>
         </div>
         <div>
           <h4 ${di("common.footerTrust")}>${T("common.footerTrust")}</h4>
-          <a href="/domains" ${di("common.footerOfficialDomains")}>${T("common.footerOfficialDomains")}</a>
-          <a href="/risk" ${di("common.footerRisk")}>${T("common.footerRisk")}</a>
-          <a href="/privacy" ${di("common.footerPrivacy")}>${T("common.footerPrivacy")}</a>
-          <a href="/terms" ${di("common.footerTerms")}>${T("common.footerTerms")}</a>
+          <a href="${localePath(langCode, "/domains")}" ${di("common.footerOfficialDomains")}>${T("common.footerOfficialDomains")}</a>
+          <a href="${localePath(langCode, "/risk")}" ${di("common.footerRisk")}>${T("common.footerRisk")}</a>
+          <a href="${localePath(langCode, "/privacy")}" ${di("common.footerPrivacy")}>${T("common.footerPrivacy")}</a>
+          <a href="${localePath(langCode, "/terms")}" ${di("common.footerTerms")}>${T("common.footerTerms")}</a>
           <a href="mailto:security@tvk.group" ${di("common.footerReportSecurity")}>${T("common.footerReportSecurity")}</a>
         </div>
         <div>
@@ -380,7 +423,6 @@ function pageHero(eyebrowKey, titleKey, subtitleKey) {
     .join("\n          ");
 
   const securityRoad = [
-    "security.roadOwnership",
     "security.roadPortfolio",
     "security.roadTxWarnings",
     "security.roadApproval",
@@ -431,7 +473,7 @@ function pageHero(eyebrowKey, titleKey, subtitleKey) {
     ["docs.gettingStartedTitle", "docs.gettingStartedDescription", "docs.gettingStartedLink", "/features"],
     ["docs.securityDocsTitle", "docs.securityDocsDescription", "docs.securityDocsLink", "/security"],
     ["docs.domainsDocsTitle", "docs.domainsDocsDescription", "docs.domainsDocsLink", "/domains"],
-    ["docs.transparencyDocsTitle", "docs.transparencyDocsDescription", "docs.transparencyDocsLink", "https://entelekron.io/transparency"],
+    ["docs.transparencyDocsTitle", "docs.transparencyDocsDescription", "docs.transparencyDocsLink", transparencyUrl],
     ["docs.ecosystemDocsTitle", "docs.ecosystemDocsDescription", "docs.ecosystemDocsLink", "/ecosystem"],
     ["docs.roadmapDocsTitle", "docs.roadmapDocsDescription", "docs.roadmapDocsLink", "/roadmap"],
     ["docs.legalDocsTitle", "docs.legalDocsDescription", "docs.legalDocsLink", "/legal"],
@@ -447,8 +489,11 @@ function pageHero(eyebrowKey, titleKey, subtitleKey) {
     .map((n) => `<div class="faq-item"><h3 ${di(`faq.q${n}`)}>${T(`faq.q${n}`)}</h3><p ${di(`faq.a${n}`)}>${T(`faq.a${n}`)}</p></div>`)
     .join("\n        ");
 
-  const walletGrid = WALLET_KEYS.map(
-    (k) => `<div class="wallet-item" ${di(k)}>${T(k)}</div>`,
+  const walletActiveGrid = WALLET_ACTIVE_KEYS.map(
+    (k) => `<div class="wallet-item active" ${di(k)}>${T(k)}</div>`,
+  ).join("\n          ");
+  const walletPlannedGrid = WALLET_PLANNED_KEYS.map(
+    (k) => `<div class="wallet-item planned" ${di(k)}>${T(k)}</div>`,
   ).join("\n          ");
 
   const walletFlowSteps = [
@@ -481,8 +526,8 @@ function pageHero(eyebrowKey, titleKey, subtitleKey) {
           <p class="product-identity" ${di("home.productIdentity")}>${T("home.productIdentity")}</p>
           <div class="hero-actions">
             <a class="btn primary" href="${APP_URL}" ${di("home.ctaOpenApp")}>${T("home.ctaOpenApp")}</a>
-            <a class="btn secondary" href="/security" ${di("home.ctaSecurity")}>${T("home.ctaSecurity")}</a>
-            <a class="btn secondary" href="/roadmap" ${di("home.ctaRoadmap")}>${T("home.ctaRoadmap")}</a>
+            <a class="btn secondary" href="${localePath(langCode, "/security")}" ${di("home.ctaSecurity")}>${T("home.ctaSecurity")}</a>
+            <a class="btn secondary" href="${localePath(langCode, "/roadmap")}" ${di("home.ctaRoadmap")}>${T("home.ctaRoadmap")}</a>
           </div>
           <div class="trust">
             <span ${di("home.trustConnect")}>${T("home.trustConnect")}</span>
@@ -528,7 +573,7 @@ function pageHero(eyebrowKey, titleKey, subtitleKey) {
       <div class="container prose-box">
         <h3 ${di("home.ecosystemPreviewTitle")}>Ecosystem</h3>
         <p ${di("home.ecosystemPreviewDescription")}>Desc</p>
-        <a class="btn secondary" href="/ecosystem" ${di("common.learnMore")}>Learn more</a>
+        <a class="btn secondary" href="${localePath(langCode, "/ecosystem")}" ${di("common.learnMore")}>Learn more</a>
       </div>
     </section>
     <section>
@@ -543,17 +588,17 @@ function pageHero(eyebrowKey, titleKey, subtitleKey) {
     ${pageHero("features.eyebrow", "features.title", "features.subtitle")}
     <section><div class="container"><div class="section-head"><h2 ${di("features.liteSectionTitle")}>Lite</h2><p ${di("common.liteNotice")}>Notice</p></div><div class="grid">${liteFeatures}</div></div></section>
     <section><div class="container"><div class="section-head"><h2 ${di("features.futureSectionTitle")}>Future</h2><p ${di("common.futureFeatureNote")}>Note</p></div><div class="grid">${futureFeatures}</div></div></section>
-    <section class="cta"><div class="container cta-box"><h2 ${di("features.ctaTitle")}>CTA</h2><p ${di("features.ctaDescription")}>Desc</p><a class="btn secondary" href="/security" ${di("features.ctaSecurity")}>Security</a> <a class="btn secondary" href="/domains" ${di("features.ctaDomains")}>Domains</a></div></section>
+    <section class="cta"><div class="container cta-box"><h2 ${di("features.ctaTitle")}>CTA</h2><p ${di("features.ctaDescription")}>Desc</p><a class="btn secondary" href="${localePath(langCode, "/security")}" ${di("features.ctaSecurity")}>Security</a> <a class="btn secondary" href="${localePath(langCode, "/domains")}" ${di("features.ctaDomains")}>Domains</a></div></section>
   </main>`,
 
     security: `<main>
     ${pageHero("security.eyebrow", "security.title", "security.subtitle")}
-    <section><div class="container"><div class="section-head"><h2 ${di("security.domainsTitle")}>Domains</h2><p ${di("security.domainsIntro")}>Intro</p></div><div class="domains-grid">${domainCards()}</div><div class="warning" style="margin-top:24px"><strong>⚠️</strong> <span ${di("security.domainsWarning")}>Warning</span></div></div></section>
+    <section><div class="container"><div class="section-head"><h2 ${di("security.domainsTitle")}>Domains</h2><p ${di("security.domainsIntro")}>Intro</p></div><div class="domains-grid">${domainCards()}</div><div class="warning" style="margin-top:24px"><strong aria-hidden="true">⚠️</strong> <span ${di("security.domainsWarning")}>Warning</span></div></div></section>
     <section><div class="container"><div class="section-head"><h2 ${di("security.liteTitle")}>Lite</h2></div><div class="list">${checkRow("security.liteNoSeed")}${checkRow("security.liteNoKeys")}${checkRow("security.liteNoCustody")}${checkRow("security.liteConnectOnly")}${checkRow("security.liteVerify")}</div></div></section>
-    <section><div class="container"><div class="section-head"><h2 ${di("security.signatureTitle")}>Signatures</h2></div><div class="list">${checkRow("security.sigOwnership")}${checkRow("security.sigNoTransfer", false)}${checkRow("security.sigNoApprove", false)}${checkRow("security.sigNoTx", false)}${checkRow("security.sigNoGas", false)}</div><div class="warning" style="margin-top:24px"><strong>⚠️</strong> <span ${di("security.signatureWarning")}>Warn</span></div></div></section>
+    <section><div class="container"><div class="section-head"><h2 ${di("security.signatureTitle")}>Signatures</h2><p ${di("security.sigIntro")}>Intro</p></div><div class="list">${bulletRow("security.sigSiwe")}${bulletRow("security.sigMessageFields")}${bulletRow("security.sigNoApprovals")}${bulletRow("security.sigInspect")}${bulletRow("security.sigRejectUnexpected")}${bulletRow("security.sigMayAuthorize")}${bulletRow("security.sigNeverSeed")}</div><div class="warning" style="margin-top:24px"><strong aria-hidden="true">⚠️</strong> <span ${di("security.signatureWarning")}>Warn</span></div></div></section>
     <section><div class="container danger"><h3 ${di("security.seedTitle")}>${T("security.seedTitle")}</h3><p ${di("security.seedIntro")}>${T("security.seedIntro")}</p><ul>${["security.seedPhrase","security.seedPrivateKey","security.seedRecovery","security.seedPassword","security.seedRemote","security.seedPayment"].map((k)=>`<li ${di(k)}>${T(k)}</li>`).join("")}</ul></div></section>
-    <section><div class="container"><div class="section-head"><h2 ${di("security.walletsTitle")}>Wallets</h2><p ${di("security.walletsIntro")}>Intro</p></div><div class="wallet-grid">${walletGrid}</div></div></section>
-    <section><div class="container verify-box"><h2 ${di("security.verifyTitle")}>Verify</h2><p ${di("security.verifyText")}>Text</p><a class="btn secondary" href="https://entelekron.io/transparency" target="_blank" rel="noopener noreferrer" ${di("security.verifyLink")}>Link</a></div></section>
+    <section><div class="container"><div class="section-head"><h2 ${di("security.walletsTitle")}>Wallets</h2><p ${di("security.walletsIntro")}>Intro</p></div><h3 class="wallet-section-label" ${di("security.walletsActiveTitle")}>${T("security.walletsActiveTitle")}</h3><div class="wallet-grid">${walletActiveGrid}</div><h3 class="wallet-section-label future" ${di("security.walletsPlannedTitle")}>${T("security.walletsPlannedTitle")}</h3><div class="wallet-grid planned">${walletPlannedGrid}</div></div></section>
+    <section><div class="container verify-box"><h2 ${di("security.verifyTitle")}>Verify</h2><p ${di("security.verifyText")}>Text</p><a class="btn secondary" href="${transparencyUrl}" target="_blank" rel="noopener noreferrer" ${di("security.verifyLink")}>Link</a></div></section>
     <section><div class="container"><div class="section-head"><h2 ${di("security.phishingTitle")}>Phishing</h2></div><div class="list">${checkRow("security.phishSocial")}${checkRow("security.phishDashboard")}${checkRow("security.phishExtensions")}${checkRow("security.phishBookmark")}${checkRow("security.phishSsl")}${checkRow("security.phishSearch")}</div></div></section>
     <section><div class="container"><div class="section-head"><h2 ${di("security.roadmapTitle")}>Roadmap</h2><p ${di("security.roadmapIntro")}>Intro</p></div><div class="roadmap-grid">${securityRoad}</div></div></section>
     <section class="cta"><div class="container cta-box violet"><h2 ${di("security.contactTitle")}>Contact</h2><p ${di("security.contactIntro")}>Intro</p><a class="btn secondary" href="mailto:security@tvk.group" ${di("security.contactCta")}>Report</a><p style="margin-top:18px;font-size:14px;color:#d4e8ff" class="ltr">security@tvk.group</p></div></section>
@@ -563,7 +608,7 @@ function pageHero(eyebrowKey, titleKey, subtitleKey) {
     ecosystem: `<main>
     ${pageHero("ecosystem.eyebrow", "ecosystem.title", "ecosystem.subtitle")}
     <section><div class="container"><div class="section-head"><h2 ${di("ecosystem.architectureTitle")}>Architecture</h2><p ${di("ecosystem.architectureDescription")}>Desc</p></div><div class="grid">${ecosystemCards}</div></div></section>
-    <section><div class="container prose-box"><h3 ${di("ecosystem.liteRoleTitle")}>Lite role</h3><p ${di("ecosystem.liteRoleDescription")}>Desc</p><a class="btn primary" href="https://entelekron.io/transparency" ${di("ecosystem.transparencyCta")}>Transparency</a> <a class="btn secondary" href="https://entelekron.org" ${di("ecosystem.entelekronCta")}>EnteleKRON</a></div></section>
+    <section><div class="container prose-box"><h3 ${di("ecosystem.liteRoleTitle")}>Lite role</h3><p ${di("ecosystem.liteRoleDescription")}>Desc</p><a class="btn primary" href="${transparencyUrl}" target="_blank" rel="noopener noreferrer" ${di("ecosystem.transparencyCta")}>Transparency</a> <a class="btn secondary" href="https://entelekron.org" target="_blank" rel="noopener noreferrer" ${di("ecosystem.entelekronCta")}>EnteleKRON</a></div></section>
   </main>`,
 
     networks: `<main class="networks-page">
@@ -610,7 +655,7 @@ function pageHero(eyebrowKey, titleKey, subtitleKey) {
       <div class="card"><h3 ${di("contact.securityTitle")}>Security</h3><p ${di("contact.securityDescription")}>Desc</p><p class="ltr" ${di("contact.securityEmail")}>email</p><p class="ltr" ${di("contact.securityTvkEmail")}>tvk</p><a class="btn secondary" href="mailto:security@tvk.group" ${di("contact.securityCta")}>Report</a></div>
       <div class="card"><h3 ${di("contact.partnersTitle")}>Partners</h3><p ${di("contact.partnersDescription")}>Desc</p><p class="ltr" ${di("contact.partnersEmail")}>email</p></div>
       <div class="card"><h3 ${di("contact.investorTitle")}>Investor</h3><p ${di("contact.investorDescription")}>Desc</p><a href="https://entelekron.io" ${di("contact.investorLink")}>Link</a></div>
-      <div class="card"><h3 ${di("contact.transparencyTitle")}>Transparency</h3><p ${di("contact.transparencyDescription")}>Desc</p><a href="https://entelekron.io/transparency" ${di("contact.transparencyLink")}>Link</a></div>
+      <div class="card"><h3 ${di("contact.transparencyTitle")}>Transparency</h3><p ${di("contact.transparencyDescription")}>Desc</p><a href="${transparencyUrl}" target="_blank" rel="noopener noreferrer" ${di("contact.transparencyLink")}>Link</a></div>
     </div></section>
     <section><div class="container warning"><strong ${di("contact.noticeTitle")}>Notice</strong> <span ${di("contact.noticeText")}>Text</span></div></section>
   </main>`,
@@ -695,36 +740,49 @@ function pageHero(eyebrowKey, titleKey, subtitleKey) {
   };
 }
 
-function renderPage({ pageId, path, languages, messages, networkSectionsHtml = "", networkNavHtml = "" }) {
-  const enMeta = messages.en?.meta?.[pageId] || messages.en?.meta?.home || {};
-  const enFlat = flatten(messages.en);
-  const t = (key) => enFlat[key];
-  const layout = pageTemplates(t, networkSectionsHtml, networkNavHtml);
+function renderPage({ pageId, path, langCode, languages, messages, networkSectionsHtml = "", networkNavHtml = "" }) {
+  const langMessages = messages[langCode] || messages.en;
+  const flat = flatten(langMessages);
+  const t = (key) => flat[key];
+  const meta = langMessages?.meta?.[pageId] || langMessages?.meta?.home || {};
+  const layout = pageTemplates(t, langCode, path, languages, networkSectionsHtml, networkNavHtml);
   const main = layout.pages[pageId];
   if (!main) throw new Error(`Missing template for page: ${pageId}`);
 
-  const i18nJson = JSON.stringify(messages).replace(/</g, "\\u003c");
   const langJson = JSON.stringify(languages).replace(/</g, "\\u003c");
-  const canonicalUrl = `${SITE_URL}${path === "/" ? "" : path}`;
+  const canonicalUrl = `${SITE_URL}${localePath(langCode, path)}`;
+  const ogLocale = OG_LOCALE[langCode] || "en_US";
+  const ogAlternates = languages
+    .filter((l) => l.code !== langCode)
+    .map((l) => `<meta property="og:locale:alternate" content="${OG_LOCALE[l.code] || "en_US"}" />`)
+    .join("\n  ");
+  const dir = languages.find((l) => l.code === langCode)?.rtl ? "rtl" : "ltr";
+  const ogImageAlt = "EnteleWALLET — Secure Wallet Access Layer";
 
   return `<!DOCTYPE html>
-<html lang="en">
+<html lang="${esc(langCode)}" dir="${dir}">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>${esc(enMeta.title || "EnteleWALLET")}</title>
-  <meta name="description" content="${esc(enMeta.description || "")}" />
+  <title>${esc(meta.title || "EnteleWALLET")}</title>
+  <meta name="description" content="${esc(meta.description || "")}" />
+  <meta name="robots" content="index,follow" />
   <link rel="canonical" href="${canonicalUrl}" />
   ${renderHreflangLinks(path, languages)}
-  <meta property="og:title" content="${esc(enMeta.ogTitle || enMeta.title || "EnteleWALLET")}" />
-  <meta property="og:description" content="${esc(enMeta.ogDescription || enMeta.description || "")}" />
+  <meta property="og:title" content="${esc(meta.ogTitle || meta.title || "EnteleWALLET")}" />
+  <meta property="og:description" content="${esc(meta.ogDescription || meta.description || "")}" />
   <meta property="og:type" content="website" />
-  <meta property="og:url" content="${SITE_URL}${path === "/" ? "" : path}" />
+  <meta property="og:url" content="${canonicalUrl}" />
+  <meta property="og:site_name" content="EnteleWALLET" />
+  <meta property="og:locale" content="${ogLocale}" />
+  ${ogAlternates}
   <meta property="og:image" content="${SITE_URL}${BRAND.ogImage}" />
+  <meta property="og:image:alt" content="${esc(ogImageAlt)}" />
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="${esc(enMeta.ogTitle || enMeta.title || "EnteleWALLET")}" />
-  <meta name="twitter:description" content="${esc(enMeta.ogDescription || enMeta.description || "")}" />
+  <meta name="twitter:title" content="${esc(meta.ogTitle || meta.title || "EnteleWALLET")}" />
+  <meta name="twitter:description" content="${esc(meta.ogDescription || meta.description || "")}" />
   <meta name="twitter:image" content="${SITE_URL}${BRAND.ogImage}" />
+  <meta name="twitter:image:alt" content="${esc(ogImageAlt)}" />
   <meta name="theme-color" content="#0a1628" />
   <link rel="icon" type="image/png" sizes="32x32" href="${BRAND.favicon32}" />
   <link rel="icon" type="image/png" sizes="16x16" href="${BRAND.favicon16}" />
@@ -732,12 +790,11 @@ function renderPage({ pageId, path, languages, messages, networkSectionsHtml = "
   <link rel="manifest" href="/manifest.webmanifest" />
   <link rel="stylesheet" href="/assets/site.css" />
 </head>
-<body>
-  ${layout.renderHeader({ languages, activePath: path })}
+<body data-page-lang="${esc(langCode)}" data-page-path="${esc(path)}">
+  ${layout.renderHeader({ activePath: path })}
   ${main}
   ${layout.renderFooter()}
-  <script id="entele-i18n" type="application/json">${i18nJson}</script>
-  <script>window.__ENTELE_I18N__=JSON.parse(document.getElementById("entele-i18n").textContent);window.__ENTELE_PAGE_META__=${JSON.stringify(pageId)};window.__ENTELE_LANGUAGES__=${langJson};</script>
+  <script>window.__ENTELE_PAGE_META__=${JSON.stringify(pageId)};window.__ENTELE_LANGUAGES__=${langJson};</script>
   <script src="/assets/site.js" defer></script>
 </body>
 </html>
@@ -824,18 +881,39 @@ async function main() {
   await writeFile(join(OUT, "manifest.webmanifest"), JSON.stringify(manifest, null, 2) + "\n");
 
   for (const page of PAGES) {
-    const html = renderPage({
-      pageId: page.id,
-      path: page.path,
-      languages,
-      messages,
-      networkSectionsHtml,
-      networkNavHtml,
-    });
-    await writeFile(join(OUT, page.file), html);
+    for (const { code: langCode } of languages) {
+      const html = renderPage({
+        pageId: page.id,
+        path: page.path,
+        langCode,
+        languages,
+        messages,
+        networkSectionsHtml,
+        networkNavHtml,
+      });
+      const outFile = localeOutFile(langCode, page.file);
+      const outPath = join(OUT, outFile);
+      await mkdir(dirname(outPath), { recursive: true });
+      await writeFile(outPath, html);
+    }
   }
 
-  console.log(`Built ${PAGES.length} pages to dist/, ${languages.length} locales, chain registry exported.`);
+  const sitemapUrls = [];
+  for (const page of PAGES) {
+    for (const { code } of languages) {
+      const loc = `${SITE_URL}${localePath(code, page.path)}`;
+      sitemapUrls.push(`  <url><loc>${loc}</loc><changefreq>weekly</changefreq><priority>${page.path === "/" ? "1.0" : page.path === "/security" ? "0.9" : "0.7"}</priority></url>`);
+    }
+  }
+  const sitemap = `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${sitemapUrls.join("\n")}\n</urlset>\n`;
+  await writeFile(join(OUT, "sitemap.xml"), sitemap);
+  await writeFile(
+    join(OUT, "robots.txt"),
+    `User-agent: *\nAllow: /\nSitemap: ${SITE_URL}/sitemap.xml\n`,
+  );
+
+  const pageCount = PAGES.length * languages.length;
+  console.log(`Built ${pageCount} localized pages (${PAGES.length} routes × ${languages.length} locales), sitemap.xml, robots.txt.`);
 }
 
 main().catch((err) => {
