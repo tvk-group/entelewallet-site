@@ -28,7 +28,8 @@ npm run typecheck  # Type-check config/languages.ts and chain-registry
 | `scripts/build.mjs` | Static site generator |
 | `scripts/check-chain-registry.mjs` | Validates chain registry schema and security rules |
 | `scripts/verify-chains.mjs` | RPC, explorer, and detection verification tests |
-| `scripts/check-i18n.mjs` | Translation completeness checker |
+| `scripts/check-i18n.mjs` | Translation completeness checker (runs before build) |
+| `scripts/apply-security-patches.mjs` | Applies security translation patches to locale files |
 | `assets/site.css` | Shared styles |
 | `assets/site.js` | Client-side i18n runtime |
 | `public/brand/` | Official EnteleWALLET logos and banners (from entelewallet app repo) |

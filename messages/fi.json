@@ -58,9 +58,9 @@
     "navNetworks": "Netwerken",
     "footerNetworks": "Ondersteunde netwerken",
     "brandTagline": "SECURE • INTELLIGENT • CONNECTED",
-    "domainStatusActive": "Officieel en actief",
-    "domainStatusReserved": "Officieel — gereserveerd",
-    "translationQaNotice": "Vertalingen worden aangeboden voor toegankelijkheid. Beoordeling door moedertaalsprekers voor juridische en beveiligingsnauwkeurigheid is aan de gang."
+    "domainStatusActive": "Virallinen ja aktiivinen",
+    "domainStatusReserved": "Virallinen — varattu",
+    "translationQaNotice": "Käännökset tarjotaan saavutettavuutta varten. Oikeudellisen ja tietoturvallisen tarkkuuden natiivitarkistus on käynnissä."
   },
   "home": {
     "eyebrow": "EnteleKRON native wallet-toegangslaag",

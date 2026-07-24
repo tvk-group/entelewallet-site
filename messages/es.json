@@ -57,7 +57,10 @@
     "emailSupport": "support@tvk.group",
     "navNetworks": "Redes",
     "footerNetworks": "Redes compatibles",
-    "brandTagline": "SECURE • INTELLIGENT • CONNECTED"
+    "brandTagline": "SECURE • INTELLIGENT • CONNECTED",
+    "domainStatusActive": "Oficial y activo",
+    "domainStatusReserved": "Oficial — reservado",
+    "translationQaNotice": "Las traducciones se ofrecen por accesibilidad. La revisión por hablantes nativos para precisión legal y de seguridad está en curso."
   },
   "home": {
     "eyebrow": "EnteleKRON Capa de acceso a billetera nativa",
@@ -250,11 +253,6 @@
     "liteConnectOnly": "EnteleWALLET Lite se conecta solo a billeteras existentes",
     "liteVerify": "La verificación de billetera utiliza únicamente firmas de mensajes seguros",
     "signatureTitle": "Seguridad de la firma",
-    "sigOwnership": "Una firma EnteleWALLET válida solo debe verificar la propiedad de la billetera",
-    "sigNoTransfer": "No debe transferir tokens.",
-    "sigNoApprove": "No debe aprobar el gasto",
-    "sigNoTx": "No debe crear una transacción blockchain.",
-    "sigNoGas": "No debe costar gasolina.",
     "signatureWarning": "Nunca firme mensajes que no comprenda.",
     "seedTitle": "Advertencia de frase inicial y clave privada",
     "seedIntro": "EnteleWALLET, EnteleKRON, TVK Group, TVK Labs, SOVRA, el personal de soporte, los administradores, los socios o los moderadores de la comunidad nunca solicitarán:",
@@ -285,7 +283,6 @@
     "phishSearch": "Evite enlaces patrocinados de resultados de búsqueda para acceder a la billetera",
     "roadmapTitle": "Futura hoja de ruta de seguridad EnteleWALLET",
     "roadmapIntro": "Estas capacidades están planificadas para futuras versiones de EnteleWALLET. Hoy no están activos.",
-    "roadOwnership": "Verificación de propiedad de billetera",
     "roadPortfolio": "Seguimiento de cartera",
     "roadTxWarnings": "Advertencias de transacción",
     "roadApproval": "Advertencias de aprobación maliciosas",
@@ -299,7 +296,17 @@
     "contactIntro": "Si descubre una vulnerabilidad, un sitio de phishing o un intento de suplantación de identidad, infórmelo a nuestro equipo de seguridad.",
     "contactCta": "Informar un problema de seguridad",
     "legalTitle": "Aviso Legal / Riesgos",
-    "legalText": "EnteleWALLET Lite es una interfaz de verificación y conexión de billetera. No custodia fondos, no almacena frases iniciales, no brinda asesoramiento de inversión ni garantiza el valor simbólico, la liquidez, la cotización ni la rentabilidad."
+    "legalText": "EnteleWALLET Lite es una interfaz de verificación y conexión de billetera. No custodia fondos, no almacena frases iniciales, no brinda asesoramiento de inversión ni garantiza el valor simbólico, la liquidez, la cotización ni la rentabilidad.",
+    "sigIntro": "La verificación de propiedad de EnteleWALLET debe usar un mensaje de autenticación claramente identificable. Las firmas typed-data, permit y las autorizaciones Permit2 pueden autorizar gasto de activos incluso sin crear inmediatamente una transacción on-chain.",
+    "sigSiwe": "EnteleWALLET Lite usa SIWE (EIP-4361) para verificación de propiedad cuando la función está habilitada en la app.",
+    "sigMessageFields": "El mensaje esperado debe identificar EnteleWALLET, el dominio solicitante, la dirección de billetera, el propósito, el nonce, la hora de emisión y la expiración cuando corresponda.",
+    "sigNoApprovals": "Un mensaje básico de verificación de propiedad no debe solicitar aprobación de token, Permit, Permit2, transferencia de activos, orden de marketplace, delegación o autorización ilimitada.",
+    "sigInspect": "Inspeccione los detalles de la firma en su billetera antes de firmar.",
+    "sigRejectUnexpected": "Rechace solicitudes inesperadas de typed-data, permit, aprobación o transacción.",
+    "sigMayAuthorize": "Una firma puede llevar autorización aunque no se cobre gas al firmar.",
+    "sigNeverSeed": "EnteleWALLET nunca pedirá una frase semilla o clave privada.",
+    "walletsActiveTitle": "Disponible ahora en EnteleWALLET Lite",
+    "walletsPlannedTitle": "Planificado — aún no disponible en Lite"
   },
   "ecosystem": {
     "eyebrow": "EnteleKRON Ecosistema",
